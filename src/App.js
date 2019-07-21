@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { render } from "react-dom";
 
 const config = {
@@ -11,6 +11,8 @@ const config = {
 const gapi = window.gapi;
 
 const App = () => {
+  const [locations, updateLocations] = useState([]);
+
   async function requestLocations() {
     try {
       await gapi.client.init({
@@ -24,6 +26,13 @@ const App = () => {
       });
 
       console.log(response.result);
+
+      updateLocations(
+        response.result.values.map(location => ({
+          name: location[0],
+          hasNursingRoom: location[4]
+        }))
+      );
     } catch (e) {
       console.error(e);
     }
@@ -32,7 +41,20 @@ const App = () => {
     gapi.load("client", requestLocations);
   }, []);
 
-  return <h1>Baby Spots</h1>;
+  return (
+    <div>
+      <h1>Baby Spots</h1>
+      <h2>Is there a nursing room?</h2>
+      <ul>
+        {locations.map(location => (
+          <li key={location.name}>
+            {location.name}:{" "}
+            {location.hasNursingRoom === "TRUE" ? "YUP" : "NOPE"}{" "}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 };
 
 render(<App />, document.getElementById("root"));
