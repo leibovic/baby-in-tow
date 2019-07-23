@@ -4,7 +4,7 @@ import { render } from "react-dom";
 const config = {
   apiKey: "AIzaSyAwjO8DjRaUChRw6nx4OarscD6QGlMspqs",
   discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
-  spreadsheetId: "1BDOOmsjy8JePhRqvyGcZi263j42YeRl9jWFW4I-5qWU"
+  spreadsheetId: "1GxL136Eh5fK_6cTZQ1cW2Dmnq8Pn6hlFyWg9z7mgKek"
 };
 
 // Loaded from synchronous script tag in index.html
@@ -22,15 +22,17 @@ const App = () => {
 
       const response = await gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: config.spreadsheetId,
-        range: "Locations!A2:E5"
+        range: "Nursing!A3:H10"
       });
 
       console.log(response.result);
 
       updateLocations(
         response.result.values.map(location => ({
-          name: location[0],
-          hasNursingRoom: location[4]
+          businessName: location[0],
+          location: location[1],
+          address: location[2],
+          photoReference: location[3]
         }))
       );
     } catch (e) {
@@ -44,12 +46,10 @@ const App = () => {
   return (
     <div>
       <h1>Baby Spots</h1>
-      <h2>Is there a nursing room?</h2>
       <ul>
-        {locations.map(location => (
-          <li key={location.name}>
-            {location.name}:{" "}
-            {location.hasNursingRoom === "TRUE" ? "YUP" : "NOPE"}{" "}
+        {locations.map(({ businessName, location, address }) => (
+          <li key={businessName}>
+            {businessName}: {location} ({address})
           </li>
         ))}
       </ul>
