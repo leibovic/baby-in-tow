@@ -25,16 +25,16 @@ const App = () => {
         range: "Nursing!A3:H10"
       });
 
-      console.log(response.result);
-
       updateLocations(
         response.result.values.map(location => ({
           businessName: location[0],
           location: location[1],
           address: location[2],
-          photoIds: location[4].split(",")
+          photoIds: location[4].split(",").filter(id => id.length > 0)
         }))
       );
+
+      console.log(locations);
     } catch (e) {
       console.error(e);
     }
@@ -43,22 +43,25 @@ const App = () => {
     gapi.load("client", requestLocations);
   }, []);
 
+  let renderPhotos = photoIds =>
+    photoIds.map(id => (
+      <img
+        key={id}
+        // For full image use https://drive.google.com/uc?id=
+        src={`https://drive.google.com/thumbnail?id=${id}`}
+        alt=""
+      />
+    ));
+
   return (
     <div>
       <h1>Baby Spots</h1>
       {locations.map(({ businessName, address, photoIds }) => (
-        <p key={businessName}>
+        <div key={businessName}>
           <h2>{businessName}</h2>
           <h3>{address}</h3>
-          {photoIds.map(id => (
-            <img
-              key={id}
-              // For full image use https://drive.google.com/uc?id=
-              src={`https://drive.google.com/thumbnail?id=${id}`}
-              alt=""
-            />
-          ))}
-        </p>
+          {renderPhotos(photoIds)}
+        </div>
       ))}
     </div>
   );
