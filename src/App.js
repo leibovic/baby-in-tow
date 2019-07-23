@@ -32,7 +32,7 @@ const App = () => {
           businessName: location[0],
           location: location[1],
           address: location[2],
-          photoReference: location[3]
+          photoIds: location[4].split(",")
         }))
       );
     } catch (e) {
@@ -46,13 +46,20 @@ const App = () => {
   return (
     <div>
       <h1>Baby Spots</h1>
-      <ul>
-        {locations.map(({ businessName, location, address }) => (
-          <li key={businessName}>
-            {businessName}: {location} ({address})
-          </li>
-        ))}
-      </ul>
+      {locations.map(({ businessName, address, photoIds }) => (
+        <p key={businessName}>
+          <h2>{businessName}</h2>
+          <h3>{address}</h3>
+          {photoIds.map(id => (
+            <img
+              key={id}
+              // For full image use https://drive.google.com/uc?id=
+              src={`https://drive.google.com/thumbnail?id=${id}`}
+              alt=""
+            />
+          ))}
+        </p>
+      ))}
     </div>
   );
 };
