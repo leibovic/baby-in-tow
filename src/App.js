@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { render } from "react-dom";
+import Map from "./Map.js";
+import "mapbox-gl/dist/mapbox-gl.css";
 
 const config = {
   apiKey: "AIzaSyAwjO8DjRaUChRw6nx4OarscD6QGlMspqs",
@@ -33,8 +35,6 @@ const App = () => {
           photoIds: location[4].split(",").filter(id => id.length > 0)
         }))
       );
-
-      console.log(locations);
     } catch (e) {
       console.error(e);
     }
@@ -63,6 +63,7 @@ const App = () => {
           {renderPhotos(photoIds)}
         </div>
       ))}
+      <Map />
     </div>
   );
 };
