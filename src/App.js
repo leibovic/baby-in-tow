@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { render } from "react-dom";
 import Map from "./Map.js";
-import "mapbox-gl/dist/mapbox-gl.css";
 
 const config = {
   apiKey: "AIzaSyAwjO8DjRaUChRw6nx4OarscD6QGlMspqs",
@@ -24,7 +23,7 @@ const App = () => {
 
       const response = await gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: config.spreadsheetId,
-        range: "Nursing!A3:H10"
+        range: "Nursing!A3:K20"
       });
 
       updateLocations(
@@ -32,13 +31,20 @@ const App = () => {
           businessName: location[0],
           location: location[1],
           address: location[2],
-          photoIds: location[4].split(",").filter(id => id.length > 0)
+          latitude: parseFloat(location[3]),
+          longitude: parseFloat(location[4]),
+          photoIds: location[6].split(",").filter(id => id.length > 0),
+          cleanliness: parseInt(location[7]),
+          spaciousness: parseInt(location[8]),
+          overall: parseInt(location[9])
         }))
       );
     } catch (e) {
       console.error(e);
     }
   }
+
+  // Called once to load locations state
   useEffect(() => {
     gapi.load("client", requestLocations);
   }, []);
@@ -63,7 +69,7 @@ const App = () => {
           {renderPhotos(photoIds)}
         </div>
       ))}
-      <Map />
+      <Map locations={locations} />
     </div>
   );
 };
