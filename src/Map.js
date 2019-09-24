@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ReactMapGL, { Marker, NavigationControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
+import Pin from "./Pin";
 
 const ACCESS_TOKEN =
   "pk.eyJ1IjoibWxlaWJvdmljIiwiYSI6ImNqeWhhdDd2bDA5d2IzZ211NTdsZmNuNDkifQ.EeYaupgKuUPtyZpplZVf6A";
@@ -27,9 +28,8 @@ const Map = ({ locations }) => {
             key={`marker-${name}`}
             latitude={latitude}
             longitude={longitude}
-            anchor="bottom"
           >
-            <div className="mapMarkerStyle" />
+            <Pin />
           </Marker>
         );
       })}
