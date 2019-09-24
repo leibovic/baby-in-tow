@@ -18,7 +18,10 @@ const Detail = ({ location }) => {
         padding: "10px"
       }}
     >
-      <h2>{location.name}</h2>
+      <div style={{ fontWeight: "bold" }}>{location.name}</div>
+      <div style={{ fontStyle: "italic", paddingBottom: "10px" }}>
+        {location.category}
+      </div>
       <div>{location.address}</div>
       <div>Nursing Rating: {location.nursing}</div>
       <div>Stroller Rating: {location.stroller}</div>
