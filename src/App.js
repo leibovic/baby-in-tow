@@ -50,18 +50,6 @@ const App = () => {
     gapi.load("client", requestLocations);
   }, []);
 
-  // let renderPhotos = photoIds =>
-  //   photoIds.map(id => (
-  //     <img
-  //       key={id}
-  //       // For full image use https://drive.google.com/uc?id=
-  //       src={`https://drive.google.com/thumbnail?id=${id}`}
-  //       alt=""
-  //     />
-  //   ));
-
-  console.log(locations);
-
   return <Map locations={locations} />;
 };
 

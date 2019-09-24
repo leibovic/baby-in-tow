@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ReactMapGL, { Marker, NavigationControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Pin from "./Pin";
+import Detail from "./Detail";
 
 const ACCESS_TOKEN =
   "pk.eyJ1IjoibWxlaWJvdmljIiwiYSI6ImNqeWhhdDd2bDA5d2IzZ211NTdsZmNuNDkifQ.EeYaupgKuUPtyZpplZVf6A";
@@ -33,6 +34,9 @@ const Map = ({ locations }) => {
           </Marker>
         );
       })}
+
+      {/*TODO: Maintain selected location in state and pass in here */}
+      <Detail location={locations[0]} />
 
       <div
         style={{
