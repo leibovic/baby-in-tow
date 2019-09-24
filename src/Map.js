@@ -16,6 +16,8 @@ const Map = ({ locations }) => {
     zoom: 11
   });
 
+  const [selectedLocation, setSelectedLocation] = useState({});
+
   return (
     <ReactMapGL
       mapboxApiAccessToken={ACCESS_TOKEN}
@@ -23,20 +25,19 @@ const Map = ({ locations }) => {
       {...viewport}
       onViewportChange={viewport => setViewport(viewport)}
     >
-      {locations.map(({ name, latitude, longitude }) => {
+      {locations.map(location => {
         return (
           <Marker
-            key={`marker-${name}`}
-            latitude={latitude}
-            longitude={longitude}
+            key={`marker-${location.name}`}
+            latitude={location.latitude}
+            longitude={location.longitude}
           >
-            <Pin />
+            <Pin onClick={() => setSelectedLocation(location)} />
           </Marker>
         );
       })}
 
-      {/*TODO: Maintain selected location in state and pass in here */}
-      <Detail location={locations[0]} />
+      <Detail location={selectedLocation} />
 
       <div
         style={{
