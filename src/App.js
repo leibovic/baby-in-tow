@@ -23,20 +23,21 @@ const App = () => {
 
       const response = await gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: config.spreadsheetId,
-        range: "Nursing!A3:K20"
+        range: "MVP Data!A2:K20"
       });
 
       updateLocations(
         response.result.values.map(location => ({
-          businessName: location[0],
-          location: location[1],
-          address: location[2],
-          latitude: parseFloat(location[3]),
-          longitude: parseFloat(location[4]),
-          photoIds: location[6].split(",").filter(id => id.length > 0),
-          cleanliness: parseInt(location[7]),
-          spaciousness: parseInt(location[8]),
-          overall: parseInt(location[9])
+          name: location[0],
+          address: location[1],
+          latitude: parseFloat(location[2]),
+          longitude: parseFloat(location[3]),
+          category: location[4],
+          nursing: parseInt(location[5]),
+          stroller: parseInt(location[6]),
+          changeTable: location[7] === "Y",
+          indoor: location[8] === "Y",
+          outdoor: location[9] === "Y"
         }))
       );
     } catch (e) {
@@ -49,29 +50,19 @@ const App = () => {
     gapi.load("client", requestLocations);
   }, []);
 
-  let renderPhotos = photoIds =>
-    photoIds.map(id => (
-      <img
-        key={id}
-        // For full image use https://drive.google.com/uc?id=
-        src={`https://drive.google.com/thumbnail?id=${id}`}
-        alt=""
-      />
-    ));
+  // let renderPhotos = photoIds =>
+  //   photoIds.map(id => (
+  //     <img
+  //       key={id}
+  //       // For full image use https://drive.google.com/uc?id=
+  //       src={`https://drive.google.com/thumbnail?id=${id}`}
+  //       alt=""
+  //     />
+  //   ));
 
-  return (
-    <div>
-      <h1>Baby Spots</h1>
-      {locations.map(({ businessName, address, photoIds }) => (
-        <div key={businessName}>
-          <h2>{businessName}</h2>
-          <h3>{address}</h3>
-          {renderPhotos(photoIds)}
-        </div>
-      ))}
-      <Map locations={locations} />
-    </div>
-  );
+  console.log(locations);
+
+  return <Map locations={locations} />;
 };
 
 render(<App />, document.getElementById("root"));

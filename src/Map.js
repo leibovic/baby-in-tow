@@ -8,11 +8,11 @@ const ACCESS_TOKEN =
 
 const Map = ({ locations }) => {
   const [viewport, setViewport] = useState({
-    width: 600,
-    height: 600,
-    latitude: 43.6532,
-    longitude: -79.3832,
-    zoom: 10
+    width: "100vw",
+    height: "100vh",
+    latitude: 43.66125,
+    longitude: -79.33841,
+    zoom: 11
   });
 
   return (
@@ -22,15 +22,17 @@ const Map = ({ locations }) => {
       {...viewport}
       onViewportChange={viewport => setViewport(viewport)}
     >
-      {locations.map(({ latitude, longitude }) => {
-        console.log(`${latitude}-${longitude}`);
-        <Marker
-          key={`${latitude}-${longitude}`}
-          latitude={latitude}
-          longitude={longitude}
-        >
-          <Pin size={20}></Pin>
-        </Marker>;
+      {locations.map(({ name, latitude, longitude }) => {
+        return (
+          <Marker
+            key={`marker-${name}`}
+            latitude={latitude}
+            longitude={longitude}
+            anchor="bottom"
+          >
+            <div className="mapMarkerStyle" />
+          </Marker>
+        );
       })}
 
       <div
