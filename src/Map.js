@@ -32,7 +32,10 @@ const Map = ({ locations }) => {
             latitude={location.latitude}
             longitude={location.longitude}
           >
-            <Pin onClick={() => setSelectedLocation(location)} />
+            <Pin
+              onClick={() => setSelectedLocation(location)}
+              selected={selectedLocation == location}
+            />
           </Marker>
         );
       })}
