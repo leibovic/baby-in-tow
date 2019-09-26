@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { Router, navigate } from "@reach/router";
 import { render } from "react-dom";
 import Map from "./Map.js";
+import Filters from "./Filters.js";
 
 const config = {
   apiKey: "AIzaSyAwjO8DjRaUChRw6nx4OarscD6QGlMspqs",
@@ -58,10 +60,11 @@ const App = () => {
     return location.category === category;
   });
 
-  return (
+  const Home = () => (
     <div>
       <div
         style={{
+          height: "30px",
           padding: "10px"
         }}
       >
@@ -76,10 +79,17 @@ const App = () => {
           <option value="Community">Community</option>
           <option value="Self Care">Self Care</option>
         </select>
-        <button>More Filters</button>
+        <button onClick={() => navigate("filters")}>More Filters</button>
       </div>
       <Map locations={displayLocations} />
     </div>
+  );
+
+  return (
+    <Router>
+      <Home path="/" />
+      <Filters path="/filters" />
+    </Router>
   );
 };
 

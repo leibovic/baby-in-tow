@@ -10,7 +10,7 @@ const ACCESS_TOKEN =
 const Map = ({ locations }) => {
   const [viewport, setViewport] = useState({
     width: "100vw",
-    height: "100vh",
+    height: "calc(100vh - 50px)",
     latitude: 43.66125,
     longitude: -79.33841,
     zoom: 11

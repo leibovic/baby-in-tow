@@ -1,0 +1,89 @@
+import React, { useState } from "react";
+
+const Filters = () => {
+  const [filters, updateFilters] = useState({
+    indoor: null,
+    outdoor: null,
+    nursing: "",
+    stroller: "",
+    changeTable: null
+  });
+
+  console.log(filters);
+
+  return (
+    <div
+      style={{
+        padding: "20px"
+      }}
+    >
+      <h1>Filters</h1>
+      <h2>Type of Place</h2>
+      <div>
+        <input
+          type="checkbox"
+          name="indoor"
+          checked={filters.indoor}
+          onChange={e => {
+            const checked = e.target.checked;
+            updateFilters(filters => ({ ...filters, indoor: checked }));
+          }}
+        />
+        <label htmlFor="indoor">Indoor</label>
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          name="outdoor"
+          checked={filters.outdoor}
+          onChange={e => {
+            const checked = e.target.checked;
+            updateFilters(filters => ({
+              ...filters,
+              outdoor: checked
+            }));
+          }}
+        />
+        <label htmlFor="outdoor">Outdoor</label>
+      </div>
+
+      <h2>Stroller Friendly?</h2>
+      <select
+        value={filters.stroller}
+        onChange={e => {
+          const value = e.target.value;
+          updateFilters(filters => ({ ...filters, stroller: value }));
+        }}
+        onBlur={e => {
+          const value = e.target.value;
+          updateFilters(filters => ({ ...filters, stroller: value }));
+        }}
+      >
+        <option value="">Any</option>
+        <option value="1">Doable with a bit of effort</option>
+        <option value="2">Moderate space</option>
+        <option value="3">It&apos;s a stroller party!</option>
+      </select>
+
+      <h2>Whip &apos;em out?</h2>
+      <select
+        value={filters.nursing}
+        onChange={e => {
+          const value = e.target.value;
+          updateFilters(filters => ({ ...filters, nursing: value }));
+        }}
+        onBlur={e => {
+          const value = e.target.value;
+          updateFilters(filters => ({ ...filters, nursing: value }));
+        }}
+      >
+        <option value="">Any</option>
+        <option value="1">Public, but chill vibe</option>
+        <option value="2">Some privacy</option>
+        <option value="3">Dedicated room</option>
+      </select>
+    </div>
+  );
+};
+
+export default Filters;
