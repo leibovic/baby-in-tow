@@ -13,6 +13,7 @@ const gapi = window.gapi;
 
 const App = () => {
   const [locations, updateLocations] = useState([]);
+  const [category, setCategory] = useState("");
 
   async function requestLocations() {
     try {
@@ -50,7 +51,36 @@ const App = () => {
     gapi.load("client", requestLocations);
   }, []);
 
-  return <Map locations={locations} />;
+  const displayLocations = locations.filter(location => {
+    if (category === "") {
+      return true;
+    }
+    return location.category === category;
+  });
+
+  return (
+    <div>
+      <div
+        style={{
+          padding: "10px"
+        }}
+      >
+        <select
+          value={category}
+          onChange={e => setCategory(e.target.value)}
+          onBlur={e => setCategory(e.target.value)}
+        >
+          <option value="">All Categories</option>
+          <option value="Eats">Eats</option>
+          <option value="Culture">Culture</option>
+          <option value="Community">Community</option>
+          <option value="Self Care">Self Care</option>
+        </select>
+        <button>More Filters</button>
+      </div>
+      <Map locations={displayLocations} />
+    </div>
+  );
 };
 
 render(<App />, document.getElementById("root"));
