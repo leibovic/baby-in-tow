@@ -16,6 +16,13 @@ const gapi = window.gapi;
 const App = () => {
   const [locations, updateLocations] = useState([]);
   const [category, setCategory] = useState("");
+  const [filters, updateFilters] = useState({
+    indoor: null,
+    outdoor: null,
+    nursing: "",
+    stroller: "",
+    changeTable: null
+  });
 
   async function requestLocations() {
     try {
@@ -88,7 +95,11 @@ const App = () => {
   return (
     <Router>
       <Home path="/" />
-      <Filters path="/filters" />
+      <Filters
+        path="/filters"
+        filters={filters}
+        updateFilters={updateFilters}
+      />
     </Router>
   );
 };

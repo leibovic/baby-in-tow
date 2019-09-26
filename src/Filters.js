@@ -1,16 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
-const Filters = () => {
-  const [filters, updateFilters] = useState({
-    indoor: null,
-    outdoor: null,
-    nursing: "",
-    stroller: "",
-    changeTable: null
-  });
-
-  console.log(filters);
-
+const Filters = ({ filters, updateFilters }) => {
   return (
     <div
       style={{
