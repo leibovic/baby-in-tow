@@ -17,11 +17,11 @@ const App = () => {
   const [locations, updateLocations] = useState([]);
   const [category, setCategory] = useState("");
   const [filters, updateFilters] = useState({
-    indoor: null,
-    outdoor: null,
+    indoor: true,
+    outdoor: true,
     nursing: "",
     stroller: "",
-    changeTable: null
+    changeTable: false
   });
 
   async function requestLocations() {
@@ -61,10 +61,26 @@ const App = () => {
   }, []);
 
   const displayLocations = locations.filter(location => {
-    if (category === "") {
-      return true;
+    if (category !== "" && location.category !== category) {
+      return false;
     }
-    return location.category === category;
+    // TOOD: Need to figure out how to make these indoor/outdoor filters less weird
+    if (!filters.indoor && location.indoor) {
+      return false;
+    }
+    if (!filters.outdoor && location.outdoor) {
+      return false;
+    }
+    if (filters.changeTable && !location.changeTable) {
+      return false;
+    }
+    if (filters.nursing !== "" && filters.nursing > location.nursing) {
+      return false;
+    }
+    if (filters.stroller !== "" && filters.stroller > location.stroller) {
+      return false;
+    }
+    return true;
   });
 
   const Home = () => (

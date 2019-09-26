@@ -70,8 +70,25 @@ const Filters = ({ filters, updateFilters }) => {
         <option value="">Any</option>
         <option value="1">Public, but chill vibe</option>
         <option value="2">Some privacy</option>
-        <option value="3">Dedicated room</option>
+        <option value="3">Dedicated space</option>
       </select>
+
+      <h2>Blowout emergency?</h2>
+      <div>
+        <input
+          type="checkbox"
+          name="changeTable"
+          checked={filters.changeTable}
+          onChange={e => {
+            const checked = e.target.checked;
+            updateFilters(filters => ({
+              ...filters,
+              changeTable: checked
+            }));
+          }}
+        />
+        <label htmlFor="changeTable">Must have a change table</label>
+      </div>
     </div>
   );
 };
