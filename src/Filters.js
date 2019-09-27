@@ -1,12 +1,20 @@
 import React from "react";
 
-const Filters = ({ filters, updateFilters }) => {
+const Filters = ({ filters, updateFilters, onClose }) => {
   return (
     <div
       style={{
-        padding: "20px"
+        padding: "20px",
+        position: "fixed",
+        left: 0,
+        right: 0,
+        bottom: 0,
+        top: 0,
+        zIndex: 10,
+        backgroundColor: "white"
       }}
     >
+      <button onClick={onClose}>Close</button>
       <h1>Filters</h1>
       <h2>Type of Place</h2>
       <div>

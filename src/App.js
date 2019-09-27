@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Router, navigate } from "@reach/router";
 import { render } from "react-dom";
 import Map from "./Map.js";
 import Filters from "./Filters.js";
@@ -23,6 +22,7 @@ const App = () => {
     stroller: "",
     changeTable: false
   });
+  const [filtersVisible, updateFiltersVisible] = useState(false);
 
   async function requestLocations() {
     try {
@@ -83,7 +83,7 @@ const App = () => {
     return true;
   });
 
-  const Home = () => (
+  return (
     <div>
       <div
         style={{
@@ -102,21 +102,17 @@ const App = () => {
           <option value="Community">Community</option>
           <option value="Self Care">Self Care</option>
         </select>
-        <button onClick={() => navigate("filters")}>More Filters</button>
+        <button onClick={() => updateFiltersVisible(true)}>More Filters</button>
       </div>
       <Map locations={displayLocations} />
+      {filtersVisible && (
+        <Filters
+          filters={filters}
+          updateFilters={updateFilters}
+          onClose={() => updateFiltersVisible(false)}
+        />
+      )}
     </div>
-  );
-
-  return (
-    <Router>
-      <Home path="/" />
-      <Filters
-        path="/filters"
-        filters={filters}
-        updateFilters={updateFilters}
-      />
-    </Router>
   );
 };
 
