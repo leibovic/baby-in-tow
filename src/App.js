@@ -16,8 +16,8 @@ const App = () => {
   const [locations, updateLocations] = useState([]);
   const [category, setCategory] = useState("");
   const [filters, updateFilters] = useState({
-    indoor: true,
-    outdoor: true,
+    indoor: false,
+    outdoor: false,
     nursing: "",
     stroller: "",
     changeTable: false
@@ -64,11 +64,10 @@ const App = () => {
     if (category !== "" && location.category !== category) {
       return false;
     }
-    // TOOD: Need to figure out how to make these indoor/outdoor filters less weird
-    if (!filters.indoor && location.indoor) {
+    if (filters.indoor && !location.indoor) {
       return false;
     }
-    if (!filters.outdoor && location.outdoor) {
+    if (filters.outdoor && !location.outdoor) {
       return false;
     }
     if (filters.changeTable && !location.changeTable) {
