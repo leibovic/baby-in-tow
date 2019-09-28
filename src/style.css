@@ -2,16 +2,23 @@ body {
   margin: 0;
 }
 
-#filtersButton {
-  background-color: white;
+.controlButton {
+  background-color: transparent;
   border: none;
-  padding: 7px;
-  margin-left: 10px;
-  border-radius: 4px;
-  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
   cursor: pointer;
 }
 
-#filtersButton:active {
-  background-color: #999;
+.controlButton:hover,
+.controlButton:active {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+#filtersOverlay {
+  padding: 20px;
+  position: fixed;
+  inset: 10px;
+  z-index: 10;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
 }

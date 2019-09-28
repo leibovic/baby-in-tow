@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { render } from "react-dom";
-import Filters from "./Filters.js";
+import FiltersOverlay from "./FiltersOverlay.js";
 import ReactMapGL, { Marker, NavigationControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Pin from "./Pin";
@@ -138,10 +138,16 @@ const App = () => {
             position: "absolute",
             top: 0,
             right: 0,
-            padding: "10px"
+            margin: "10px",
+            backgroundColor: "white",
+            boxShadow: "0 0 0 2px rgba(0, 0, 0, 0.1)",
+            borderRadius: "4px"
           }}
         >
           <select
+            style={{
+              margin: "0 5px"
+            }}
             value={category}
             onChange={e => setCategory(e.target.value)}
             onBlur={e => setCategory(e.target.value)}
@@ -152,13 +158,20 @@ const App = () => {
             <option value="Community">Community</option>
             <option value="Self Care">Self Care</option>
           </select>
-          <button id="filtersButton" onClick={() => updateFiltersVisible(true)}>
+          <button
+            className="controlButton"
+            style={{
+              padding: "7px",
+              borderLeft: "1px solid #ddd"
+            }}
+            onClick={() => updateFiltersVisible(true)}
+          >
             <img src={filterIcon} alt="Filter"></img>
           </button>
         </div>
       </ReactMapGL>
       {filtersVisible && (
-        <Filters
+        <FiltersOverlay
           filters={filters}
           updateFilters={updateFilters}
           onClose={() => updateFiltersVisible(false)}

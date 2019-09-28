@@ -1,20 +1,24 @@
 import React from "react";
+import closeIcon from "./close.png";
 
-const Filters = ({ filters, updateFilters, onClose }) => {
+const FiltersOverlay = ({ filters, updateFilters, onClose }) => {
   return (
-    <div
-      style={{
-        padding: "20px",
-        position: "fixed",
-        left: 0,
-        right: 0,
-        bottom: 0,
-        top: 0,
-        zIndex: 10,
-        backgroundColor: "white"
-      }}
-    >
-      <button onClick={onClose}>Close</button>
+    <div id="filtersOverlay">
+      <button
+        className="controlButton"
+        style={{
+          boxShadow: "0 0 0 2px rgba(0, 0, 0, 0.1)",
+          borderRadius: "4px",
+          position: "absolute",
+          top: 0,
+          right: 0,
+          margin: "10px",
+          padding: "5px"
+        }}
+        onClick={onClose}
+      >
+        <img src={closeIcon} alt="Close"></img>
+      </button>
       <h1>Filters</h1>
       <h2>Type of Place</h2>
       <div>
@@ -101,4 +105,4 @@ const Filters = ({ filters, updateFilters, onClose }) => {
   );
 };
 
-export default Filters;
+export default FiltersOverlay;
