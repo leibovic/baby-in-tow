@@ -23,8 +23,8 @@ const App = () => {
   const [locations, updateLocations] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState({});
   const [viewport, setViewport] = useState({
-    width: "100vw",
-    height: "100vh",
+    width: "100%",
+    height: "100%",
     latitude: 43.66125,
     longitude: -79.33841,
     zoom: 11
@@ -98,7 +98,7 @@ const App = () => {
   });
 
   return (
-    <div>
+    <div id="container">
       <ReactMapGL
         mapboxApiAccessToken={ACCESS_TOKEN}
         mapStyle="mapbox://styles/mapbox/streets-v10"
