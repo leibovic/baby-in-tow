@@ -5,6 +5,7 @@ import ReactMapGL, { Marker, NavigationControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Pin from "./Pin";
 import Detail from "./Detail";
+import filterIcon from "./filter.png";
 
 const ACCESS_TOKEN =
   "pk.eyJ1IjoibWxlaWJvdmljIiwiYSI6ImNqeWhhdDd2bDA5d2IzZ211NTdsZmNuNDkifQ.EeYaupgKuUPtyZpplZVf6A";
@@ -151,8 +152,8 @@ const App = () => {
             <option value="Community">Community</option>
             <option value="Self Care">Self Care</option>
           </select>
-          <button onClick={() => updateFiltersVisible(true)}>
-            More Filters
+          <button id="filtersButton" onClick={() => updateFiltersVisible(true)}>
+            <img src={filterIcon} alt="Filter"></img>
           </button>
         </div>
       </ReactMapGL>

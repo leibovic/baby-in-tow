@@ -1,3 +1,17 @@
 body {
   margin: 0;
 }
+
+#filtersButton {
+  background-color: white;
+  border: none;
+  padding: 7px;
+  margin-left: 10px;
+  border-radius: 4px;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+#filtersButton:active {
+  background-color: #999;
+}
