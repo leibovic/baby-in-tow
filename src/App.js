@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { render } from "react-dom";
-import Map from "./Map.js";
 import Filters from "./Filters.js";
+import ReactMapGL, { Marker, NavigationControl } from "react-map-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
+import Pin from "./Pin";
+import Detail from "./Detail";
+
+const ACCESS_TOKEN =
+  "pk.eyJ1IjoibWxlaWJvdmljIiwiYSI6ImNqeWhhdDd2bDA5d2IzZ211NTdsZmNuNDkifQ.EeYaupgKuUPtyZpplZVf6A";
 
 const config = {
   apiKey: "AIzaSyAwjO8DjRaUChRw6nx4OarscD6QGlMspqs",
@@ -14,6 +20,14 @@ const gapi = window.gapi;
 
 const App = () => {
   const [locations, updateLocations] = useState([]);
+  const [selectedLocation, setSelectedLocation] = useState({});
+  const [viewport, setViewport] = useState({
+    width: "100vw",
+    height: "100vh",
+    latitude: 43.66125,
+    longitude: -79.33841,
+    zoom: 11
+  });
   const [category, setCategory] = useState("");
   const [filters, updateFilters] = useState({
     indoor: false,
@@ -84,26 +98,64 @@ const App = () => {
 
   return (
     <div>
-      <div
-        style={{
-          height: "30px",
-          padding: "10px"
-        }}
+      <ReactMapGL
+        mapboxApiAccessToken={ACCESS_TOKEN}
+        mapStyle="mapbox://styles/mapbox/streets-v10"
+        {...viewport}
+        onViewportChange={viewport => setViewport(viewport)}
       >
-        <select
-          value={category}
-          onChange={e => setCategory(e.target.value)}
-          onBlur={e => setCategory(e.target.value)}
+        {displayLocations.map(location => {
+          return (
+            <Marker
+              key={`marker-${location.name}`}
+              latitude={location.latitude}
+              longitude={location.longitude}
+            >
+              <Pin
+                onClick={() => setSelectedLocation(location)}
+                selected={selectedLocation == location}
+              />
+            </Marker>
+          );
+        })}
+
+        <Detail location={selectedLocation} />
+
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            padding: "10px"
+          }}
         >
-          <option value="">All Categories</option>
-          <option value="Eats">Eats</option>
-          <option value="Culture">Culture</option>
-          <option value="Community">Community</option>
-          <option value="Self Care">Self Care</option>
-        </select>
-        <button onClick={() => updateFiltersVisible(true)}>More Filters</button>
-      </div>
-      <Map locations={displayLocations} />
+          <NavigationControl />
+        </div>
+
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            right: 0,
+            padding: "10px"
+          }}
+        >
+          <select
+            value={category}
+            onChange={e => setCategory(e.target.value)}
+            onBlur={e => setCategory(e.target.value)}
+          >
+            <option value="">All Categories</option>
+            <option value="Eats">Eats</option>
+            <option value="Culture">Culture</option>
+            <option value="Community">Community</option>
+            <option value="Self Care">Self Care</option>
+          </select>
+          <button onClick={() => updateFiltersVisible(true)}>
+            More Filters
+          </button>
+        </div>
+      </ReactMapGL>
       {filtersVisible && (
         <Filters
           filters={filters}
