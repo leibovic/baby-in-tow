@@ -161,7 +161,6 @@ const App = () => {
           <button
             className="controlButton"
             style={{
-              padding: "7px",
               borderLeft: "1px solid #ddd"
             }}
             onClick={() => updateFiltersVisible(true)}
