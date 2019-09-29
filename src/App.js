@@ -19,11 +19,6 @@ const config = {
 // Loaded from synchronous script tag in index.html
 const gapi = window.gapi;
 
-document.addEventListener("DOMContentLoaded", () => {
-  // Workaround for URL bar scroll in Chrome Android
-  document.body.height = window.innerHeight;
-});
-
 const App = () => {
   const [locations, updateLocations] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState({});
