@@ -3,7 +3,7 @@ import closeIcon from "./close.png";
 
 const FiltersOverlay = ({ filters, updateFilters, onClose }) => {
   return (
-    <div id="filtersOverlay">
+    <div className="overlay">
       <button
         className="controlButton"
         style={{

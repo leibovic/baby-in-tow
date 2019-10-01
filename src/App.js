@@ -6,6 +6,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import Pin from "./Pin";
 import Detail from "./Detail";
 import filterIcon from "./filter.png";
+import WelcomeOverlay from "./WelcomeOverlay.js";
 
 const ACCESS_TOKEN =
   "pk.eyJ1IjoibWxlaWJvdmljIiwiYSI6ImNqeWhhdDd2bDA5d2IzZ211NTdsZmNuNDkifQ.EeYaupgKuUPtyZpplZVf6A";
@@ -38,6 +39,7 @@ const App = () => {
     changeTable: false
   });
   const [filtersVisible, updateFiltersVisible] = useState(false);
+  const [welcomeVisible, updateWelcomeVisible] = useState(true);
 
   async function requestLocations() {
     try {
@@ -175,6 +177,9 @@ const App = () => {
           updateFilters={updateFilters}
           onClose={() => updateFiltersVisible(false)}
         />
+      )}
+      {welcomeVisible && (
+        <WelcomeOverlay onClose={() => updateWelcomeVisible(false)} />
       )}
     </div>
   );

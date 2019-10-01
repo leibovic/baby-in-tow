@@ -27,7 +27,7 @@ body {
   outline: none;
 }
 
-#filtersOverlay {
+.overlay {
   padding: 20px;
   position: fixed;
   top: 10px;
