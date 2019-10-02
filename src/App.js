@@ -39,7 +39,7 @@ const App = () => {
     changeTable: false
   });
   const [filtersVisible, updateFiltersVisible] = useState(false);
-  const [welcomeVisible, updateWelcomeVisible] = useState(true);
+  const [welcomeVisible, updateWelcomeVisible] = useState(false);
 
   async function requestLocations() {
     try {

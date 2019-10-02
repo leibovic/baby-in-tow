@@ -15,9 +15,9 @@ export default class Pin extends PureComponent {
         viewBox="0 0 24 24"
         style={{
           cursor: "pointer",
-          fill: selected ? "red" : "black",
+          fill: selected ? "#159585" : "black",
           stroke: "black",
-          fillOpacity: "0.7",
+          fillOpacity: selected ? 1 : 0.7,
           transform: `translate(${-size / 2}px,${-size}px)`
         }}
         onClick={onClick}
