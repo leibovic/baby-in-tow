@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Detail = ({ location }) => {
+  const [detailsExpanded, updateDetailsExpanded] = useState(false);
+
   if (!location.name) {
     return <div></div>;
   }
@@ -31,18 +33,6 @@ const Detail = ({ location }) => {
     >
       <div
         style={{
-          textTransform: "uppercase",
-          fontSize: "12px",
-          color: "#909090"
-        }}
-      >
-        {indoorOutdoorMessage}
-      </div>
-      <div style={{ fontWeight: "bold", fontSize: "16px", lineHeight: "24px" }}>
-        {location.name}
-      </div>
-      <div
-        style={{
           borderRadius: "2px",
           backgroundColor: "#159585",
           position: "absolute",
@@ -57,13 +47,49 @@ const Detail = ({ location }) => {
       >
         {location.category}
       </div>
+      <div
+        style={{
+          textTransform: "uppercase",
+          fontSize: "12px",
+          color: "#909090"
+        }}
+      >
+        {indoorOutdoorMessage}
+      </div>
+      <div style={{ fontWeight: "bold", fontSize: "16px", lineHeight: "24px" }}>
+        {location.name}
+      </div>
+
       <div style={{ fontSize: "12px", color: "#909090" }}>
         {location.address}
       </div>
       <div>Nursing Rating: {location.nursing}</div>
       <div>Stroller Rating: {location.stroller}</div>
       <div>{location.changeTable ? "Has Change Table" : "No Change Table"}</div>
-      <div>{location.description}</div>
+
+      <div
+        style={{
+          position: "absolute",
+          bottom: 0,
+          right: 0,
+          margin: "10px",
+          fontSize: "10px",
+          color: "#909090"
+        }}
+      >
+        <button onClick={() => updateDetailsExpanded(!detailsExpanded)}>
+          {detailsExpanded ? "less ^" : "more v"}
+        </button>
+      </div>
+      {detailsExpanded && (
+        <div
+          style={{
+            marginBottom: "25px"
+          }}
+        >
+          {location.description}
+        </div>
+      )}
     </div>
   );
 };
