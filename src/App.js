@@ -64,7 +64,8 @@ const App = () => {
           stroller: location[6] ? parseInt(location[6]) : 0,
           changeTable: location[7] === "Y",
           indoor: location[8] === "Y",
-          outdoor: location[9] === "Y"
+          outdoor: location[9] === "Y",
+          description: location[10]
         }))
       );
     } catch (e) {

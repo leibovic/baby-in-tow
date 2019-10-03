@@ -63,6 +63,7 @@ const Detail = ({ location }) => {
       <div>Nursing Rating: {location.nursing}</div>
       <div>Stroller Rating: {location.stroller}</div>
       <div>{location.changeTable ? "Has Change Table" : "No Change Table"}</div>
+      <div>{location.description}</div>
     </div>
   );
 };
