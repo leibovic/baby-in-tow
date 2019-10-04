@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import linkIcon from "./icons/link.png";
 
 const Detail = ({ location }) => {
   const [detailsExpanded, updateDetailsExpanded] = useState(false);
@@ -58,6 +59,12 @@ const Detail = ({ location }) => {
       </div>
       <div style={{ fontWeight: "bold", fontSize: "16px", lineHeight: "24px" }}>
         {location.name}
+        <button
+          className="controlButton"
+          onClick={() => window.open(location.website, "_blank")}
+        >
+          <img src={linkIcon} alt="Link"></img>
+        </button>
       </div>
 
       <div style={{ fontSize: "12px", color: "#909090" }}>

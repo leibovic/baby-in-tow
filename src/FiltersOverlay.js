@@ -1,5 +1,5 @@
 import React from "react";
-import closeIcon from "./close.png";
+import closeIcon from "./icons/close.png";
 
 const FiltersOverlay = ({ filters, updateFilters, onClose }) => {
   return (
@@ -7,8 +7,6 @@ const FiltersOverlay = ({ filters, updateFilters, onClose }) => {
       <button
         className="controlButton"
         style={{
-          boxShadow: "0 0 0 2px rgba(0, 0, 0, 0.1)",
-          borderRadius: "4px",
           position: "absolute",
           top: 0,
           right: 0,

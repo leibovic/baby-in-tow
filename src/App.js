@@ -5,7 +5,7 @@ import ReactMapGL, { Marker, NavigationControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Pin from "./Pin";
 import Detail from "./Detail";
-import filterIcon from "./filter.png";
+import filterIcon from "./icons/filter.png";
 import WelcomeOverlay from "./WelcomeOverlay.js";
 
 const ACCESS_TOKEN =
@@ -50,7 +50,7 @@ const App = () => {
 
       const response = await gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: config.spreadsheetId,
-        range: "MVP Data!A2:K20"
+        range: "MVP Data!A2:O20"
       });
 
       updateLocations(
@@ -65,7 +65,8 @@ const App = () => {
           changeTable: location[7] === "Y",
           indoor: location[8] === "Y",
           outdoor: location[9] === "Y",
-          description: location[10]
+          description: location[10],
+          website: location[11]
         }))
       );
     } catch (e) {
