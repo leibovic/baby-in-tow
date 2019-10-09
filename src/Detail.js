@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Ratings from "./Ratings.js";
 import linkIcon from "./icons/link.png";
 
 const Detail = ({ location }) => {
@@ -70,9 +71,11 @@ const Detail = ({ location }) => {
       <div style={{ fontSize: "12px", color: "#909090" }}>
         {location.address}
       </div>
-      <div>Nursing Rating: {location.nursing}</div>
-      <div>Stroller Rating: {location.stroller}</div>
-      <div>{location.changeTable ? "Has Change Table" : "No Change Table"}</div>
+      <Ratings
+        nursing={location.nursing}
+        stroller={location.stroller}
+        changeTable={location.changeTable}
+      />
 
       <div
         style={{
@@ -94,7 +97,15 @@ const Detail = ({ location }) => {
             marginBottom: "25px"
           }}
         >
-          {location.description}
+          <div
+            style={{
+              fontSize: "10px",
+              color: "#909090"
+            }}
+          >
+            BABY TIPS:
+          </div>
+          <div>{location.description}</div>
         </div>
       )}
     </div>

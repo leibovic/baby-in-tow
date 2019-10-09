@@ -40,3 +40,9 @@ body {
   border-radius: 4px;
   box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
 }
+
+.ratingsIcon {
+  height: 16px;
+  width: 16px;
+  margin-right: 5px;
+}
