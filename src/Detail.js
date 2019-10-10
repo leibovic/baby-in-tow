@@ -5,7 +5,7 @@ import linkIcon from "./icons/link.png";
 const Detail = ({ location }) => {
   const [detailsExpanded, updateDetailsExpanded] = useState(false);
 
-  if (!location.name) {
+  if (location === null) {
     return <div></div>;
   }
 

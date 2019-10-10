@@ -22,7 +22,7 @@ const gapi = window.gapi;
 
 const App = () => {
   const [locations, updateLocations] = useState([]);
-  const [selectedLocation, setSelectedLocation] = useState({});
+  const [selectedLocation, setSelectedLocation] = useState(null);
   const [viewport, setViewport] = useState({
     width: "100%",
     height: "100%",
@@ -100,6 +100,13 @@ const App = () => {
     }
     return true;
   });
+
+  if (
+    selectedLocation != null &&
+    !displayLocations.includes(selectedLocation)
+  ) {
+    setSelectedLocation(null);
+  }
 
   return (
     <div id="container">
