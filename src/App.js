@@ -36,6 +36,7 @@ const App = () => {
   );
 
   const { locations } = useGetLocations();
+  console.log(locations);
 
   const displayLocations = locations.filter(location => {
     if (category !== "" && location.category !== category) {
