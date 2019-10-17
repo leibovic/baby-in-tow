@@ -7,10 +7,18 @@ const config = {
   range: "MVP Data!A2:O100"
 };
 
-exports.handler = function(event, context, callback) {
-  console.log(config.apiKey);
-  callback(null, {
+module.exports.handler = async (event, context) => {
+  console.log(config, event, context);
+
+  const testLocation = {
+    name: "My location",
+    address: "1234 test st"
+  };
+
+  const response = {
     statusCode: 200,
-    body: "Hello, World"
-  });
+    body: JSON.stringify({ locations: [testLocation] })
+  };
+
+  return response;
 };
