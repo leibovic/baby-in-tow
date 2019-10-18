@@ -53,7 +53,7 @@ const App = () => {
 
       const response = await gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: config.spreadsheetId,
-        range: "MVP Data!A2:O20"
+        range: "MVP Data!A2:O100"
       });
 
       updateLocations(
