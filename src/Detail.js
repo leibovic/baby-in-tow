@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Ratings from "./Ratings.js";
 import linkIcon from "./icons/link.png";
 
