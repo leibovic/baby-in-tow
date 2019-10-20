@@ -67,7 +67,11 @@ const Detail = ({ location }) => {
       </div>
 
       <div style={{ fontSize: "12px", color: "#909090" }}>
-        {location.address}
+        <a
+          href={`https://www.google.com/maps/search/?api=1&query=${location.name}+${location.address}`}
+        >
+          {location.address}
+        </a>
       </div>
       <Ratings
         nursing={location.nursing}
