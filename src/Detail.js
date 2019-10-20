@@ -3,8 +3,6 @@ import Ratings from "./Ratings.js";
 import linkIcon from "./icons/link.png";
 
 const Detail = ({ location }) => {
-  const [detailsExpanded, updateDetailsExpanded] = useState(false);
-
   if (location === null) {
     return <div></div>;
   }
@@ -86,12 +84,8 @@ const Detail = ({ location }) => {
           fontSize: "10px",
           color: "#909090"
         }}
-      >
-        <button onClick={() => updateDetailsExpanded(!detailsExpanded)}>
-          {detailsExpanded ? "less ^" : "more v"}
-        </button>
-      </div>
-      {detailsExpanded && (
+      ></div>
+      {location.description && (
         <div
           style={{
             marginBottom: "25px"
