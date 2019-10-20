@@ -118,6 +118,7 @@ const App = () => {
         mapStyle="mapbox://styles/mapbox/streets-v10"
         {...viewport}
         onViewportChange={viewport => setViewport(viewport)}
+        onClick={() => setSelectedLocation(null)}
       >
         {displayLocations.map(location => {
           return (
