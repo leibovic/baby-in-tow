@@ -134,9 +134,6 @@ const App = () => {
             </Marker>
           );
         })}
-
-        <Detail location={selectedLocation} />
-
         <div
           style={{
             position: "absolute",
@@ -194,6 +191,7 @@ const App = () => {
       {welcomeVisible && (
         <WelcomeOverlay onClose={() => updateWelcomeVisible(false)} />
       )}
+      <Detail location={selectedLocation} />
     </div>
   );
 };
