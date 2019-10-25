@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { render } from "react-dom";
 import FiltersOverlay from "./FiltersOverlay.js";
 import ReactMapGL, { Marker, NavigationControl } from "react-map-gl";
@@ -7,12 +7,21 @@ import Pin from "./Pin";
 import Detail from "./Detail";
 import filterIcon from "./icons/filter.png";
 import WelcomeOverlay from "./WelcomeOverlay.js";
-import { useGetLocations } from "./customHooks";
 
 const ACCESS_TOKEN =
   "pk.eyJ1IjoibWxlaWJvdmljIiwiYSI6ImNqeWhhdDd2bDA5d2IzZ211NTdsZmNuNDkifQ.EeYaupgKuUPtyZpplZVf6A";
 
+const config = {
+  apiKey: "AIzaSyAwjO8DjRaUChRw6nx4OarscD6QGlMspqs",
+  discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
+  spreadsheetId: "1GxL136Eh5fK_6cTZQ1cW2Dmnq8Pn6hlFyWg9z7mgKek"
+};
+
+// Loaded from synchronous script tag in index.html
+const gapi = window.gapi;
+
 const App = () => {
+  const [locations, updateLocations] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [viewport, setViewport] = useState({
     width: "100%",
@@ -35,7 +44,43 @@ const App = () => {
     localStorage.getItem("welcomeShown") !== "true"
   );
 
-  const { locations } = useGetLocations();
+  async function requestLocations() {
+    try {
+      await gapi.client.init({
+        apiKey: config.apiKey,
+        discoveryDocs: config.discoveryDocs
+      });
+
+      const response = await gapi.client.sheets.spreadsheets.values.get({
+        spreadsheetId: config.spreadsheetId,
+        range: "MVP Data!A2:O100"
+      });
+
+      updateLocations(
+        response.result.values.map(location => ({
+          name: location[0],
+          address: location[1],
+          latitude: location[2] ? parseFloat(location[2]) : 0,
+          longitude: location[3] ? parseFloat(location[3]) : 0,
+          category: location[4],
+          nursing: location[5] ? parseInt(location[5]) : 0,
+          stroller: location[6] ? parseInt(location[6]) : 0,
+          changeTable: location[7] === "Y",
+          indoor: location[8] === "Y",
+          outdoor: location[9] === "Y",
+          description: location[10],
+          website: location[11]
+        }))
+      );
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  // Called once to load locations state
+  useEffect(() => {
+    gapi.load("client", requestLocations);
+  }, []);
 
   const displayLocations = locations.filter(location => {
     if (category !== "" && location.category !== category) {
