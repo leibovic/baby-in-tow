@@ -7,7 +7,10 @@ export const useGetLocations = () => {
     fetch("/.netlify/functions/getLocations", {
       method: "POST"
     })
-      .then(r => r.json())
+      .then(r => {
+        console.log(r);
+        return r.json();
+      })
       .then(response => {
         setLocations(response.locations);
       })
