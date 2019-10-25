@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { render } from "react-dom";
 import FiltersOverlay from "./FiltersOverlay.js";
-import ReactMapGL, { Marker, NavigationControl } from "react-map-gl";
+import ReactMapGL, { Marker } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Pin from "./Pin";
 import Detail from "./Detail";
@@ -134,16 +134,6 @@ const App = () => {
             </Marker>
           );
         })}
-        <div
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            padding: "10px"
-          }}
-        >
-          <NavigationControl />
-        </div>
 
         <div
           style={{
