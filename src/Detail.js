@@ -2,12 +2,8 @@ import React, { useState } from "react";
 import Ratings from "./Ratings.js";
 import linkIcon from "./icons/link.png";
 
-const Detail = ({ location }) => {
+const Detail = ({ location, categoryColor }) => {
   const [detailsExpanded, updateDetailsExpanded] = useState(false);
-
-  if (location === null) {
-    return <div></div>;
-  }
 
   let indoorOutdoorMessage;
   if (location.indoor && location.outdoor) {
@@ -36,13 +32,13 @@ const Detail = ({ location }) => {
       <div
         style={{
           borderRadius: "4px 4px 0 0",
-          backgroundColor: "#F7A79A",
+          backgroundColor: categoryColor,
           paddingLeft: "24px",
           textTransform: "uppercase",
           fontWeight: 900,
           fontSize: "14px",
           lineHeight: "24px",
-          color: "#374B5B"
+          color: "white"
         }}
       >
         {location.category}

@@ -17,6 +17,13 @@ const config = {
   spreadsheetId: "1GxL136Eh5fK_6cTZQ1cW2Dmnq8Pn6hlFyWg9z7mgKek"
 };
 
+const categoryColors = {
+  "Self Care": "#F26A53",
+  Community: "#548231",
+  Culture: "#007EA3",
+  Eats: "#D9B302"
+};
+
 // Loaded from synchronous script tag in index.html
 const gapi = window.gapi;
 
@@ -130,6 +137,7 @@ const App = () => {
               <Pin
                 onClick={() => setSelectedLocation(location)}
                 selected={selectedLocation == location}
+                categoryColor={categoryColors[location.category]}
               />
             </Marker>
           );
@@ -181,7 +189,13 @@ const App = () => {
       {welcomeVisible && (
         <WelcomeOverlay onClose={() => updateWelcomeVisible(false)} />
       )}
-      <Detail location={selectedLocation} />
+
+      {selectedLocation && (
+        <Detail
+          location={selectedLocation}
+          categoryColor={categoryColors[selectedLocation.category]}
+        />
+      )}
     </div>
   );
 };
