@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Ratings from "./Ratings.js";
 import linkIcon from "./icons/link.png";
 
 const Detail = ({ location }) => {
+  const [detailsExpanded, updateDetailsExpanded] = useState(false);
+
   if (location === null) {
     return <div></div>;
   }
@@ -45,7 +47,6 @@ const Detail = ({ location }) => {
       >
         {location.category}
       </div>
-
       <div
         style={{
           padding: "0 24px",
@@ -63,25 +64,45 @@ const Detail = ({ location }) => {
         <div className="detailLabel">Stroller space</div>
         <hr />
         <div className="detailLabel">Ease of nursing/pumping</div>
-        <hr />
-        <div className="detailLabel">Baby tips</div>
-        <div>{location.description}</div>
-        <hr />
-        <a
-          href={`https://www.google.com/maps/search/?api=1&query=${location.name}+${location.address}`}
-        >
-          {location.address}
-        </a>
+        {detailsExpanded && (
+          <React.Fragment>
+            <hr />
+            <div className="detailLabel">Baby tips</div>
+            <div>{location.description}</div>
+            <hr />
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${location.name}+${location.address}`}
+            >
+              {location.address}
+            </a>
 
-        <div>
-          <button
-            className="controlButton"
-            onClick={() => window.open(location.website, "_blank")}
-          >
-            <img src={linkIcon} alt="Link"></img>
-          </button>
-        </div>
+            <div>
+              <button
+                className="controlButton"
+                onClick={() => window.open(location.website, "_blank")}
+              >
+                <img src={linkIcon} alt="Link"></img>
+              </button>
+            </div>
+          </React.Fragment>
+        )}
       </div>
+      <button
+        style={{
+          backgroundColor: "#E3F0FB",
+          textAlign: "center",
+          fontSize: "14px",
+          lineHeight: "18px",
+          color: "#374B5B",
+          border: "none",
+          width: "100%",
+          padding: "8px 0",
+          cursor: "pointer"
+        }}
+        onClick={() => updateDetailsExpanded(!detailsExpanded)}
+      >
+        {detailsExpanded ? "See less detail ^" : "See more detail v"}
+      </button>
     </div>
   );
 };
