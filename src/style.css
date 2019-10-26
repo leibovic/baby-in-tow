@@ -52,3 +52,15 @@ hr {
   height: 1px;
   background: rgba(90, 122, 148, 0.2);
 }
+
+a {
+  color: #374b5b;
+}
+
+.detailLabel {
+  padding: 5px 0;
+}
+
+.detailDescription {
+  color: #5a7a94;
+}

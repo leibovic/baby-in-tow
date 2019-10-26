@@ -24,7 +24,8 @@ const Detail = ({ location, categoryColor }) => {
         backgroundColor: "white",
         margin: "0 10px",
         borderRadius: "4px 4px 0 0",
-        zIndex: 10
+        zIndex: 10,
+        color: "#374B5B"
       }}
     >
       <div
@@ -48,7 +49,7 @@ const Detail = ({ location, categoryColor }) => {
         }}
       >
         <div
-          style={{ fontWeight: "bold", fontSize: "24px", marginBottom: "16px" }}
+          style={{ fontWeight: "bold", fontSize: "24px", marginBottom: "10px" }}
         >
           {location.name}
         </div>
@@ -76,15 +77,35 @@ const Detail = ({ location, categoryColor }) => {
         </div>
         {detailsExpanded && <hr />}
         <div className="detailLabel">Stroller space ({location.stroller})</div>
+        {detailsExpanded && (
+          <div className="detailDescription">
+            {location.stroller == 1 &&
+              "Doable with a bit of effort. You’ll need to maneuver yourself around tight spots."}
+            {location.stroller == 2 &&
+              "Moderate space available but there may not be an accessible door or ramp access."}
+            {location.stroller == 3 &&
+              "Accessible door or ramp access and a lot of indoor space to move around."}
+          </div>
+        )}
         {detailsExpanded && <hr />}
         <div className="detailLabel">
           Ease of nursing/pumping ({location.nursing})
         </div>
         {detailsExpanded && (
+          <div className="detailDescription">
+            {location.nursing == 1 &&
+              "The venue is open and public but still has a chill vibe so no creepy glares."}
+            {location.nursing == 2 &&
+              "While there isn’t a dedicated room you can find some privacy on a corner seat or a quiet seat in the back."}
+            {location.nursing == 3 &&
+              "There is a dedicated mother’s room for pumping or nursing."}
+          </div>
+        )}
+        {detailsExpanded && (
           <React.Fragment>
             <hr />
             <div className="detailLabel">Baby tips</div>
-            <div>{location.description}</div>
+            <div className="detailDescription">{location.description}</div>
             <hr />
             <a
               href={location.website}
