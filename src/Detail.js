@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Ratings from "./Ratings.js";
-import linkIcon from "./icons/link.png";
 
 const Detail = ({ location, categoryColor }) => {
   const [detailsExpanded, updateDetailsExpanded] = useState(false);
@@ -45,21 +43,43 @@ const Detail = ({ location, categoryColor }) => {
       </div>
       <div
         style={{
-          padding: "0 24px",
+          padding: "16px 24px",
           fontSize: "14px"
         }}
       >
-        <div style={{ fontWeight: "bold", fontSize: "24px", margin: "16px 0" }}>
+        <div
+          style={{ fontWeight: "bold", fontSize: "24px", marginBottom: "16px" }}
+        >
           {location.name}
         </div>
 
+        {detailsExpanded && (
+          <div
+            style={{
+              marginBottom: "10px"
+            }}
+          >
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${location.name}+${location.address}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {location.address}
+            </a>
+          </div>
+        )}
+
         <div className="detailLabel">{indoorOutdoorMessage}</div>
-        <hr />
-        <div className="detailLabel">Change table</div>
-        <hr />
-        <div className="detailLabel">Stroller space</div>
-        <hr />
-        <div className="detailLabel">Ease of nursing/pumping</div>
+        {detailsExpanded && <hr />}
+        <div className="detailLabel">
+          Change table ({location.changeTable ? "Yes" : "No"})
+        </div>
+        {detailsExpanded && <hr />}
+        <div className="detailLabel">Stroller space ({location.stroller})</div>
+        {detailsExpanded && <hr />}
+        <div className="detailLabel">
+          Ease of nursing/pumping ({location.nursing})
+        </div>
         {detailsExpanded && (
           <React.Fragment>
             <hr />
@@ -67,19 +87,12 @@ const Detail = ({ location, categoryColor }) => {
             <div>{location.description}</div>
             <hr />
             <a
-              href={`https://www.google.com/maps/search/?api=1&query=${location.name}+${location.address}`}
+              href={location.website}
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              {location.address}
+              {location.website}
             </a>
-
-            <div>
-              <button
-                className="controlButton"
-                onClick={() => window.open(location.website, "_blank")}
-              >
-                <img src={linkIcon} alt="Link"></img>
-              </button>
-            </div>
           </React.Fragment>
         )}
       </div>

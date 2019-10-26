@@ -46,3 +46,9 @@ body {
   width: 16px;
   margin-right: 5px;
 }
+
+hr {
+  border: 0;
+  height: 1px;
+  background: rgba(90, 122, 148, 0.2);
+}
