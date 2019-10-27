@@ -5,7 +5,6 @@ import ReactMapGL, { Marker } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Pin from "./Pin";
 import Detail from "./Detail";
-import filterIcon from "./icons/filter.png";
 import WelcomeOverlay from "./WelcomeOverlay.js";
 
 const ACCESS_TOKEN =
@@ -18,7 +17,7 @@ const config = {
 };
 
 const categoryColors = {
-  "Self Care": "#F26A53",
+  "Self Care": "#F7A79A",
   Community: "#548231",
   Culture: "#007EA3",
   Eats: "#D9B302"
@@ -144,41 +143,30 @@ const App = () => {
           );
         })}
 
-        <div
+        <select
           style={{
             position: "absolute",
             top: 0,
-            right: 0,
-            margin: "10px",
-            backgroundColor: "white",
-            boxShadow: "0 0 0 2px rgba(0, 0, 0, 0.1)",
-            borderRadius: "4px"
+            left: 0,
+            margin: "10px"
           }}
+          value={category}
+          onChange={e => setCategory(e.target.value)}
+          onBlur={e => setCategory(e.target.value)}
         >
-          <select
-            style={{
-              margin: "0 5px"
-            }}
-            value={category}
-            onChange={e => setCategory(e.target.value)}
-            onBlur={e => setCategory(e.target.value)}
-          >
-            <option value="">All Categories</option>
-            <option value="Eats">Eats</option>
-            <option value="Culture">Culture</option>
-            <option value="Community">Community</option>
-            <option value="Self Care">Self Care</option>
-          </select>
-          <button
-            className="controlButton"
-            style={{
-              borderLeft: "1px solid #ddd"
-            }}
-            onClick={() => updateFiltersVisible(true)}
-          >
-            <img src={filterIcon} alt="Filter"></img>
-          </button>
-        </div>
+          <option value="">All Categories</option>
+          <option value="Eats">Eats</option>
+          <option value="Culture">Culture</option>
+          <option value="Community">Community</option>
+          <option value="Self Care">Self Care</option>
+        </select>
+
+        <button
+          className="filterButton"
+          onClick={() => updateFiltersVisible(true)}
+        >
+          Filter
+        </button>
       </ReactMapGL>
       {filtersVisible && (
         <FiltersOverlay
