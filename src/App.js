@@ -144,12 +144,7 @@ const App = () => {
         })}
 
         <select
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            margin: "10px"
-          }}
+          className="categorySelect"
           value={category}
           onChange={e => setCategory(e.target.value)}
           onBlur={e => setCategory(e.target.value)}
