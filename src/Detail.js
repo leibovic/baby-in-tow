@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Stars from "./Stars";
 import featureYes from "./icons/feature-yes.svg";
 import featureNo from "./icons/feature-no.svg";
+import chevronUp from "./icons/chevron-up.svg";
+import chevronDown from "./icons/chevron-down.svg";
 
 const Detail = ({ location, categoryColor }) => {
   const [detailsExpanded, updateDetailsExpanded] = useState(false);
@@ -74,7 +76,7 @@ const Detail = ({ location, categoryColor }) => {
         )}
 
         <div className="detailLabel">{indoorOutdoorMessage}</div>
-        {detailsExpanded && <hr />}
+        <hr />
         <div className="detailLabel">
           Change table
           <img
@@ -83,7 +85,7 @@ const Detail = ({ location, categoryColor }) => {
             alt={location.changeTable ? "Yes" : "No"}
           />
         </div>
-        {detailsExpanded && <hr />}
+        <hr />
         <div className="detailLabel">
           Stroller space <Stars rating={location.stroller} />
         </div>
@@ -97,7 +99,7 @@ const Detail = ({ location, categoryColor }) => {
               "Accessible door or ramp access and a lot of indoor space to move around."}
           </div>
         )}
-        {detailsExpanded && <hr />}
+        <hr />
         <div className="detailLabel">
           Ease of nursing/pumping <Stars rating={location.nursing} />
         </div>
@@ -141,7 +143,12 @@ const Detail = ({ location, categoryColor }) => {
         }}
         onClick={() => updateDetailsExpanded(!detailsExpanded)}
       >
-        {detailsExpanded ? "See less detail ^" : "See more detail v"}
+        {detailsExpanded ? "See less detail" : "See more detail"}
+        <img
+          style={{ marginLeft: "6px", verticalAlign: "middle" }}
+          src={detailsExpanded ? chevronUp : chevronDown}
+          alt=""
+        />
       </button>
     </div>
   );
