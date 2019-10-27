@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import Stars from "./Stars";
+import featureYes from "./icons/feature-yes.svg";
+import featureNo from "./icons/feature-no.svg";
 
 const Detail = ({ location, categoryColor }) => {
   const [detailsExpanded, updateDetailsExpanded] = useState(false);
@@ -73,10 +76,17 @@ const Detail = ({ location, categoryColor }) => {
         <div className="detailLabel">{indoorOutdoorMessage}</div>
         {detailsExpanded && <hr />}
         <div className="detailLabel">
-          Change table ({location.changeTable ? "Yes" : "No"})
+          Change table
+          <img
+            className="ratingsIcon"
+            src={location.changeTable ? featureYes : featureNo}
+            alt={location.changeTable ? "Yes" : "No"}
+          />
         </div>
         {detailsExpanded && <hr />}
-        <div className="detailLabel">Stroller space ({location.stroller})</div>
+        <div className="detailLabel">
+          Stroller space <Stars rating={location.stroller} />
+        </div>
         {detailsExpanded && (
           <div className="detailDescription">
             {location.stroller == 1 &&
@@ -89,7 +99,7 @@ const Detail = ({ location, categoryColor }) => {
         )}
         {detailsExpanded && <hr />}
         <div className="detailLabel">
-          Ease of nursing/pumping ({location.nursing})
+          Ease of nursing/pumping <Stars rating={location.nursing} />
         </div>
         {detailsExpanded && (
           <div className="detailDescription">
