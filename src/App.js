@@ -76,7 +76,8 @@ const App = () => {
           indoor: location[8] === "Y",
           outdoor: location[9] === "Y",
           description: location[10],
-          website: location[11]
+          website: location[11],
+          instagram: location[12]
         }))
       );
     } catch (e) {

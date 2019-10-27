@@ -4,6 +4,10 @@ import featureYes from "./icons/feature-yes.svg";
 import featureNo from "./icons/feature-no.svg";
 import chevronUp from "./icons/chevron-up.svg";
 import chevronDown from "./icons/chevron-down.svg";
+import chevronRight from "./icons/chevron-right.svg";
+import iconInsta from "./icons/icon-insta.svg";
+import iconTwitter from "./icons/icon-twitter.svg";
+import iconWebsite from "./icons/icon-website.svg";
 
 const Detail = ({ location, categoryColor }) => {
   const [detailsExpanded, updateDetailsExpanded] = useState(false);
@@ -59,22 +63,6 @@ const Detail = ({ location, categoryColor }) => {
           {location.name}
         </div>
 
-        {detailsExpanded && (
-          <div
-            style={{
-              marginBottom: "10px"
-            }}
-          >
-            <a
-              href={`https://www.google.com/maps/search/?api=1&query=${location.name}+${location.address}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {location.address}
-            </a>
-          </div>
-        )}
-
         <div className="detailLabel">{indoorOutdoorMessage}</div>
         <hr />
         <div className="detailLabel">
@@ -119,13 +107,70 @@ const Detail = ({ location, categoryColor }) => {
             <div className="detailLabel">Baby tips</div>
             <div className="detailDescription">{location.description}</div>
             <hr />
-            <a
-              href={location.website}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {location.website}
-            </a>
+            {detailsExpanded && (
+              <div
+                style={{
+                  paddingTop: "5px",
+                  paddingBottom: "10px",
+                  maxWidth: "60%"
+                }}
+              >
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${location.name}+${location.address}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {location.address}
+                </a>
+                <img
+                  style={{ verticalAlign: "middle", marginLeft: "6px" }}
+                  src={chevronRight}
+                  alt=""
+                />
+              </div>
+            )}
+
+            <div className="detailLabel">
+              {location.website && (
+                <a
+                  href={location.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    style={{ marginRight: "26px" }}
+                    src={iconWebsite}
+                    alt="Website"
+                  />
+                </a>
+              )}
+              {location.instagram && (
+                <a
+                  href={location.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    style={{ marginRight: "26px" }}
+                    src={iconInsta}
+                    alt="Instagram"
+                  />
+                </a>
+              )}
+              {location.twitter && (
+                <a
+                  href={location.twitter}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    style={{ marginRight: "26px" }}
+                    src={iconTwitter}
+                    alt="Twitter"
+                  />
+                </a>
+              )}
+            </div>
           </React.Fragment>
         )}
       </div>
