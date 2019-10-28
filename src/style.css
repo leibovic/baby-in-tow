@@ -45,34 +45,33 @@ body {
   cursor: pointer;
 }
 
-.controlButton {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  width: 30px;
-  height: 30px;
+.filterSection {
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(90, 122, 148, 0.2);
 }
 
-.controlButton:hover,
-.controlButton:active {
-  background-color: rgba(0, 0, 0, 0.05);
+.filterLabel {
+  font-size: 18px;
+  line-height: 23px;
+  font-weight: bold;
+  margin-bottom: 16px;
 }
 
-.controlButton:focus {
+button:focus {
   outline: none;
 }
 
 .overlay {
-  padding: 20px;
+  padding: 24px;
   position: fixed;
   top: 10px;
   right: 10px;
   bottom: 10px;
   left: 10px;
-  z-index: 10;
+  z-index: 20;
   background-color: white;
   border-radius: 4px;
-  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 14px rgba(6, 8, 10, 0.1);
 }
 
 .ratingsIcon {
