@@ -35,7 +35,7 @@ const FiltersOverlay = ({ filters, updateFilters, onClose }) => {
       </div>
 
       <div className="filterSection">
-        <div className="filterLabel">Type of Place</div>
+        <div className="filterSectionTitle">Type of Place</div>
         <div>
           <input
             type="checkbox"
@@ -67,7 +67,7 @@ const FiltersOverlay = ({ filters, updateFilters, onClose }) => {
       </div>
 
       <div className="filterSection">
-        <div className="filterLabel">Change table availability</div>
+        <div className="filterSectionTitle">Change table availability</div>
         <div>
           <input
             type="checkbox"
@@ -86,44 +86,84 @@ const FiltersOverlay = ({ filters, updateFilters, onClose }) => {
       </div>
 
       <div className="filterSection">
-        <div className="filterLabel">Stroller space</div>
+        <div className="filterSectionTitle">Stroller space</div>
 
-        <select
-          value={filters.stroller}
-          onChange={e => {
-            const value = e.target.value;
-            updateFilters(filters => ({ ...filters, stroller: value }));
-          }}
-          onBlur={e => {
-            const value = e.target.value;
-            updateFilters(filters => ({ ...filters, stroller: value }));
-          }}
-        >
-          <option value="">Any</option>
-          <option value="1">Doable with a bit of effort</option>
-          <option value="2">Moderate space</option>
-          <option value="3">It&apos;s a stroller party!</option>
-        </select>
+        <div>
+          <input
+            type="checkbox"
+            name="stroller1"
+            checked={filters.stroller1}
+            onChange={e => {
+              const checked = e.target.checked;
+              updateFilters(filters => ({ ...filters, stroller1: checked }));
+            }}
+          />
+          <label htmlFor="stroller1">Doable with a bit of effort</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            name="stroller2"
+            checked={filters.stroller2}
+            onChange={e => {
+              const checked = e.target.checked;
+              updateFilters(filters => ({ ...filters, stroller2: checked }));
+            }}
+          />
+          <label htmlFor="stroller2">Moderate space</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            name="stroller3"
+            checked={filters.stroller3}
+            onChange={e => {
+              const checked = e.target.checked;
+              updateFilters(filters => ({ ...filters, stroller3: checked }));
+            }}
+          />
+          <label htmlFor="stroller3">Stroller party</label>
+        </div>
       </div>
 
       <div className="filterSection">
         <div className="filterLabel">Ease of nursing/pumping</div>
-        <select
-          value={filters.nursing}
-          onChange={e => {
-            const value = e.target.value;
-            updateFilters(filters => ({ ...filters, nursing: value }));
-          }}
-          onBlur={e => {
-            const value = e.target.value;
-            updateFilters(filters => ({ ...filters, nursing: value }));
-          }}
-        >
-          <option value="">Any</option>
-          <option value="1">Public, but chill vibe</option>
-          <option value="2">Some privacy</option>
-          <option value="3">Dedicated space</option>
-        </select>
+        <div>
+          <input
+            type="checkbox"
+            name="nursing1"
+            checked={filters.nursing1}
+            onChange={e => {
+              const checked = e.target.checked;
+              updateFilters(filters => ({ ...filters, nursing1: checked }));
+            }}
+          />
+          <label htmlFor="nursing1">Public, but chill</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            name="nursing2"
+            checked={filters.nursing2}
+            onChange={e => {
+              const checked = e.target.checked;
+              updateFilters(filters => ({ ...filters, nursing2: checked }));
+            }}
+          />
+          <label htmlFor="nursing2">Some privacy</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            name="nursing3"
+            checked={filters.nursing3}
+            onChange={e => {
+              const checked = e.target.checked;
+              updateFilters(filters => ({ ...filters, nursing3: checked }));
+            }}
+          />
+          <label htmlFor="nursing3">Dedicated private space</label>
+        </div>
       </div>
     </div>
   );

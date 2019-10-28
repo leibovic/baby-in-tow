@@ -38,11 +38,15 @@ const App = () => {
   });
   const [category, setCategory] = useState("");
   const [filters, updateFilters] = useState({
-    indoor: false,
-    outdoor: false,
-    nursing: "",
-    stroller: "",
-    changeTable: false
+    indoor: true,
+    outdoor: true,
+    changeTable: false,
+    stroller1: true,
+    stroller2: true,
+    stroller3: true,
+    nursing1: true,
+    nursing2: true,
+    nursing3: true
   });
   const [filtersVisible, updateFiltersVisible] = useState(false);
   const [welcomeVisible, updateWelcomeVisible] = useState(
@@ -89,23 +93,43 @@ const App = () => {
     gapi.load("client", requestLocations);
   }, []);
 
+  // Go through filters, looking for a reason to exclude location if it doesn't match requirements
   const displayLocations = locations.filter(location => {
     if (category !== "" && location.category !== category) {
       return false;
     }
-    if (filters.indoor && !location.indoor) {
+
+    // TODO: account for places that are both indoor and outdoor
+    if (!filters.indoor && location.indoor) {
       return false;
     }
-    if (filters.outdoor && !location.outdoor) {
+    if (!filters.outdoor && location.outdoor) {
       return false;
     }
+
+    // Change table filter is unique in that it means there *must* be a change table,
+    // so in this case we look to see if the filter is on to exclude a location
     if (filters.changeTable && !location.changeTable) {
       return false;
     }
-    if (filters.nursing !== "" && filters.nursing > location.nursing) {
+
+    if (!filters.nursing1 && location.nursing === 1) {
       return false;
     }
-    if (filters.stroller !== "" && filters.stroller > location.stroller) {
+    if (!filters.nursing2 && location.nursing === 2) {
+      return false;
+    }
+    if (!filters.nursing3 && location.nursing === 3) {
+      return false;
+    }
+
+    if (!filters.stroller1 && location.stroller === 1) {
+      return false;
+    }
+    if (!filters.stroller2 && location.stroller === 2) {
+      return false;
+    }
+    if (!filters.stroller3 && location.stroller === 3) {
       return false;
     }
     return true;
