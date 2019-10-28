@@ -46,7 +46,7 @@ body {
 }
 
 .filterSection {
-  padding: 24px 0;
+  padding: 16px 0;
   border-bottom: 1px solid rgba(90, 122, 148, 0.2);
 }
 
@@ -57,8 +57,30 @@ body {
   margin-bottom: 16px;
 }
 
-label {
-  margin-left: 12px;
+.filterRow {
+  display: flex;
+}
+
+.filterRow:not(:last-of-type) {
+  padding-bottom: 20px;
+}
+
+.filterRow > input {
+  align-self: flex-start;
+}
+
+.filterLabel {
+  padding-left: 12px;
+}
+
+.filterLabel > label {
+  font-size: 16px;
+}
+
+.filterLabel > div {
+  color: #5a7a94;
+  padding-top: 4px;
+  font-size: 14px;
 }
 
 button:focus {
