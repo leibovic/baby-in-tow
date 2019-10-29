@@ -21,6 +21,17 @@ body {
   cursor: pointer;
 }
 
+.welcomeSectionHeader {
+  font-weight: bold;
+  font-size: 16px;
+  margin: 20px 0 10px 0;
+}
+
+.welcomeParagraph {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
 .categorySelect {
   position: absolute;
   top: 0;
