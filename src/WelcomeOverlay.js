@@ -28,16 +28,17 @@ const WelcomeOverlay = ({ onClose }) => {
       >
         <img
           style={{
-            height: "200px"
+            height: "150px"
           }}
           src={illustration}
           alt="Parents with babies"
         />
         <div
           style={{
-            fontSize: "24px",
+            fontSize: "20px",
             fontWeight: "bold",
-            marginBottom: "20px"
+            marginBottom: "20px",
+            alignSelf: "flex-start"
           }}
         >
           Like word of mouth...but better
@@ -45,7 +46,7 @@ const WelcomeOverlay = ({ onClose }) => {
         <div
           style={{
             fontSize: "14px",
-            marginBottom: "20px"
+            marginBottom: "15px"
           }}
         >
           We’ve gone to the meetups, talked to your neighbours and scouted the
