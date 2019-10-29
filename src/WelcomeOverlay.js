@@ -69,10 +69,10 @@ const WelcomeOverlay = ({ onClose }) => {
               marginBottom: "10px"
             }}
           >
-            When you’re on the go and have a baby attached to you struggle is
-            real - it’s hard to find truly baby-friendly places to eat, workout,
-            or simply hang out without having to conquer a stroller obstacle
-            course.
+            When you’re on the go and have a baby attached to you the struggle
+            is real - it’s hard to find truly baby-friendly places to eat,
+            workout, or simply hang out without having to conquer a stroller
+            obstacle course.
           </div>
           <div>
             We’ve done the work for you and curated a list of baby-approved
