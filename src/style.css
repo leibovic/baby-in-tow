@@ -32,6 +32,21 @@ body {
   font-size: 14px;
 }
 
+.categoryRow {
+  display: flex;
+  font-size: 14px;
+  margin: 20px 0;
+}
+
+.categoryRow > div:first-of-type {
+  margin-right: 10px;
+}
+
+.categoryTitle {
+  font-weight: bold;
+  margin-bottom: 3px;
+}
+
 .categorySelect {
   position: absolute;
   top: 0;

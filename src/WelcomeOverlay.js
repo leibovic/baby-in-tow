@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "./branding/logo.png";
 import illustration from "./branding/welcome-illustration.jpg";
+import Pin from "./Pin";
 
 const WelcomeOverlay = ({ onClose }) => {
   localStorage.setItem("welcomeShown", "true");
@@ -94,24 +95,52 @@ const WelcomeOverlay = ({ onClose }) => {
             want to help out your local community and have tips to share,{" "}
             <a href="mailto:hi@babyintow.ca">give us a shout!</a>
           </div>
-          <div className="welcomeParagraph">
-            Eats: A place to grab a bite or a drink.
+          <div className="categoryRow">
+            <div>
+              <Pin categoryColor="#D9B302" disableTransform="true" />
+            </div>
+            <div>
+              <div className="categoryTitle">Eats</div>
+              <div>A place to grab a bite or a drink.</div>
+            </div>
           </div>
-          <div className="welcomeParagraph">
-            Community: Organizations with programming tailored towards the local
-            community such as Libraries, Mother’s groups, and government funded
-            EarlyOn child and family centres.
+          <div className="categoryRow">
+            <div>
+              <Pin categoryColor="#548231" disableTransform="true" />
+            </div>
+            <div>
+              <div className="categoryTitle">Community</div>
+              <div>
+                Organizations with programming tailored towards the local
+                community such as Libraries, Mother’s groups, and government
+                funded EarlyOn child and family centres.
+              </div>
+            </div>
           </div>
-          <div className="welcomeParagraph">
-            Self care: Places to go where you can take some “me” time even if
-            you have the baby with you. Includes: fitness studios, gyms, massage
-            and other therapeutic services. For a business to qualify for this
-            category they must either be receptive to providing services while
-            the baby is present or provide alternatives for child care while the
-            parent is receiving their service.
+          <div className="categoryRow">
+            <div>
+              <Pin categoryColor="#F7A79A" disableTransform="true" />
+            </div>
+            <div>
+              <div className="categoryTitle">Self care</div>
+              <div>
+                Places to go where you can take some “me” time even if you have
+                the baby with you. Includes: fitness studios, gyms, massage and
+                other therapeutic services. For a business to qualify for this
+                category they must either be receptive to providing services
+                while the baby is present or provide alternatives for child care
+                while the parent is receiving their service.
+              </div>
+            </div>
           </div>
-          <div className="welcomeParagraph">
-            Culture: Movies, visual arts, music, plays etc.
+          <div className="categoryRow">
+            <div>
+              <Pin categoryColor="#007EA3" disableTransform="true" />
+            </div>
+            <div>
+              <div className="categoryTitle">Culture</div>
+              <div>Movies, visual arts, music, plays etc.</div>
+            </div>
           </div>
         </div>
       </div>

@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 
 export default class Pin extends PureComponent {
   render() {
-    const { onClick, selected, categoryColor } = this.props;
+    const { onClick, selected, categoryColor, disableTransform } = this.props;
 
     return (
       <svg
@@ -12,7 +12,7 @@ export default class Pin extends PureComponent {
         fill="none"
         style={{
           cursor: "pointer",
-          transform: "translate(-15px,-36px)"
+          transform: disableTransform ? "none" : "translate(-15px,-36px)"
         }}
         onClick={onClick}
       >
