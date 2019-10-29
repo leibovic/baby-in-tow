@@ -51,7 +51,8 @@ const App = () => {
   const [filtersVisible, updateFiltersVisible] = useState(false);
   const [welcomeVisible, updateWelcomeVisible] = useState(
     // localStorage only stores strings
-    localStorage.getItem("welcomeShown") !== "true"
+    //localStorage.getItem("welcomeShown") !== "true"
+    true
   );
 
   async function requestLocations() {
