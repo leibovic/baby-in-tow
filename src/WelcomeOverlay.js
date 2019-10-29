@@ -39,7 +39,7 @@ const WelcomeOverlay = ({ onClose }) => {
         <div
           style={{
             fontSize: "14px",
-            marginBottom: "10px"
+            marginBottom: "20px"
           }}
         >
           We’ve gone to the meetups, talked to your neighbours and scouted the
