@@ -9,12 +9,15 @@ const WelcomeOverlay = ({ onClose }) => {
     <div
       className="overlay"
       style={{
-        overflowY: "scroll"
+        overflowY: "scroll",
+        fontSize: "14px"
       }}
     >
       <img
         style={{
-          height: "50px"
+          height: "50px",
+          marginTop: "24px",
+          marginLeft: "24px"
         }}
         src={logo}
         alt="Baby in Tow"
@@ -37,72 +40,60 @@ const WelcomeOverlay = ({ onClose }) => {
           style={{
             fontSize: "20px",
             fontWeight: "bold",
-            marginBottom: "20px",
+            padding: "0 24px 10px 24px",
             alignSelf: "flex-start"
           }}
         >
-          Like word of mouth...but better
+          The best local spots for you and baby
         </div>
         <div
           style={{
-            fontSize: "14px",
-            marginBottom: "15px"
+            padding: "0 24px 20px 24px",
+            alignSelf: "flex-start"
           }}
         >
-          We’ve gone to the meetups, talked to your neighbours and scouted the
-          local cafes, gyms, and baby events to get the inside scoop on the best
-          things to do in your hood when you have a baby in tow.
+          Curated by parents in your community.
         </div>
         <button className="getStartedButton" onClick={onClose}>
           Get started
         </button>
         <div
           style={{
-            backgroundColor: "#F7A79A",
-            margin: "20px -24px 0 -24px",
-            padding: "24px",
-            fontSize: "14px"
+            backgroundColor: "#5a7a94",
+            color: "white",
+            padding: "24px"
           }}
         >
-          <div
-            style={{
-              marginBottom: "10px"
-            }}
-          >
-            When you’re on the go and have a baby attached to you the struggle
-            is real - it’s hard to find truly baby-friendly places to eat,
-            workout, or simply hang out without having to conquer a stroller
-            obstacle course.
+          <div className="welcomeSectionHeader">
+            Like word of mouth,
+            <br />
+            but better.
           </div>
-          <div>
-            We’ve done the work for you and curated a list of baby-approved
-            things to do in your local community, vetted by your baby-mama/dada
-            neighbours.
+          <div className="welcomeParagraph">
+            We’ve attended the meetups, talked to your neighbours and scouted
+            local business to get the inside scoop on the best things to do in
+            your hood when you have a baby in tow.
           </div>
         </div>
 
-        <div>
-          <div className="welcomeSectionHeader">About us</div>
+        <div
+          style={{
+            padding: "24px"
+          }}
+        >
+          <div className="welcomeSectionHeader">Get out there.</div>
           <div className="welcomeParagraph">
             Our goal is to make it easier for parents + baby to get out and
             enjoy themselves because even with sleep deprivation, fresh air is
             good for the soul and your local community is here to support you.
-          </div>
-          <div className="welcomeSectionHeader">What will I find?</div>
-          <div className="welcomeParagraph">
-            For our first release, we’re starting out in the Toronto East End
-            which includes Riverside, Leslieville, Danforth Village and the
-            Beaches. Stick around as we expand to other parts of Toronto. If you
-            want to help out your local community and have tips to share,{" "}
-            <a href="mailto:hi@babyintow.ca">give us a shout!</a>
           </div>
           <div className="categoryRow">
             <div>
               <Pin categoryColor="#D9B302" disableTransform="true" />
             </div>
             <div>
-              <div className="categoryTitle">Eats</div>
-              <div>A place to grab a bite or a drink.</div>
+              <div className="categoryTitle">eats</div>
+              <div>A place to grab a bite or a drink</div>
             </div>
           </div>
           <div className="categoryRow">
@@ -110,11 +101,10 @@ const WelcomeOverlay = ({ onClose }) => {
               <Pin categoryColor="#548231" disableTransform="true" />
             </div>
             <div>
-              <div className="categoryTitle">Community</div>
+              <div className="categoryTitle">community</div>
               <div>
-                Organizations with programming tailored towards the local
-                community such as Libraries, Mother’s groups, and government
-                funded EarlyOn child and family centres.
+                Local organizations such as Libraries, Mother’s groups, and
+                government funded EarlyOn child and family centres
               </div>
             </div>
           </div>
@@ -123,14 +113,11 @@ const WelcomeOverlay = ({ onClose }) => {
               <Pin categoryColor="#F7A79A" disableTransform="true" />
             </div>
             <div>
-              <div className="categoryTitle">Self care</div>
+              <div className="categoryTitle">self care</div>
               <div>
-                Places to go where you can take some “me” time even if you have
-                the baby with you. Includes: fitness studios, gyms, massage and
-                other therapeutic services. For a business to qualify for this
-                category they must either be receptive to providing services
-                while the baby is present or provide alternatives for child care
-                while the parent is receiving their service.
+                Places to go for some “me” time while you have a baby with you.
+                We only include businesses that can provide services while the
+                baby is present or that provide child minding
               </div>
             </div>
           </div>
@@ -139,9 +126,33 @@ const WelcomeOverlay = ({ onClose }) => {
               <Pin categoryColor="#007EA3" disableTransform="true" />
             </div>
             <div>
-              <div className="categoryTitle">Culture</div>
+              <div className="categoryTitle">culture</div>
               <div>Movies, visual arts, music, plays etc.</div>
             </div>
+          </div>
+        </div>
+        <div
+          style={{
+            backgroundColor: "#434343",
+            color: "white",
+            padding: "24px"
+          }}
+        >
+          <div className="welcomeSectionParagraph">
+            Our first release includes the <b>Toronto East End</b> (Riverside,
+            Leslieville, Danforth Village and the Beaches) and we’re expanding!
+            If you want to get involved in bringing this into your neighbourhood
+            or simply have a helpful tip to share{" "}
+            <a
+              href="mailto:hi@babyintow.ca"
+              style={{
+                color: "white",
+                fontWeight: "bold",
+                textDecoration: "underline"
+              }}
+            >
+              give us a shout!
+            </a>
           </div>
         </div>
       </div>

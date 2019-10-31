@@ -15,27 +15,27 @@ body {
   background: #007ea3;
   color: white;
   border: none;
-  border-radius: 30px;
-  padding: 15px 30px;
-  font-size: 16px;
+  border-radius: 4px;
+  padding: 8px 24px;
+  font-size: 14px;
   cursor: pointer;
+  margin-bottom: 24px;
 }
 
 .welcomeSectionHeader {
   font-weight: bold;
   font-size: 16px;
-  margin: 20px 0 10px 0;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
 .welcomeParagraph {
   margin-bottom: 10px;
-  font-size: 14px;
 }
 
 .categoryRow {
   display: flex;
-  font-size: 14px;
-  margin: 20px 0;
+  margin: 20px;
 }
 
 .categoryRow > div:first-of-type {
@@ -124,7 +124,6 @@ button:focus {
 }
 
 .overlay {
-  padding: 24px;
   position: fixed;
   top: 10px;
   right: 10px;
