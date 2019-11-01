@@ -6,7 +6,8 @@ const FiltersOverlay = ({ filters, updateFilters, onClose }) => {
     <div
       className="overlay"
       style={{
-        color: "#374B5B"
+        color: "#374B5B",
+        padding: "24px"
       }}
     >
       <button
