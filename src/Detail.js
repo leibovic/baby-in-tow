@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Stars from "./Stars";
+import { useSwipeable } from "react-swipeable";
 import featureYes from "./icons/feature-yes.svg";
 import featureNo from "./icons/feature-no.svg";
 import chevronUp from "./icons/chevron-up.svg";
@@ -11,6 +12,11 @@ import iconWebsite from "./icons/icon-website.svg";
 
 const Detail = ({ location, categoryColor }) => {
   const [detailsExpanded, updateDetailsExpanded] = useState(false);
+  const swipeableHandlers = useSwipeable({
+    onSwipedUp: () => updateDetailsExpanded(true),
+    onSwipedDown: () => updateDetailsExpanded(false),
+    trackMouse: true
+  });
 
   let indoorOutdoorMessage;
   if (location.indoor && location.outdoor) {
@@ -25,6 +31,7 @@ const Detail = ({ location, categoryColor }) => {
 
   return (
     <div
+      {...swipeableHandlers}
       style={{
         position: "absolute",
         bottom: 0,
