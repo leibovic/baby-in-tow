@@ -188,6 +188,7 @@ const App = () => {
           Filter
         </button>
       </ReactMapGL>
+
       {filtersVisible && (
         <FiltersOverlay
           filters={filters}
@@ -205,6 +206,23 @@ const App = () => {
           categoryColor={categoryColors[selectedLocation.category]}
         />
       )}
+
+      <div
+        style={{
+          position: "absolute",
+          bottom: 0,
+          width: "100%",
+          zIndex: 9, // above map but below detail view
+          fontSize: "12px",
+          padding: "10px",
+          backgroundColor: "white"
+        }}
+      >
+        Baby in Tow is currently in alpha.{" "}
+        <a href="<feedbackform>" target="_blank">
+          We&apos;d love your feedback!
+        </a>
+      </div>
     </div>
   );
 };
