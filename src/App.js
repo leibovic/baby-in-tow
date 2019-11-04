@@ -74,8 +74,10 @@ const App = () => {
           latitude: location[2] ? parseFloat(location[2]) : 0,
           longitude: location[3] ? parseFloat(location[3]) : 0,
           category: location[4],
-          nursing: location[5] ? parseInt(location[5]) : 0,
-          stroller: location[6] ? parseInt(location[6]) : 0,
+          nursing:
+            location[5] && location[5] !== "?" ? parseInt(location[5]) : 0,
+          stroller:
+            location[6] && location[6] !== "?" ? parseInt(location[6]) : 0,
           changeTable: location[7] === "Y",
           indoor: location[8] === "Y",
           outdoor: location[9] === "Y",
