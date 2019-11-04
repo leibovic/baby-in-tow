@@ -96,7 +96,7 @@ const Detail = ({ location, categoryColor }) => {
         )}
         <hr />
         <div className="detailLabel">
-          Ease of nursing/pumping <Stars rating={location.nursing} />
+          Ease of nursing <Stars rating={location.nursing} />
         </div>
         {detailsExpanded && (
           <div className="detailDescription">
@@ -105,7 +105,7 @@ const Detail = ({ location, categoryColor }) => {
             {location.nursing == 2 &&
               "While there isn’t a dedicated room you can find some privacy on a corner seat or a quiet seat in the back."}
             {location.nursing == 3 &&
-              "There is a dedicated mother’s room for pumping or nursing."}
+              "There is a dedicated mother’s room for nursing."}
           </div>
         )}
         {detailsExpanded && (
