@@ -7,6 +7,7 @@ import chevronUp from "./icons/chevron-up.svg";
 import chevronDown from "./icons/chevron-down.svg";
 import chevronRight from "./icons/chevron-right.svg";
 import iconInsta from "./icons/icon-insta.svg";
+import iconFacebook from "./icons/icon-facebook.svg";
 import iconTwitter from "./icons/icon-twitter.svg";
 import iconWebsite from "./icons/icon-website.svg";
 
@@ -174,6 +175,19 @@ const Detail = ({ location, categoryColor }) => {
                     style={{ marginRight: "26px" }}
                     src={iconTwitter}
                     alt="Twitter"
+                  />
+                </a>
+              )}
+              {location.facebook && (
+                <a
+                  href={location.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    style={{ marginRight: "26px" }}
+                    src={iconFacebook}
+                    alt="Facebook"
                   />
                 </a>
               )}
