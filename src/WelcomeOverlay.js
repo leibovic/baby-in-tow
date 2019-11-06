@@ -53,7 +53,7 @@ const WelcomeOverlay = ({ onClose }) => {
             alignSelf: "flex-start"
           }}
         >
-          Curated by parents in your community.
+          Curated by parents in your community
         </div>
         <button className="getStartedButton" onClick={onClose}>
           Get Started
