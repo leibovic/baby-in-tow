@@ -217,11 +217,17 @@ const App = () => {
           zIndex: 9, // above map but below detail view
           fontSize: "12px",
           padding: "10px",
-          backgroundColor: "white"
+          backgroundColor: "#374B5B",
+          color: "white"
         }}
       >
         Baby in Tow is currently in alpha.{" "}
-        <a href="<feedbackform>" target="_blank">
+        <a
+          style={{ fontWeight: "bold", color: "white" }}
+          href="https://forms.gle/MZx8FiY26z4cJEsw6"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           We&apos;d love your feedback!
         </a>
       </div>
