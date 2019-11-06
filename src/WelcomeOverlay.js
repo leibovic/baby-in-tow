@@ -31,14 +31,14 @@ const WelcomeOverlay = ({ onClose }) => {
       >
         <img
           style={{
-            height: "150px"
+            height: "250px"
           }}
           src={illustration}
           alt="Parents with babies"
         />
         <div
           style={{
-            fontSize: "20px",
+            fontSize: "28px",
             fontWeight: "bold",
             padding: "0 24px 10px 24px",
             alignSelf: "flex-start"
@@ -48,6 +48,7 @@ const WelcomeOverlay = ({ onClose }) => {
         </div>
         <div
           style={{
+            fontSize: "16px",
             padding: "0 24px 20px 24px",
             alignSelf: "flex-start"
           }}
@@ -55,7 +56,7 @@ const WelcomeOverlay = ({ onClose }) => {
           Curated by parents in your community.
         </div>
         <button className="getStartedButton" onClick={onClose}>
-          Get started
+          Get Started
         </button>
         <div
           style={{
@@ -79,6 +80,7 @@ const WelcomeOverlay = ({ onClose }) => {
 
         <div
           style={{
+            backgroundColor: "#ECE5DE",
             padding: "24px"
           }}
         >
@@ -134,7 +136,7 @@ const WelcomeOverlay = ({ onClose }) => {
         </div>
         <div
           style={{
-            backgroundColor: "#434343",
+            backgroundColor: "#374B5B",
             color: "white",
             padding: "24px"
           }}
@@ -145,7 +147,7 @@ const WelcomeOverlay = ({ onClose }) => {
             If you want to get involved in bringing this into your neighbourhood
             or simply have a helpful tip to share{" "}
             <a
-              href="mailto:hi@babyintow.ca"
+              href="mailto:babyintow.to@gmail.com"
               style={{
                 color: "white",
                 fontWeight: "bold",
