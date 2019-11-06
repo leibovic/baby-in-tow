@@ -155,7 +155,7 @@ const FiltersOverlay = ({ filters, updateFilters, onClose }) => {
         </div>
 
         <div className="filterSection">
-          <div className="filterSectionTitle">Ease of nursing/pumping</div>
+          <div className="filterSectionTitle">Ease of nursing</div>
 
           <div className="filterRow">
             <input
@@ -207,7 +207,7 @@ const FiltersOverlay = ({ filters, updateFilters, onClose }) => {
             />
             <div className="filterLabel">
               <label htmlFor="nursing3">Dedicated private space</label>
-              <div>There is a dedicated space for pumping or nursing.</div>
+              <div>There is a dedicated space for nursing.</div>
             </div>
           </div>
         </div>
