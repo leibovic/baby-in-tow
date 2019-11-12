@@ -6,6 +6,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import Pin from "./Pin";
 import Detail from "./Detail";
 import WelcomeOverlay from "./WelcomeOverlay.js";
+import logo from "./branding/logo.png";
 
 const ACCESS_TOKEN =
   "pk.eyJ1IjoibWxlaWJvdmljIiwiYSI6ImNqeWhhdDd2bDA5d2IzZ211NTdsZmNuNDkifQ.EeYaupgKuUPtyZpplZVf6A";
@@ -170,7 +171,27 @@ const App = () => {
             </Marker>
           );
         })}
+      </ReactMapGL>
 
+      <img
+        style={{
+          position: "absolute",
+          top: "10px",
+          left: "10px",
+          height: "50px",
+          cursor: "pointer"
+        }}
+        src={logo}
+        alt="Baby in Tow"
+        onClick={() => updateWelcomeVisible(true)}
+      />
+      <div
+        style={{
+          position: "absolute",
+          top: "10px",
+          right: "10px"
+        }}
+      >
         <select
           className="categorySelect"
           value={category}
@@ -190,8 +211,7 @@ const App = () => {
         >
           Filter
         </button>
-      </ReactMapGL>
-
+      </div>
       {filtersVisible && (
         <FiltersOverlay
           filters={filters}
@@ -202,14 +222,12 @@ const App = () => {
       {welcomeVisible && (
         <WelcomeOverlay onClose={() => updateWelcomeVisible(false)} />
       )}
-
       {selectedLocation && (
         <Detail
           location={selectedLocation}
           categoryColor={categoryColors[selectedLocation.category]}
         />
       )}
-
       <div
         style={{
           position: "absolute",
