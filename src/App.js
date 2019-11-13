@@ -6,7 +6,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import Pin from "./Pin";
 import Detail from "./Detail";
 import WelcomeOverlay from "./WelcomeOverlay.js";
-import logo from "./branding/logo.png";
+import logoCircle from "./branding/logo-circle.png";
 
 const ACCESS_TOKEN =
   "pk.eyJ1IjoibWxlaWJvdmljIiwiYSI6ImNqeWhhdDd2bDA5d2IzZ211NTdsZmNuNDkifQ.EeYaupgKuUPtyZpplZVf6A";
@@ -173,7 +173,7 @@ const App = () => {
         })}
       </ReactMapGL>
 
-      <img
+      <input
         style={{
           position: "absolute",
           top: "10px",
@@ -181,7 +181,8 @@ const App = () => {
           height: "50px",
           cursor: "pointer"
         }}
-        src={logo}
+        type="image"
+        src={logoCircle}
         alt="Baby in Tow"
         onClick={() => updateWelcomeVisible(true)}
       />
