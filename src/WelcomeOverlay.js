@@ -81,6 +81,7 @@ const WelcomeOverlay = ({ onClose }) => {
         <div
           style={{
             backgroundColor: "#ECE5DE",
+            width: "calc(100% - 48px)",
             padding: "24px"
           }}
         >
