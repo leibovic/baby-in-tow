@@ -5,3 +5,5 @@ dist/
 .DS_Store
 coverage/
 .vscode/
+credentials.json
+tokens.json
