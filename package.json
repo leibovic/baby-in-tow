@@ -7,12 +7,14 @@
     "build": "parcel build src/index.html",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "geocode": "node src/util/geocodeAddresses.js"
   },
   "author": "Margaret Leibovic <margaret.leibovic@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "babel-eslint": "^10.0.2",
+    "dotenv": "^8.2.0",
     "eslint": "^6.0.1",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-import": "^2.18.2",

@@ -26,7 +26,7 @@ const TOKENS_PATH = "tokens.json";
 
 const geocoder = NodeGeocoder({
   provider: "google",
-  apiKey: process.env.GEO_API_KEY
+  apiKey: process.env.API_KEY
 });
 
 const getAuth = async () => {
