@@ -24,11 +24,6 @@ const SCOPES = ["https://www.googleapis.com/auth/spreadsheets"];
 // time.
 const TOKENS_PATH = "tokens.json";
 
-const LOCATIONS_SHEET = {
-  spreadsheetId: "1GxL136Eh5fK_6cTZQ1cW2Dmnq8Pn6hlFyWg9z7mgKek",
-  range: "MVP Data!A2:O100"
-};
-
 const geocoder = NodeGeocoder({
   provider: "google",
   apiKey: process.env.GEO_API_KEY
@@ -73,11 +68,6 @@ const getAuth = async () => {
   return oAuth2Client;
 };
 
-const getRows = async sheets => {
-  const sheetsResponse = await sheets.spreadsheets.values.get(LOCATIONS_SHEET);
-  return sheetsResponse.data.values;
-};
-
 const geocodeRow = async row => {
   const updatedRow = [...row];
   const address = row[1];
@@ -101,12 +91,20 @@ const updateData = async () => {
     version: "v4",
     auth: auth
   });
-  const rows = await getRows(sheets);
+
+  const spreadsheetId = "1GxL136Eh5fK_6cTZQ1cW2Dmnq8Pn6hlFyWg9z7mgKek";
+  const range = "MVP Data!A2:O100";
+
+  const response = await sheets.spreadsheets.values.get({
+    spreadsheetId,
+    range
+  });
+  const rows = response.data.values;
   const updatedRows = await Promise.all(rows.map(row => geocodeRow(row)));
 
   const result = await sheets.spreadsheets.values.update({
-    spreadsheetId: LOCATIONS_SHEET.spreadsheetId,
-    range: LOCATIONS_SHEET.range,
+    spreadsheetId,
+    range,
     valueInputOption: "RAW",
     requestBody: {
       values: updatedRows
