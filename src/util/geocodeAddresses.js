@@ -1,3 +1,4 @@
+require("dotenv").config();
 const fs = require("fs");
 const { promisify } = require("util");
 const readline = require("readline");
@@ -30,8 +31,7 @@ const LOCATIONS_SHEET = {
 
 const geocoder = NodeGeocoder({
   provider: "google",
-  // TODO: read geocoder API key from secret place
-  apiKey: "AIzaSyDM437JtmtnlWuxP-d-yOD8o08UTAsQ1X4"
+  apiKey: process.env.GEO_API_KEY
 });
 
 const getAuth = async () => {
