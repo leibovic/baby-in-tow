@@ -87,6 +87,7 @@ const Detail = ({ location, categoryColor }) => {
         </div>
         {detailsExpanded && (
           <div className="detailDescription">
+            {location.stroller == 0 && "No rating available yet."}
             {location.stroller == 1 &&
               "Doable with a bit of effort. You’ll need to maneuver yourself around tight spots."}
             {location.stroller == 2 &&
@@ -101,6 +102,7 @@ const Detail = ({ location, categoryColor }) => {
         </div>
         {detailsExpanded && (
           <div className="detailDescription">
+            {location.nursing == 0 && "No rating available yet."}
             {location.nursing == 1 &&
               "The venue is open and public but still has a chill vibe so no creepy glares."}
             {location.nursing == 2 &&
