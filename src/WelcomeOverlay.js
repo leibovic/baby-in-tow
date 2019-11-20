@@ -93,7 +93,7 @@ const WelcomeOverlay = ({ onClose }) => {
           </div>
           <div className="categoryRow">
             <div>
-              <Pin categoryColor="#D9B302" disableTransform="true" />
+              <Pin color="#D9B302" disableTransform="true" />
             </div>
             <div>
               <div className="categoryTitle">eats</div>
@@ -102,7 +102,7 @@ const WelcomeOverlay = ({ onClose }) => {
           </div>
           <div className="categoryRow">
             <div>
-              <Pin categoryColor="#548231" disableTransform="true" />
+              <Pin color="#548231" disableTransform="true" />
             </div>
             <div>
               <div className="categoryTitle">community</div>
@@ -114,7 +114,7 @@ const WelcomeOverlay = ({ onClose }) => {
           </div>
           <div className="categoryRow">
             <div>
-              <Pin categoryColor="#F7A79A" disableTransform="true" />
+              <Pin color="#F7A79A" disableTransform="true" />
             </div>
             <div>
               <div className="categoryTitle">self care</div>
@@ -127,7 +127,7 @@ const WelcomeOverlay = ({ onClose }) => {
           </div>
           <div className="categoryRow">
             <div>
-              <Pin categoryColor="#007EA3" disableTransform="true" />
+              <Pin color="#007EA3" disableTransform="true" />
             </div>
             <div>
               <div className="categoryTitle">culture</div>

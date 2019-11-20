@@ -48,13 +48,13 @@ const Detail = ({ location, categoryColor }) => {
       <div
         style={{
           borderRadius: "4px 4px 0 0",
-          backgroundColor: categoryColor,
+          backgroundColor: categoryColor.backgroundColor,
           paddingLeft: "24px",
           textTransform: "uppercase",
           fontWeight: 900,
           fontSize: "14px",
           lineHeight: "24px",
-          color: "white"
+          color: categoryColor.color
         }}
       >
         {location.category}

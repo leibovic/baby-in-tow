@@ -18,10 +18,10 @@ const config = {
 };
 
 const categoryColors = {
-  "Self Care": "#F7A79A",
-  Community: "#548231",
-  Culture: "#007EA3",
-  Eats: "#D9B302"
+  "Self Care": { backgroundColor: "#F7A79A", color: "#374B5B" },
+  Community: { backgroundColor: "#548231", color: "white" },
+  Culture: { backgroundColor: "#007EA3", color: "white" },
+  Eats: { backgroundColor: "#D9B302", color: "#374B5B" }
 };
 
 // Loaded from synchronous script tag in index.html
@@ -166,7 +166,11 @@ const App = () => {
               <Pin
                 onClick={() => setSelectedLocation(location)}
                 selected={selectedLocation == location}
-                categoryColor={categoryColors[location.category]}
+                color={
+                  location.category
+                    ? categoryColors[location.category].backgroundColor
+                    : "white"
+                }
               />
             </Marker>
           );
