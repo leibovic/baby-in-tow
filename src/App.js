@@ -4,6 +4,7 @@ import FiltersOverlay from "./FiltersOverlay.js";
 import ReactMapGL, { Marker } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Pin from "./Pin";
+import SelectedPin from "./SelectedPin";
 import Detail from "./Detail";
 import WelcomeOverlay from "./WelcomeOverlay.js";
 import logoCircle from "./branding/logo-circle.png";
@@ -154,24 +155,31 @@ const App = () => {
         mapStyle="mapbox://styles/mapbox/streets-v10"
         {...viewport}
         onViewportChange={viewport => setViewport(viewport)}
-        onClick={() => setSelectedLocation(null)}
+        onClick={e => {
+          // Hack workaround for click listener firing when pin is clicked
+          if (e.target.className === "overlays") {
+            setSelectedLocation(null);
+          }
+        }}
       >
         {displayLocations.map(location => {
+          const pinColor = location.category
+            ? categoryColors[location.category].backgroundColor
+            : "white";
+          const selected = selectedLocation == location;
           return (
             <Marker
               key={`marker-${location.name}`}
               latitude={location.latitude}
               longitude={location.longitude}
             >
-              <Pin
-                onClick={() => setSelectedLocation(location)}
-                selected={selectedLocation == location}
-                color={
-                  location.category
-                    ? categoryColors[location.category].backgroundColor
-                    : "white"
-                }
-              />
+              {selected && <SelectedPin color={pinColor} />}
+              {!selected && (
+                <Pin
+                  onClick={() => setSelectedLocation(location)}
+                  color={pinColor}
+                />
+              )}
             </Marker>
           );
         })}

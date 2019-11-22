@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 
 export default class Pin extends PureComponent {
   render() {
-    const { onClick, selected, color, disableTransform } = this.props;
+    const { onClick, color, disableTransform } = this.props;
 
     return (
       <svg
@@ -20,7 +20,7 @@ export default class Pin extends PureComponent {
           fillRule="evenodd"
           clipRule="evenodd"
           d="M14.6364 34.3333C14.6364 34.3333 28.2727 25.2424 28.2727 14.6364C28.2727 11.0198 26.836 7.55131 24.2787 4.994C21.7214 2.43668 18.253 1 14.6364 1C11.0198 1 7.55131 2.43668 4.994 4.994C2.43668 7.55131 1 11.0198 1 14.6364C1 25.2424 14.6364 34.3333 14.6364 34.3333ZM19.1818 14.6364C19.1818 17.1467 17.1467 19.1818 14.6364 19.1818C12.126 19.1818 10.0909 17.1467 10.0909 14.6364C10.0909 12.126 12.126 10.0909 14.6364 10.0909C17.1467 10.0909 19.1818 12.126 19.1818 14.6364Z"
-          fill={selected ? "black" : color}
+          fill={color}
         />
 
         <path
