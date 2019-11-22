@@ -11,8 +11,7 @@ export default class SelectedPin extends PureComponent {
         viewBox="0 0 79 79"
         fill="none"
         style={{
-          transform: "translate(-39px,-60px)",
-          zIndex: 10000
+          transform: "translate(-39px,-60px)"
         }}
       >
         <g filter="url(#filter0_d)">

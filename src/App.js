@@ -172,6 +172,7 @@ const App = () => {
               key={`marker-${location.name}`}
               latitude={location.latitude}
               longitude={location.longitude}
+              className={selected ? "selectedPin" : ""}
             >
               {selected && <SelectedPin color={pinColor} />}
               {!selected && (
