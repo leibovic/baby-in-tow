@@ -150,3 +150,7 @@ a {
 .detailDescription {
   color: #5a7a94;
 }
+
+.selectedPin {
+  z-index: 1000;
+}
