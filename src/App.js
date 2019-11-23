@@ -66,7 +66,7 @@ const App = () => {
 
       const response = await gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: config.spreadsheetId,
-        range: "MVP Data!A2:O100"
+        range: "MVP Data!A2:P100"
       });
 
       updateLocations(
@@ -84,9 +84,11 @@ const App = () => {
           indoor: location[8] === "Y",
           outdoor: location[9] === "Y",
           description: location[10],
-          website: location[11],
-          instagram: location[12],
-          facebook: location[13]
+          strollerTips: location[11],
+          nursingTips: location[12],
+          website: location[13],
+          instagram: location[14],
+          facebook: location[15]
         }))
       );
     } catch (e) {

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import chevronUp from "./icons/chevron-up.svg";
 import chevronDown from "./icons/chevron-down.svg";
-import { NONAME } from "dns";
 
 const FiltersOverlay = ({ filters, updateFilters, onClose }) => {
   const [strollerExpanded, updateStrollerExpanded] = useState(false);
