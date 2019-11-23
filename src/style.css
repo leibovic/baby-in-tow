@@ -83,15 +83,19 @@ body {
   font-size: 18px;
   line-height: 23px;
   font-weight: bold;
-  margin-bottom: 16px;
+}
+
+.filterExpandButton {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  float: right;
+  margin-top: 6px;
 }
 
 .filterRow {
   display: flex;
-}
-
-.filterRow:not(:last-of-type) {
-  padding-bottom: 20px;
+  padding-top: 18px;
 }
 
 .filterRow > input {
