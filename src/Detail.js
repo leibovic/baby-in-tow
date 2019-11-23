@@ -3,8 +3,8 @@ import Stars from "./Stars";
 import { useSwipeable } from "react-swipeable";
 import featureYes from "./icons/feature-yes.svg";
 import featureNo from "./icons/feature-no.svg";
-import chevronUp from "./icons/chevron-up.svg";
-import chevronDown from "./icons/chevron-down.svg";
+import plus from "./icons/plus.svg";
+import minus from "./icons/minus.svg";
 import chevronRight from "./icons/chevron-right.svg";
 import iconInsta from "./icons/icon-insta.svg";
 import iconFacebook from "./icons/icon-facebook.svg";
@@ -199,22 +199,24 @@ const Detail = ({ location, categoryColor }) => {
       </div>
       <button
         style={{
-          backgroundColor: "#E3F0FB",
+          backgroundColor: detailsExpanded ? "white" : "#2EA59E",
           textAlign: "center",
           fontSize: "14px",
-          lineHeight: "18px",
-          color: "#374B5B",
-          border: "none",
-          width: "100%",
+          color: detailsExpanded ? "#374B5B" : "white",
+          border: detailsExpanded ? "2px solid #2EA59E" : "none",
+          width: "calc(100% - 48px)",
           padding: "8px 0",
-          cursor: "pointer"
+          margin: "0 24px 24px 24px",
+          cursor: "pointer",
+          borderRadius: "4px",
+          fontWeight: 600
         }}
         onClick={() => updateDetailsExpanded(!detailsExpanded)}
       >
-        {detailsExpanded ? "See less detail" : "See more detail"}
+        {detailsExpanded ? "Show less detail" : "Show more detail"}
         <img
-          style={{ marginLeft: "6px", verticalAlign: "middle" }}
-          src={detailsExpanded ? chevronUp : chevronDown}
+          style={{ marginLeft: "6px", verticalAlign: "bottom" }}
+          src={detailsExpanded ? minus : plus}
           alt=""
         />
       </button>
