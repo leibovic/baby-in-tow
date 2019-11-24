@@ -10,6 +10,7 @@ import iconInsta from "./icons/icon-insta.svg";
 import iconFacebook from "./icons/icon-facebook.svg";
 import iconTwitter from "./icons/icon-twitter.svg";
 import iconWebsite from "./icons/icon-website.svg";
+import RatingTooltip from "./RatingTooltip";
 
 const Detail = ({ location, categoryColor }) => {
   const [detailsExpanded, updateDetailsExpanded] = useState(false);
@@ -29,6 +30,21 @@ const Detail = ({ location, categoryColor }) => {
   } else {
     indoorOutdoorMessage = "";
   }
+
+  const ratingDescriptions = {
+    nursing: [
+      "No rating available yet.",
+      "The venue is open and public but still has a chill vibe so no creepy glares.",
+      "While there isn’t a dedicated room you can find some privacy on a corner seat or a quiet seat in the back.",
+      "There is a dedicated mother’s room for nursing."
+    ],
+    stroller: [
+      "No rating available yet.",
+      "Doable with a bit of effort. You’ll need to maneuver yourself around tight spots.",
+      "Moderate space available but there may not be an accessible door or ramp access.",
+      "Accessible door or ramp access and a lot of indoor space to move around."
+    ]
+  };
 
   return (
     <div
@@ -83,33 +99,27 @@ const Detail = ({ location, categoryColor }) => {
         </div>
         <hr />
         <div className="detailLabel">
-          Stroller space <Stars rating={location.stroller} />
+          Stroller space
+          <RatingTooltip
+            title="Stroller space"
+            description={ratingDescriptions.stroller[location.stroller]}
+          />
+          <Stars rating={location.stroller} />
         </div>
         {detailsExpanded && (
-          <div className="detailDescription">
-            {location.stroller == 0 && "No rating available yet."}
-            {location.stroller == 1 &&
-              "Doable with a bit of effort. You’ll need to maneuver yourself around tight spots."}
-            {location.stroller == 2 &&
-              "Moderate space available but there may not be an accessible door or ramp access."}
-            {location.stroller == 3 &&
-              "Accessible door or ramp access and a lot of indoor space to move around."}
-          </div>
+          <div className="detailDescription">{location.strollerTips}</div>
         )}
         <hr />
         <div className="detailLabel">
-          Ease of nursing <Stars rating={location.nursing} />
+          Ease of nursing
+          <RatingTooltip
+            title="Ease of nursing"
+            description={ratingDescriptions.nursing[location.nursing]}
+          />
+          <Stars rating={location.nursing} />
         </div>
         {detailsExpanded && (
-          <div className="detailDescription">
-            {location.nursing == 0 && "No rating available yet."}
-            {location.nursing == 1 &&
-              "The venue is open and public but still has a chill vibe so no creepy glares."}
-            {location.nursing == 2 &&
-              "While there isn’t a dedicated room you can find some privacy on a corner seat or a quiet seat in the back."}
-            {location.nursing == 3 &&
-              "There is a dedicated mother’s room for nursing."}
-          </div>
+          <div className="detailDescription">{location.nursingTips}</div>
         )}
         {detailsExpanded && (
           <React.Fragment>
