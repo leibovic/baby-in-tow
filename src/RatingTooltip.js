@@ -1,9 +1,25 @@
 import React, { useState } from "react";
+import Stars from "./Stars";
 import close from "./icons/close.svg";
 import helpCircle from "./icons/help-circle.svg";
 
-const RatingTooltip = ({ title, description }) => {
+const RatingTooltip = ({ type }) => {
   const [modalShowing, updateModalShowing] = useState(false);
+
+  const descriptions = {
+    nursing: [
+      "No rating available yet.",
+      "The venue is open and public but still has a chill vibe so no creepy glares.",
+      "While there isn’t a dedicated room you can find some privacy on a corner seat or a quiet seat in the back.",
+      "There is a dedicated mother’s room for nursing."
+    ],
+    stroller: [
+      "No rating available yet.",
+      "Doable with a bit of effort. You’ll need to maneuver yourself around tight spots.",
+      "Moderate space available but there may not be an accessible door or ramp access.",
+      "Accessible door or ramp access and a lot of indoor space to move around."
+    ]
+  };
 
   return (
     <React.Fragment>
@@ -29,7 +45,7 @@ const RatingTooltip = ({ title, description }) => {
               transform: "translateY(-50%)",
               width: "calc(100% - 96px)",
               margin: "0 16px",
-              padding: "16px 32px"
+              padding: "24px"
             }}
           >
             <button
@@ -38,8 +54,8 @@ const RatingTooltip = ({ title, description }) => {
                 border: "none",
                 cursor: "pointer",
                 position: "absolute",
-                top: "5px",
-                right: "5px",
+                top: "16px",
+                right: "16px",
                 padding: "5px"
               }}
               onClick={() => updateModalShowing(false)}
@@ -53,7 +69,7 @@ const RatingTooltip = ({ title, description }) => {
                 marginBottom: "6px"
               }}
             >
-              {title}
+              {type === "nursing" ? "Ease of nursing" : "Stroller space"}
             </div>
             <div
               style={{
@@ -61,8 +77,32 @@ const RatingTooltip = ({ title, description }) => {
                 color: "#5A7A94"
               }}
             >
-              {description}
+              {descriptions[type].map((value, index) => {
+                return (
+                  <div key={value} className="ratingLegendItem">
+                    <Stars rating={index} />
+                    <div>{value}</div>
+                  </div>
+                );
+              })}
             </div>
+            <button
+              style={{
+                backgroundColor: "#374B5B",
+                textAlign: "center",
+                fontSize: "14px",
+                color: "white",
+                border: "none",
+                width: "100%",
+                padding: "8px 0",
+                cursor: "pointer",
+                borderRadius: "4px",
+                fontWeight: 600
+              }}
+              onClick={() => updateModalShowing(false)}
+            >
+              Got it
+            </button>
           </div>
         </div>
       )}

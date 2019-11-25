@@ -132,9 +132,20 @@ button:focus {
   box-shadow: 0px 0px 14px rgba(6, 8, 10, 0.1);
 }
 
-.ratingsIcon {
+.detailLabel > .stars {
   float: right;
+}
+
+.stars > img:not(:first-of-type) {
   margin-left: 8px;
+}
+
+.ratingLegendItem {
+  padding: 16px 0;
+}
+
+.ratingLegendItem:not(:last-of-type) {
+  border-bottom: 1px solid rgba(90, 122, 148, 0.2);
 }
 
 hr {

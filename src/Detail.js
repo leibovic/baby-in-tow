@@ -31,21 +31,6 @@ const Detail = ({ location, categoryColor }) => {
     indoorOutdoorMessage = "";
   }
 
-  const ratingDescriptions = {
-    nursing: [
-      "No rating available yet.",
-      "The venue is open and public but still has a chill vibe so no creepy glares.",
-      "While there isn’t a dedicated room you can find some privacy on a corner seat or a quiet seat in the back.",
-      "There is a dedicated mother’s room for nursing."
-    ],
-    stroller: [
-      "No rating available yet.",
-      "Doable with a bit of effort. You’ll need to maneuver yourself around tight spots.",
-      "Moderate space available but there may not be an accessible door or ramp access.",
-      "Accessible door or ramp access and a lot of indoor space to move around."
-    ]
-  };
-
   return (
     <div
       {...swipeableHandlers}
@@ -92,7 +77,9 @@ const Detail = ({ location, categoryColor }) => {
         <div className="detailLabel">
           Change table
           <img
-            className="ratingsIcon"
+            style={{
+              float: "right"
+            }}
             src={location.changeTable ? featureYes : featureNo}
             alt={location.changeTable ? "Yes" : "No"}
           />
@@ -100,10 +87,7 @@ const Detail = ({ location, categoryColor }) => {
         <hr />
         <div className="detailLabel">
           Stroller space
-          <RatingTooltip
-            title="Stroller space"
-            description={ratingDescriptions.stroller[location.stroller]}
-          />
+          <RatingTooltip type="stroller" />
           <Stars rating={location.stroller} />
         </div>
         {detailsExpanded && (
@@ -112,10 +96,7 @@ const Detail = ({ location, categoryColor }) => {
         <hr />
         <div className="detailLabel">
           Ease of nursing
-          <RatingTooltip
-            title="Ease of nursing"
-            description={ratingDescriptions.nursing[location.nursing]}
-          />
+          <RatingTooltip type="nursing" />
           <Stars rating={location.nursing} />
         </div>
         {detailsExpanded && (
