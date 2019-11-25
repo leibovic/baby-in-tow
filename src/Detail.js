@@ -209,11 +209,11 @@ const Detail = ({ location, categoryColor }) => {
       </div>
       <button
         style={{
-          backgroundColor: detailsExpanded ? "white" : "#2EA59E",
+          backgroundColor: detailsExpanded ? "white" : "#374B5B",
           textAlign: "center",
           fontSize: "14px",
           color: detailsExpanded ? "#374B5B" : "white",
-          border: detailsExpanded ? "2px solid #2EA59E" : "none",
+          border: detailsExpanded ? "2px solid #374B5B" : "none",
           width: "calc(100% - 48px)",
           padding: "8px 0",
           margin: "0 24px 24px 24px",
