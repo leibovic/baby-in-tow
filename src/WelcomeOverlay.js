@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "./branding/logo.png";
-import illustration from "./branding/welcome-illustration.jpg";
+import illustration from "./illustrations/welcome-header.png";
 import Pin from "./Pin";
 
 const WelcomeOverlay = ({ onClose }) => {
