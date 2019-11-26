@@ -122,7 +122,7 @@ const FiltersOverlay = ({ filters, updateFilters, onClose }) => {
               className="filterExpandButton"
               onClick={() => updateStrollerExpanded(!strollerExpanded)}
             >
-              <img src={strollerExpanded ? chevronDown : chevronUp} alt="" />
+              <img src={strollerExpanded ? chevronUp : chevronDown} alt="" />
             </button>
           </div>
 
@@ -200,7 +200,7 @@ const FiltersOverlay = ({ filters, updateFilters, onClose }) => {
               className="filterExpandButton"
               onClick={() => updateNursingExpanded(!nursingExpanded)}
             >
-              <img src={nursingExpanded ? chevronDown : chevronUp} alt="" />
+              <img src={nursingExpanded ? chevronUp : chevronDown} alt="" />
             </button>
           </div>
           {nursingExpanded && (
