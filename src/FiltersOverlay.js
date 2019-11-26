@@ -17,12 +17,11 @@ const FiltersOverlay = ({ filters, updateFilters, onClose }) => {
       <div
         style={{
           position: "fixed",
-          bottom: "10px",
-          left: "10px",
-          right: "10px",
+          bottom: "0",
+          left: "0",
+          right: "0",
           backgroundColor: "#E3F0FB",
-          padding: "16px",
-          borderRadius: "0 0 4px 4px"
+          padding: "16px"
         }}
       >
         <button

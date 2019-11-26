@@ -42,7 +42,7 @@ const Detail = ({ location, categoryColor }) => {
         backgroundColor: "white",
         margin: "0 10px",
         borderRadius: "4px 4px 0 0",
-        zIndex: 10,
+        zIndex: 11 /* above selected pin */,
         color: "#374B5B"
       }}
     >
