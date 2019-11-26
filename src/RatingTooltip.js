@@ -43,7 +43,7 @@ const RatingTooltip = ({ type }) => {
               position: "absolute",
               top: "50%",
               transform: "translateY(-50%)",
-              width: "calc(100% - 96px)",
+              width: "calc(100% - 80px)",
               margin: "0 16px",
               padding: "24px"
             }}
