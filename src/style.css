@@ -43,6 +43,11 @@ hr {
 
 /* Welcome page */
 
+.welcomeHeaderIllustration {
+  height: 200px;
+  margin-top: 16px;
+}
+
 .welcomeSection {
   display: flex;
   flex-direction: column;

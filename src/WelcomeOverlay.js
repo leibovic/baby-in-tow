@@ -30,9 +30,7 @@ const WelcomeOverlay = ({ onClose }) => {
 
       <div className="welcomeSection">
         <img
-          style={{
-            height: "250px"
-          }}
+          className="welcomeHeaderIllustration"
           src={headerIllustration}
           alt="Parents with babies"
         />
