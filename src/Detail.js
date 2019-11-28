@@ -107,6 +107,24 @@ const Detail = ({ location, categoryColor }) => {
             <hr />
             <div className="detailLabel">Baby tips</div>
             <div className="detailDescription">{location.description}</div>
+            <div
+              style={{
+                backgroundColor: "#E3F0FB",
+                borderRadius: "4px",
+                padding: "12px",
+                marginTop: "8px",
+                textAlign: "center"
+              }}
+            >
+              Know this place?{" "}
+              <a
+                href="https://forms.gle/4gvt51zVjhTxsqJN9"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Submit a baby tip
+              </a>
+            </div>
             <hr />
             {detailsExpanded && (
               <div
