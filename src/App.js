@@ -34,9 +34,9 @@ const App = () => {
   const [viewport, setViewport] = useState({
     width: "100%",
     height: "100%",
-    latitude: 43.66125,
-    longitude: -79.33841,
-    zoom: 11
+    latitude: 43.675309,
+    longitude: -79.323953,
+    zoom: 12
   });
   const [category, setCategory] = useState("");
   const [filters, updateFilters] = useState({
