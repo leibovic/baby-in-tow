@@ -8,13 +8,11 @@ const RatingTooltip = ({ type }) => {
 
   const descriptions = {
     nursing: [
-      "No rating available yet.",
       "The venue is open and public but still has a chill vibe so no creepy glares.",
       "While there isn’t a dedicated room you can find some privacy on a corner seat or a quiet seat in the back.",
       "There is a dedicated mother’s room for nursing."
     ],
     stroller: [
-      "No rating available yet.",
       "Doable with a bit of effort. You’ll need to maneuver yourself around tight spots.",
       "Moderate space available but there may not be an accessible door or ramp access.",
       "Accessible door or ramp access and a lot of indoor space to move around."
@@ -80,7 +78,7 @@ const RatingTooltip = ({ type }) => {
               {descriptions[type].map((value, index) => {
                 return (
                   <div key={value} className="ratingLegendItem">
-                    <Stars rating={index} />
+                    <Stars rating={index + 1} />
                     <div>{value}</div>
                   </div>
                 );

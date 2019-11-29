@@ -4,13 +4,7 @@ import starFilled from "./icons/star-filled.svg";
 
 const Stars = ({ rating }) => (
   <div className="stars">
-    {rating === 0 && (
-      <>
-        <img src={starEmpty} alt="Star Empty" />
-        <img src={starEmpty} alt="Star Empty" />
-        <img src={starEmpty} alt="Star Empty" />
-      </>
-    )}
+    {rating === 0 && <div>No rating yet</div>}
     {rating === 1 && (
       <>
         <img src={starFilled} alt="Star Filled" />
