@@ -43,9 +43,16 @@ hr {
 
 /* Welcome page */
 
+.logo {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  height: 50px;
+}
+
 .welcomeHeaderIllustration {
   height: 200px;
-  margin-top: 16px;
+  margin-top: 40px;
 }
 
 .welcomeSection {
@@ -54,10 +61,6 @@ hr {
   align-items: center;
   text-align: center;
   padding: 50px 16px;
-}
-
-.welcomeSection:first-of-type {
-  padding-top: 0;
 }
 
 .welcomeSectionHeader {
@@ -94,6 +97,28 @@ hr {
 .categoryTitle {
   font-weight: bold;
   margin: 10px 0;
+}
+
+@media (min-width: 768px) {
+  .logo {
+    position: static;
+    margin-bottom: 16px;
+  }
+
+  .welcomeSection:first-of-type {
+    flex-direction: row-reverse;
+    text-align: left;
+    justify-content: center;
+  }
+
+  .welcomeHeaderContent {
+    max-width: 350px;
+    justify-content: space-between;
+  }
+
+  .welcomeHeaderIllustration {
+    height: 300px;
+  }
 }
 
 /* Filter controls */

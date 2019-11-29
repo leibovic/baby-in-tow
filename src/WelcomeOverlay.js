@@ -18,42 +18,35 @@ const WelcomeOverlay = ({ onClose }) => {
         fontSize: "14px"
       }}
     >
-      <img
-        style={{
-          height: "50px",
-          marginTop: "24px",
-          marginLeft: "24px"
-        }}
-        src={logo}
-        alt="Baby in Tow"
-      />
-
       <div className="welcomeSection">
         <img
           className="welcomeHeaderIllustration"
           src={headerIllustration}
           alt="Parents with babies"
         />
-        <div
-          style={{
-            fontSize: "32px",
-            fontWeight: "bold",
-            margin: "16px"
-          }}
-        >
-          The best local spots for you and baby
+        <div className="welcomeHeaderContent">
+          <img className="logo" src={logo} alt="Baby in Tow" />
+          <div
+            style={{
+              fontSize: "32px",
+              fontWeight: "bold",
+              margin: "24px 0"
+            }}
+          >
+            The best local spots for you and baby
+          </div>
+          <div
+            style={{
+              marginBottom: "24px",
+              fontSize: "18px"
+            }}
+          >
+            Curated by parents in your community
+          </div>
+          <button className="getStartedButton" onClick={onClose}>
+            Get Started
+          </button>
         </div>
-        <div
-          style={{
-            marginBottom: "24px",
-            fontSize: "18px"
-          }}
-        >
-          Curated by parents in your community
-        </div>
-        <button className="getStartedButton" onClick={onClose}>
-          Get Started
-        </button>
       </div>
 
       <div
