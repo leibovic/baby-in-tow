@@ -55,6 +55,17 @@ hr {
   margin-top: 40px;
 }
 
+.welcomeTitle {
+  font-size: 32px;
+  font-weight: bold;
+  margin: 24px 0;
+}
+
+.welcomeSubtitle {
+  margin-bottom: 24px;
+  font-size: 18px;
+}
+
 .welcomeSection {
   display: flex;
   flex-direction: column;
@@ -69,6 +80,11 @@ hr {
   margin-bottom: 16px;
 }
 
+.welcomeSectionParagraph {
+  max-width: 600px;
+  margin-bottom: 16px;
+}
+
 .getStartedButton {
   background: #374b5b;
   color: white;
@@ -77,13 +93,14 @@ hr {
   padding: 12px 24px;
   font-size: 18px;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .categorySection {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10px 0;
+  padding: 10px 16px;
 }
 
 .categorySection:not(:last-of-type) {
@@ -99,7 +116,11 @@ hr {
   margin: 10px 0;
 }
 
-@media (min-width: 768px) {
+.torontoIllustration {
+  height: 250px;
+}
+
+@media (min-width: 850px) {
   .logo {
     position: static;
     margin-bottom: 16px;
@@ -112,12 +133,66 @@ hr {
   }
 
   .welcomeHeaderContent {
-    max-width: 350px;
-    justify-content: space-between;
+    max-width: 500px;
+  }
+
+  .welcomeTitle {
+    font-size: 48px;
+  }
+
+  .welcomeSubtitle {
+    font-size: 22px;
   }
 
   .welcomeHeaderIllustration {
     height: 300px;
+    margin-left: 30px;
+  }
+
+  .welcomeSection {
+    padding: 50px;
+  }
+
+  .welcomeSectionHeader {
+    font-size: 32px;
+  }
+
+  .welcomeSectionParagraph {
+    font-size: 22px;
+    max-width: 700px;
+  }
+
+  .categorySections {
+    display: flex;
+    margin-top: 16px;
+  }
+
+  .categorySection {
+    width: 178px;
+  }
+
+  .categoryTitle {
+    font-size: 22px;
+    margin: 16px 0;
+  }
+
+  .categoryDescription {
+    font-size: 16px;
+  }
+
+  .welcomeSection:last-of-type {
+    flex-direction: row;
+    font-size: 24px;
+    justify-content: center;
+  }
+
+  .welcomeFooterContent {
+    max-width: 500px;
+  }
+
+  .torontoIllustration {
+    height: 380px;
+    margin-left: 50px;
   }
 }
 
