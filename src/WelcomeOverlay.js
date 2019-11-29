@@ -49,9 +49,9 @@ const WelcomeOverlay = ({ onClose }) => {
           Like word of mouth, but better.
         </div>
         <div className="welcomeSectionParagraph">
-          We’ve attended the meetups, talked to your neighbours and scouted
-          local business to get the inside scoop on the best things to do in
-          your hood when you have a baby in tow.
+          We attend the meetups, talk to your neighbours and scout local
+          business to get the inside scoop on the best things to do in your hood
+          when you have a baby in tow.
         </div>
       </div>
 
