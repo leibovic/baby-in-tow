@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "./branding/logo.svg";
-import headerIllustration from "./illustrations/welcome-header.png";
+import headerIllustration from "./illustrations/welcome-header.jpg";
 import community from "./illustrations/community.png";
 import culture from "./illustrations/culture.png";
 import eats from "./illustrations/eats.png";
