@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 
 export default class SelectedPin extends PureComponent {
   render() {
-    const { color } = this.props;
+    const { onClick, color } = this.props;
 
     return (
       <svg
@@ -11,8 +11,10 @@ export default class SelectedPin extends PureComponent {
         viewBox="0 0 47 53"
         fill="none"
         style={{
+          cursor: "pointer",
           transform: "translate(-23px,-40px)"
         }}
+        onClick={onClick}
       >
         <g filter="url(#filter0_d)">
           <mask

@@ -176,7 +176,12 @@ const App = () => {
               longitude={location.longitude}
               className={selected ? "selectedPin" : ""}
             >
-              {selected && <SelectedPin color={pinColor} />}
+              {selected && (
+                <SelectedPin
+                  onClick={() => setSelectedLocation(null)}
+                  color={pinColor}
+                />
+              )}
               {!selected && (
                 <Pin
                   onClick={() => setSelectedLocation(location)}
