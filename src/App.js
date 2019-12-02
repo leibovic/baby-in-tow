@@ -4,7 +4,6 @@ import FiltersOverlay from "./FiltersOverlay.js";
 import ReactMapGL, { Marker } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Pin from "./Pin";
-import SelectedPin from "./SelectedPin";
 import Detail from "./Detail";
 import WelcomeOverlay from "./WelcomeOverlay.js";
 import logoCircle from "./branding/logo-circle.png";
@@ -176,18 +175,17 @@ const App = () => {
               longitude={location.longitude}
               className={selected ? "selectedPin" : ""}
             >
-              {selected && (
-                <SelectedPin
-                  onClick={() => setSelectedLocation(null)}
-                  color={pinColor}
-                />
-              )}
-              {!selected && (
-                <Pin
-                  onClick={() => setSelectedLocation(location)}
-                  color={pinColor}
-                />
-              )}
+              <Pin
+                selected={selected}
+                onClick={() => {
+                  if (selected) {
+                    setSelectedLocation(null);
+                  } else {
+                    setSelectedLocation(location);
+                  }
+                }}
+                color={pinColor}
+              />
             </Marker>
           );
         })}
