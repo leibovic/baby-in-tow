@@ -259,10 +259,10 @@ const App = () => {
           color: "white"
         }}
       >
-        Baby in Tow is currently in alpha.{" "}
+        Baby in Tow is currently in BETA.{" "}
         <a
           style={{ fontWeight: "bold", color: "white" }}
-          href="https://forms.gle/MZx8FiY26z4cJEsw6"
+          href="https://forms.gle/X6Tswurfg5VP49Zs7"
           target="_blank"
           rel="noopener noreferrer"
         >
