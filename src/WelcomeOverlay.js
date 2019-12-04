@@ -49,9 +49,9 @@ const WelcomeOverlay = ({ onClose }) => {
           Like word of mouth, but better.
         </div>
         <div className="welcomeSectionParagraph">
-          We attend the meetups, talk to your neighbours and scout local
-          business to get the inside scoop on the best things to do in your hood
-          when you have a baby in tow.
+          We scout local businesses and crowdsource baby-tips from other parents
+          to bring you the best things to do in your neighbourhood when you have
+          a baby in tow.
         </div>
       </div>
 
@@ -63,40 +63,37 @@ const WelcomeOverlay = ({ onClose }) => {
       >
         <div className="welcomeSectionHeader">Get out there.</div>
         <div className="welcomeSectionParagraph">
-          Our goal is to make it easier for parents + baby to get out and enjoy
-          themselves because even with sleep deprivation, fresh air is good for
-          the soul and your local community is here to support you.
+          Even with sleep deprivation, fresh air is good for the soul. Our goal
+          is to make it easier for you and baby to get out and enjoy yourselves.
         </div>
         <div className="categorySections">
           <div className="categorySection">
             <img src={eats} alt="Coffee cup" />
             <div className="categoryTitle">Eats</div>
             <div className="categoryDescription">
-              A place to grab a bite or a drink
+              Baby-friendly places to grab a bite or a drink.
             </div>
           </div>
           <div className="categorySection">
             <img src={community} alt="Books and blocks" />
             <div className="categoryTitle">Community</div>
             <div className="categoryDescription">
-              Local organizations such as Libraries, Mother’s groups, and
-              government funded EarlyOn child and family centres
+              Local drop-in centres, libraries, and parent groups.
             </div>
           </div>
           <div className="categorySection">
             <img src={selfCare} alt="Manicure and barbell" />
             <div className="categoryTitle">Self Care</div>
             <div className="categoryDescription">
-              Places to go for some “me” time while you have a baby with you. We
-              only include businesses that can provide services while the baby
-              is present or that provide child minding
+              Places to go for some &quot;me&quot; time - curated for businesses
+              that welcome your baby too.
             </div>
           </div>
           <div className="categorySection">
             <img src={culture} alt="Drum and paint palette" />
             <div className="categoryTitle">Culture</div>
             <div className="categoryDescription">
-              Movies, visual arts, music, plays etc.
+              Baby loving theatres, music classes etc.
             </div>
           </div>
         </div>
