@@ -131,8 +131,7 @@ const Detail = ({ location, categoryColor }) => {
               <div
                 style={{
                   paddingTop: "5px",
-                  paddingBottom: "10px",
-                  maxWidth: "60%"
+                  paddingBottom: "10px"
                 }}
               >
                 <a
