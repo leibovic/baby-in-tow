@@ -261,7 +261,7 @@ const App = () => {
       >
         Baby in Tow is currently in BETA.{" "}
         <a
-          style={{ fontWeight: "bold", color: "white" }}
+          style={{ fontWeight: 600, color: "white" }}
           href="https://forms.gle/X6Tswurfg5VP49Zs7"
           target="_blank"
           rel="noopener noreferrer"

@@ -44,7 +44,7 @@ const FiltersOverlay = ({ filters, updateFilters, onClose }) => {
       <div
         style={{
           fontSize: "24px",
-          fontWeight: "bold"
+          fontWeight: 600
         }}
       >
         Filters

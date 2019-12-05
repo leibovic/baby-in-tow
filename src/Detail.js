@@ -52,7 +52,7 @@ const Detail = ({ location, categoryColor }) => {
           backgroundColor: categoryColor.backgroundColor,
           paddingLeft: "24px",
           textTransform: "uppercase",
-          fontWeight: 900,
+          fontWeight: 800,
           fontSize: "14px",
           lineHeight: "24px",
           color: categoryColor.color
@@ -67,7 +67,7 @@ const Detail = ({ location, categoryColor }) => {
         }}
       >
         <div
-          style={{ fontWeight: "bold", fontSize: "24px", marginBottom: "10px" }}
+          style={{ fontWeight: 600, fontSize: "24px", marginBottom: "10px" }}
         >
           {location.name}
         </div>

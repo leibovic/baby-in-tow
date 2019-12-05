@@ -14,8 +14,7 @@ const WelcomeOverlay = ({ onClose }) => {
     <div
       className="overlay"
       style={{
-        overflowY: "scroll",
-        fontSize: "14px"
+        overflowY: "scroll"
       }}
     >
       <div className="welcomeSection">
@@ -32,7 +31,7 @@ const WelcomeOverlay = ({ onClose }) => {
           <div className="welcomeSubtitle">
             Curated by parents in your community
           </div>
-          <button className="getStartedButton" onClick={onClose}>
+          <button className="welcomePageButton" onClick={onClose}>
             Get Started
           </button>
         </div>
@@ -103,29 +102,30 @@ const WelcomeOverlay = ({ onClose }) => {
         className="welcomeSection"
         style={{
           backgroundColor: "#374B5B",
-          color: "white",
-          textAlign: "left"
+          color: "white"
         }}
       >
         <div className="welcomeFooterContent">
           <div className="welcomeSectionParagraph">
-            Our first release includes the Toronto East End (Riverside,
-            Leslieville, Danforth Village and the Beaches) and we’re expanding!
+            We&apos;re just getting started. Our BETA release includes the
+            Toronto East End: Riverside, Leslieville, Danforth Village and the
+            Beaches.
           </div>
           <div className="welcomeSectionParagraph">
-            If you want to get involved in bringing this into your neighbourhood
-            or simply have a helpful tip to share{" "}
-            <a
-              href="mailto:babyintow.to@gmail.com"
-              style={{
-                color: "white",
-                fontWeight: "bold",
-                textDecoration: "underline"
-              }}
-            >
-              give us a shout!
-            </a>
+            Help spread the love and share a baby tip. We&apos;ll get it up on
+            the site so that other parents can benefit.
           </div>
+          <button
+            className="welcomePageButton"
+            style={{
+              color: "#374b5b",
+              backgroundColor: "white",
+              marginTop: "4px"
+            }}
+            onClick={() => window.open("https://forms.gle/4gvt51zVjhTxsqJN9")}
+          >
+            Submit Baby Tip
+          </button>
         </div>
 
         <img
