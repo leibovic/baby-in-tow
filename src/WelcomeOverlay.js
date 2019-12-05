@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "./branding/logo.svg";
+import logo from "./branding/logo-beta.svg";
 import headerIllustration from "./illustrations/welcome-header.jpg";
 import community from "./illustrations/community.png";
 import culture from "./illustrations/culture.png";
