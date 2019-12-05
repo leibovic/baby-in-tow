@@ -40,6 +40,7 @@ const Detail = ({ location, categoryColor }) => {
         left: 0,
         width: "calc(100% - 20px)",
         backgroundColor: "white",
+        boxShadow: "0px 4px 14px rgba(0, 0, 0, 0.25)",
         margin: "0 10px",
         borderRadius: "4px 4px 0 0",
         zIndex: 11 /* above selected pin */,
@@ -52,7 +53,7 @@ const Detail = ({ location, categoryColor }) => {
           backgroundColor: categoryColor.backgroundColor,
           paddingLeft: "24px",
           textTransform: "uppercase",
-          fontWeight: 800,
+          fontWeight: 900,
           fontSize: "14px",
           lineHeight: "24px",
           color: categoryColor.color
@@ -218,7 +219,7 @@ const Detail = ({ location, categoryColor }) => {
           margin: "0 24px 24px 24px",
           cursor: "pointer",
           borderRadius: "4px",
-          fontWeight: 600
+          fontWeight: 800
         }}
         onClick={() => updateDetailsExpanded(!detailsExpanded)}
       >

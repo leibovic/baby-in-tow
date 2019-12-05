@@ -232,6 +232,7 @@ hr {
 .filterButton {
   background: #374b5b;
   color: white;
+  font-weight: 800;
   border: none;
   border-radius: 4px;
   padding: 6px 20px;

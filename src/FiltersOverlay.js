@@ -27,8 +27,9 @@ const FiltersOverlay = ({ filters, updateFilters, onClose }) => {
         <button
           style={{
             width: "100%",
-            padding: "6px",
+            padding: "10px",
             fontSize: "14px",
+            fontWeight: 800,
             border: "none",
             backgroundColor: "#374B5B",
             color: "white",
