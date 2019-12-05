@@ -120,7 +120,7 @@ const WelcomeOverlay = ({ onClose }) => {
             style={{
               color: "#374b5b",
               backgroundColor: "white",
-              marginTop: "4px"
+              margin: "4px 0 20px 0"
             }}
             onClick={() => window.open("https://forms.gle/4gvt51zVjhTxsqJN9")}
           >
