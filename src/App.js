@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { render } from "react-dom";
-import { Router, Link } from "@reach/router";
+import { Router, navigate } from "@reach/router";
 import FiltersOverlay from "./FiltersOverlay.js";
 import ReactMapGL, { Marker } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
@@ -29,9 +29,7 @@ const categoryColors = {
 const gapi = window.gapi;
 
 const App = ({ locationId }) => {
-  console.log(locationId);
   const [locations, updateLocations] = useState([]);
-  const [selectedLocation, setSelectedLocation] = useState(null);
   const [viewport, setViewport] = useState({
     width: "100%",
     height: "100%",
@@ -52,11 +50,11 @@ const App = ({ locationId }) => {
     nursing3: true
   });
   const [filtersVisible, updateFiltersVisible] = useState(false);
-  const [welcomeVisible, updateWelcomeVisible] = useState(
-    // localStorage only stores strings
-    //localStorage.getItem("welcomeShown") !== "true"
-    true
-  );
+  const [welcomeVisible, updateWelcomeVisible] = useState(!locationId);
+
+  let selectedLocation = locations
+    ? locations.find(l => l.id === locationId)
+    : null;
 
   async function requestLocations() {
     try {
@@ -70,8 +68,8 @@ const App = ({ locationId }) => {
         range: "MVP Data!A2:Q100"
       });
 
-      updateLocations(
-        response.result.values.map(location => ({
+      const responseLocations = response.result.values
+        .map(location => ({
           id: location[0],
           name: location[1],
           address: location[2],
@@ -92,7 +90,12 @@ const App = ({ locationId }) => {
           instagram: location[15],
           facebook: location[16]
         }))
-      );
+        .filter(l => l.name && l.latitude !== 0 && l.longitude !== 0);
+
+      updateLocations(responseLocations);
+
+      // Set selected location from the route, if it's present
+      selectedLocation = responseLocations.find(l => l.id === locationId);
     } catch (e) {
       console.error(e);
     }
@@ -149,7 +152,7 @@ const App = ({ locationId }) => {
     selectedLocation != null &&
     !displayLocations.includes(selectedLocation)
   ) {
-    setSelectedLocation(null);
+    navigate("/");
   }
 
   return (
@@ -162,7 +165,7 @@ const App = ({ locationId }) => {
         onClick={e => {
           // Hack workaround for click listener firing when pin is clicked
           if (e.target.className === "overlays") {
-            setSelectedLocation(null);
+            navigate("/");
           }
         }}
       >
@@ -182,9 +185,9 @@ const App = ({ locationId }) => {
                 selected={selected}
                 onClick={() => {
                   if (selected) {
-                    setSelectedLocation(null);
+                    navigate("/");
                   } else {
-                    setSelectedLocation(location);
+                    navigate(`/locations/${location.id}`);
                   }
                 }}
                 color={pinColor}
