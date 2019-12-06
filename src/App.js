@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { render } from "react-dom";
+import { Router, Link } from "@reach/router";
 import FiltersOverlay from "./FiltersOverlay.js";
 import ReactMapGL, { Marker } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
@@ -27,7 +28,8 @@ const categoryColors = {
 // Loaded from synchronous script tag in index.html
 const gapi = window.gapi;
 
-const App = () => {
+const App = ({ locationId }) => {
+  console.log(locationId);
   const [locations, updateLocations] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [viewport, setViewport] = useState({
@@ -65,29 +67,30 @@ const App = () => {
 
       const response = await gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: config.spreadsheetId,
-        range: "MVP Data!A2:P100"
+        range: "MVP Data!A2:Q100"
       });
 
       updateLocations(
         response.result.values.map(location => ({
-          name: location[0],
-          address: location[1],
-          latitude: location[2] ? parseFloat(location[2]) : 0,
-          longitude: location[3] ? parseFloat(location[3]) : 0,
-          category: location[4],
+          id: location[0],
+          name: location[1],
+          address: location[2],
+          latitude: location[3] ? parseFloat(location[3]) : 0,
+          longitude: location[4] ? parseFloat(location[4]) : 0,
+          category: location[5],
           nursing:
-            location[5] && location[5] !== "?" ? parseInt(location[5]) : 0,
-          stroller:
             location[6] && location[6] !== "?" ? parseInt(location[6]) : 0,
-          changeTable: location[7] === "Y",
-          indoor: location[8] === "Y",
-          outdoor: location[9] === "Y",
-          description: location[10],
-          strollerTips: location[11],
-          nursingTips: location[12],
-          website: location[13],
-          instagram: location[14],
-          facebook: location[15]
+          stroller:
+            location[7] && location[7] !== "?" ? parseInt(location[7]) : 0,
+          changeTable: location[8] === "Y",
+          indoor: location[9] === "Y",
+          outdoor: location[10] === "Y",
+          description: location[12],
+          strollerTips: location[12],
+          nursingTips: location[13],
+          website: location[14],
+          instagram: location[15],
+          facebook: location[16]
         }))
       );
     } catch (e) {
@@ -273,4 +276,10 @@ const App = () => {
   );
 };
 
-render(<App />, document.getElementById("root"));
+render(
+  <Router>
+    <App path="/" />
+    <App path="locations/:locationId" />
+  </Router>,
+  document.getElementById("root")
+);
