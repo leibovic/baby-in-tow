@@ -70,16 +70,16 @@ const getAuth = async () => {
 
 const geocodeRow = async row => {
   const updatedRow = [...row];
-  const address = row[1];
-  const lat = row[2];
+  const address = row[2];
+  const lat = row[3];
 
   // To save on API calls, only geocode addresses without lay/long
   if (address && !lat) {
     console.log("geocoding address: " + address);
 
     const result = await geocoder.geocode(address);
-    updatedRow[2] = result[0].latitude;
-    updatedRow[3] = result[0].longitude;
+    updatedRow[3] = result[0].latitude;
+    updatedRow[4] = result[0].longitude;
   }
 
   return updatedRow;
@@ -93,7 +93,7 @@ const updateData = async () => {
   });
 
   const spreadsheetId = "1GxL136Eh5fK_6cTZQ1cW2Dmnq8Pn6hlFyWg9z7mgKek";
-  const range = "MVP Data!A2:O100";
+  const range = "MVP Data!A2:T100";
 
   const response = await sheets.spreadsheets.values.get({
     spreadsheetId,
