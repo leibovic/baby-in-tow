@@ -85,7 +85,7 @@ const App = ({ locationId }) => {
           changeTable: location[8] === "Y",
           indoor: location[9] === "Y",
           outdoor: location[10] === "Y",
-          description: location[12],
+          description: location[11],
           strollerTips: location[12],
           nursingTips: location[13],
           website: location[14],
