@@ -7,7 +7,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import Pin from "./Pin";
 import Detail from "./Detail";
 import WelcomeOverlay from "./WelcomeOverlay.js";
-import logoCircle from "./branding/logo-circle.png";
+import logoCircle from "./branding/logo-circle-beta.png";
 
 const ACCESS_TOKEN =
   "pk.eyJ1IjoibWxlaWJvdmljIiwiYSI6ImNqeWhhdDd2bDA5d2IzZ211NTdsZmNuNDkifQ.EeYaupgKuUPtyZpplZVf6A";
