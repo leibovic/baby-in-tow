@@ -184,7 +184,7 @@ const App = ({ locationId }) => {
               <Pin
                 selected={selected}
                 onClick={() => {
-                  if (selected) {
+                  if (selected && location.id) {
                     navigate("/");
                   } else {
                     navigate(`/locations/${location.id}`);
