@@ -281,7 +281,7 @@ const App = ({ locationId }) => {
 
 render(
   <Router>
-    <App path="/" />
+    <App default />
     <App path="locations/:locationId" />
   </Router>,
   document.getElementById("root")
