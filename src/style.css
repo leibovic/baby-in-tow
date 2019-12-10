@@ -31,6 +31,7 @@ button {
   left: 0;
   z-index: 20;
   background-color: white;
+  -webkit-overflow-scrolling: touch;
 }
 
 button:focus {
