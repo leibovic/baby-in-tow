@@ -133,9 +133,9 @@ hr {
 }
 
 .socialFooter {
-  background-color: #374b5b;
-  padding: 0 24px 50px 24px;
-  text-align: right;
+  background-color: black;
+  padding: 20px 24px;
+  text-align: center;
 }
 
 @media (min-width: 1000px) {
@@ -221,7 +221,7 @@ hr {
   }
 
   .socialFooter {
-    padding: 0 50px 50px 50px;
+    padding: 20px 50px;
   }
 }
 

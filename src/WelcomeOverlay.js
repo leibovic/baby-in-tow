@@ -143,15 +143,16 @@ const WelcomeOverlay = ({ onClose }) => {
           style={{
             color: "white",
             textDecoration: "none",
-            fontSize: "18px"
+            lineHeight: "20px"
           }}
         >
           Follow us on Instagram
           <img
             src={iconInsta}
             style={{
-              height: "24px",
+              height: "20px",
               marginLeft: "6px",
+              paddingBottom: "4px",
               verticalAlign: "middle"
             }}
             alt="Instagram"
