@@ -119,12 +119,23 @@ hr {
   margin: 10px 0;
 }
 
+.welcomeFooter {
+  background-color: #374b5b;
+  color: white;
+}
+
 .welcomeFooterContent > .welcomeSectionParagraph {
   margin-bottom: 24px;
 }
 
 .torontoIllustration {
   height: 250px;
+}
+
+.socialFooter {
+  background-color: #374b5b;
+  padding: 0 24px 50px 24px;
+  text-align: right;
 }
 
 @media (min-width: 1000px) {
@@ -193,7 +204,7 @@ hr {
     font-size: 16px;
   }
 
-  .welcomeSection:last-of-type {
+  .welcomeFooter {
     flex-direction: row;
     font-size: 24px;
     justify-content: center;
@@ -207,6 +218,10 @@ hr {
   .torontoIllustration {
     height: 380px;
     margin-left: 50px;
+  }
+
+  .socialFooter {
+    padding: 0 50px 50px 50px;
   }
 }
 

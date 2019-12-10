@@ -7,6 +7,7 @@ import eats from "./illustrations/eats.png";
 import selfCare from "./illustrations/self-care.png";
 import toronto from "./illustrations/toronto.png";
 import confetti from "./illustrations/confetti.png";
+import iconInsta from "./icons/icon-insta-white.svg";
 
 const WelcomeOverlay = ({ onClose }) => {
   localStorage.setItem("welcomeShown", "true");
@@ -99,7 +100,7 @@ const WelcomeOverlay = ({ onClose }) => {
       </div>
 
       <div
-        className="welcomeSection"
+        className="welcomeSection welcomeFooter"
         style={{
           backgroundColor: "#374B5B",
           color: "white"
@@ -127,12 +128,35 @@ const WelcomeOverlay = ({ onClose }) => {
             Submit Baby Tip
           </button>
         </div>
-
         <img
           className="torontoIllustration"
           src={toronto}
           alt="Toronto sky line"
         />
+      </div>
+
+      <div className="socialFooter">
+        <a
+          href="https://instagram.com/babyintow/"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            color: "white",
+            textDecoration: "none",
+            fontSize: "18px"
+          }}
+        >
+          Follow us on Instagram
+          <img
+            src={iconInsta}
+            style={{
+              height: "24px",
+              marginLeft: "6px",
+              verticalAlign: "middle"
+            }}
+            alt="Instagram"
+          />
+        </a>
       </div>
     </div>
   );
