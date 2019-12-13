@@ -92,8 +92,8 @@ const updateData = async () => {
     auth: auth
   });
 
-  const spreadsheetId = "1GxL136Eh5fK_6cTZQ1cW2Dmnq8Pn6hlFyWg9z7mgKek";
-  const range = "MVP Data!A2:T100";
+  const spreadsheetId = "1FQJHr9FR8Qgprzh8ggxQs4_InP4bZIJhEwDgAlbcOAQ";
+  const range = "STAGE Data!A2:T100";
 
   const response = await sheets.spreadsheets.values.get({
     spreadsheetId,
