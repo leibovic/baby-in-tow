@@ -7,5 +7,5 @@
 
 # Specific branch context: all deploys from this specific branch will inherit
 # these settings.
-# [context.staging] # 'staging' is a branch name
-#   command = "echo 'staging'"
+[context.staging.environment] # 'staging' is a branch name
+    SPREADSHEET_ID = "1FQJHr9FR8Qgprzh8ggxQs4_InP4bZIJhEwDgAlbcOAQ"

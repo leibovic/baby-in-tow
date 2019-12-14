@@ -15,7 +15,9 @@ const ACCESS_TOKEN =
 const config = {
   apiKey: "AIzaSyAwjO8DjRaUChRw6nx4OarscD6QGlMspqs",
   discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
-  spreadsheetId: "1GxL136Eh5fK_6cTZQ1cW2Dmnq8Pn6hlFyWg9z7mgKek"
+  // Default to production spreadsheet if no environment variable is set
+  spreadsheetId:
+    process.env.SPREADSHEET_ID || "1GxL136Eh5fK_6cTZQ1cW2Dmnq8Pn6hlFyWg9z7mgKek"
 };
 
 const categoryColors = {
