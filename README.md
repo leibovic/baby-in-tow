@@ -14,7 +14,7 @@ By default, all build environments point to our [production spreadsheet](https:/
 
 Netlify is configured to deploy a new preview environment for each PR, and we use those to validate code changes before merging.
 
-However, the `staging` branch is configured to point to our [staging spreadsheet](https://docs.google.com/spreadsheets/d/1FQJHr9FR8Qgprzh8ggxQs4_InP4bZIJhEwDgAlbcOAQ/edit#gid=1116228380). This environment is used for validating new data. We will continually rebase this branch on master, but otherwise no development will happen on it.
+However, the `staging` branch is configured to point to our [staging spreadsheet](https://docs.google.com/spreadsheets/d/1FQJHr9FR8Qgprzh8ggxQs4_InP4bZIJhEwDgAlbcOAQ/edit#gid=1116228380). This [staging environment](https://staging--babyintow.netlify.com) is used for validating new data. We will continually rebase this branch on master, but otherwise no development will happen on it.
 
 ## Geocoding Addresses
 
