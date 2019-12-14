@@ -6,7 +6,7 @@ A simple React app for visualizing baby-friendly spots in Toronto.
 
 ## Contributing
 
-To run the app locally, simply run `nmp install` and `npm run dev`.
+To run the app locally, simply run `npm install` and `npm run dev`.
 
 ## Build Environments
 
