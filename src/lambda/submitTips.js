@@ -22,8 +22,8 @@ module.exports.handler = async (event, context) => {
   });
 
   const sheetsResponse = await sheets.spreadsheets.values.get({
-    spreadsheetId: "1FQJHr9FR8Qgprzh8ggxQs4_InP4bZIJhEwDgAlbcOAQ",
-    range: "MVP Data!A2:Q100"
+    spreadsheetId: "1EdnXNPE2CwvIorGFOlB8xvNs8KDEs_FcgFgy7Xm7V9U",
+    range: "Submitted Tips!A1:C100"
   });
   // console.log(sheetsResponse.data.values);
 
