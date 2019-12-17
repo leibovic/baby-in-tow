@@ -10,12 +10,6 @@ export default class Pin extends PureComponent {
         height={selected ? 53 : 36}
         viewBox={selected ? "0 0 47 53" : "0 0 30 36"}
         fill="none"
-        style={{
-          cursor: "pointer",
-          transform: selected
-            ? "translate(-23px,-40px)"
-            : "translate(-15px,-36px)"
-        }}
         onClick={onClick}
       >
         {selected && (
