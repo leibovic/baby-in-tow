@@ -94,7 +94,6 @@ const App = ({ locationId }) => {
         }))
         .filter(l => l.name && l.latitude !== 0 && l.longitude !== 0);
 
-      console.log(responseLocations);
       updateLocations(responseLocations);
 
       // Set selected location from the route, if it's present
