@@ -121,7 +121,7 @@ const Detail = ({ location, categoryColor }) => {
             >
               Know this place?{" "}
               <a
-                href="https://forms.gle/4gvt51zVjhTxsqJN9"
+                href="https://forms.gle/yt38Z27Y3SE81q447"
                 target="_blank"
                 rel="noopener noreferrer"
               >
