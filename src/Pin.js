@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 
-export default class Pin extends PureComponent {
+export class Pin extends PureComponent {
   render() {
     const { onClick, color, selected } = this.props;
 

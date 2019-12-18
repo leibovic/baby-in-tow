@@ -4,7 +4,7 @@ import { Router, navigate } from "@reach/router";
 import FiltersOverlay from "./FiltersOverlay.js";
 import ReactMapGL from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import Marker from './Marker';
+import { Marker } from './Marker';
 import Detail from "./Detail";
 import WelcomeOverlay from "./WelcomeOverlay.js";
 import logoCircle from "./branding/logo-circle-beta.png";
@@ -70,7 +70,6 @@ const App = ({ locationId }) => {
         .map(([
           id,
           name,
-          description,
           address,
           latitude,
           longitude,
@@ -80,6 +79,7 @@ const App = ({ locationId }) => {
           changeTable,
           indoor,
           outdoor,
+          description,
           strollerTips,
           nursingTips,
           website,
@@ -192,7 +192,7 @@ const App = ({ locationId }) => {
             <Marker
               {...location}
               key={`marker-${location.name}`}
-              onClick={() => {
+              onMarkerClick={() => {
                 if (selected && location.id) {
                   navigate("/");
                 } else {
