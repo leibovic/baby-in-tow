@@ -192,6 +192,7 @@ const App = ({ locationId }) => {
             <Marker
               {...location}
               key={`marker-${location.name}`}
+              selected={selected}
               onMarkerClick={() => {
                 if (selected && location.id) {
                   navigate("/");
