@@ -5,7 +5,6 @@ import { Pin } from './Pin';
 import { categoryColors } from './constants';
 
 const StyledMarker = styled(ReactMapGLMarker)`
-  && { cursor: pointer };
   ${props => props.selected ? 
     css`
       z-index: 10;
