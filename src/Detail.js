@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Stars from "./Stars";
 import { useSwipeable } from "react-swipeable";
+import { navigate } from "@reach/router";
 import featureYes from "./icons/feature-yes.svg";
 import featureNo from "./icons/feature-no.svg";
 import plus from "./icons/plus.svg";
@@ -16,7 +17,8 @@ const Detail = ({ location, categoryColor }) => {
   const [detailsExpanded, updateDetailsExpanded] = useState(false);
   const swipeableHandlers = useSwipeable({
     onSwipedUp: () => updateDetailsExpanded(true),
-    onSwipedDown: () => updateDetailsExpanded(false),
+    onSwipedDown: () =>
+      detailsExpanded ? updateDetailsExpanded(false) : navigate("/"),
     trackMouse: true
   });
 
@@ -119,7 +121,7 @@ const Detail = ({ location, categoryColor }) => {
             >
               Know this place?{" "}
               <a
-                href="https://forms.gle/4gvt51zVjhTxsqJN9"
+                href="https://forms.gle/yt38Z27Y3SE81q447"
                 target="_blank"
                 rel="noopener noreferrer"
               >

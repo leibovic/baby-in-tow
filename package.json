@@ -6,7 +6,7 @@
     "dev": "parcel src/index.html",
     "build": "parcel build src/index.html",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
-    "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
+    "lint": "eslint \"src/**/*.{js,jsx}\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "geocode": "node src/util/geocodeAddresses.js"
   },
@@ -24,7 +24,7 @@
     "googleapis": "^45.0.0",
     "node-geocoder": "^3.25.0",
     "parcel-bundler": "1.12.3",
-    "prettier": "^1.18.2"
+    "prettier": "^1.19.1"
   },
   "dependencies": {
     "@reach/router": "^1.2.1",
