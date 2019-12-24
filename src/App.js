@@ -20,6 +20,8 @@ const config = {
     process.env.SPREADSHEET_ID || "1GxL136Eh5fK_6cTZQ1cW2Dmnq8Pn6hlFyWg9z7mgKek"
 };
 
+foo;
+
 const categoryColors = {
   "Self Care": { backgroundColor: "#F7A79A", color: "#374B5B" },
   Community: { backgroundColor: "#548231", color: "white" },
