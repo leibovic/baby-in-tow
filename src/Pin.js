@@ -5,11 +5,15 @@ const ICON_SELECTED_WIDTH = 47;
 const ICON_HEIGHT = 36;
 const ICON_SELECTED_HEIGHT = 53;
 
-export const Pin = ({ onClick, color, selected }) => (
+const Pin = ({ onClick, color, selected }) => (
   <svg
     width={selected ? ICON_SELECTED_WIDTH : ICON_WIDTH}
     height={selected ? ICON_SELECTED_HEIGHT : ICON_HEIGHT}
-    viewBox={selected ? `0 0 ${ICON_SELECTED_WIDTH} ${ICON_SELECTED_HEIGHT}` : `0 0 ${ICON_WIDTH} ${ICON_HEIGHT}`}
+    viewBox={
+      selected
+        ? `0 0 ${ICON_SELECTED_WIDTH} ${ICON_SELECTED_HEIGHT}`
+        : `0 0 ${ICON_WIDTH} ${ICON_HEIGHT}`
+    }
     fill="none"
     onClick={onClick}
   >
@@ -101,3 +105,5 @@ export const Pin = ({ onClick, color, selected }) => (
     )}
   </svg>
 );
+
+export default Pin;

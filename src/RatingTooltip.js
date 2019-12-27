@@ -20,7 +20,7 @@ const RatingTooltip = ({ type }) => {
   };
 
   return (
-    <React.Fragment>
+    <>
       {modalShowing && (
         <div
           style={{
@@ -47,6 +47,7 @@ const RatingTooltip = ({ type }) => {
             }}
           >
             <button
+              type="button"
               style={{
                 background: "transparent",
                 border: "none",
@@ -85,6 +86,7 @@ const RatingTooltip = ({ type }) => {
               })}
             </div>
             <button
+              type="button"
               style={{
                 backgroundColor: "#374B5B",
                 textAlign: "center",
@@ -105,6 +107,7 @@ const RatingTooltip = ({ type }) => {
         </div>
       )}
       <button
+        type="button"
         style={{
           background: "transparent",
           border: "none",
@@ -116,7 +119,7 @@ const RatingTooltip = ({ type }) => {
       >
         <img src={helpCircle} alt="Help" />
       </button>
-    </React.Fragment>
+    </>
   );
 };
 
