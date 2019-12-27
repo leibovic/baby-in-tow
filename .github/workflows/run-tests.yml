@@ -12,6 +12,7 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         registry-url: https://npm.pkg.github.com/
+        scope: leibovic
         node-version: 12
     - name: Install
       run: npm ci
