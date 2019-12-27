@@ -8,7 +8,9 @@ const NodeGeocoder = require("node-geocoder");
 const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);
 
-readline.Interface.prototype.question[promisify.custom] = function(prompt) {
+readline.Interface.prototype.question[promisify.custom] = function custom(
+  prompt
+) {
   return new Promise(resolve =>
     readline.Interface.prototype.question.call(this, prompt, resolve)
   );

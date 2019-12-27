@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { useState } from "react";
 import { useSwipeable } from "react-swipeable";
 import { navigate } from "@reach/router";
