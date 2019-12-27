@@ -20,7 +20,7 @@ const RatingTooltip = ({ type }) => {
   };
 
   return (
-    <React.Fragment>
+    <>
       {modalShowing && (
         <div
           style={{
@@ -116,7 +116,7 @@ const RatingTooltip = ({ type }) => {
       >
         <img src={helpCircle} alt="Help" />
       </button>
-    </React.Fragment>
+    </>
   );
 };
 

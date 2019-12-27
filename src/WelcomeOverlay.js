@@ -11,6 +11,7 @@ import iconInsta from "./icons/icon-insta-white.svg";
 
 const WelcomeOverlay = ({ onClose }) => {
   localStorage.setItem("welcomeShown", "true");
+
   return (
     <div
       className="overlay"

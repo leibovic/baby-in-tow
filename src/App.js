@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { render } from "react-dom";
 import { Router, navigate } from "@reach/router";
-import FiltersOverlay from "./FiltersOverlay.js";
 import ReactMapGL, { Marker } from "react-map-gl";
+import FiltersOverlay from "./FiltersOverlay.js";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Pin from "./Pin";
 import Detail from "./Detail";
@@ -106,7 +106,7 @@ const App = ({ locationId }) => {
   // Called once to load locations state
   useEffect(() => {
     gapi.load("client", requestLocations);
-  }, []);
+  }, [requestLocations]);
 
   // Go through filters, looking for a reason to exclude location if it doesn't match requirements
   const displayLocations = locations.filter(location => {
@@ -147,6 +147,7 @@ const App = ({ locationId }) => {
     if (!filters.stroller3 && location.stroller === 3) {
       return false;
     }
+
     return true;
   });
 
@@ -176,6 +177,7 @@ const App = ({ locationId }) => {
             ? categoryColors[location.category].backgroundColor
             : "white";
           const selected = selectedLocation == location;
+
           return (
             <Marker
               key={`marker-${location.name}`}
