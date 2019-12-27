@@ -66,7 +66,7 @@ const FiltersOverlay = ({ filters, updateFilters, onClose }) => {
               checked={filters.indoor}
               onChange={e => {
                 const checked = e.target.checked;
-                updateFilters(filters => ({ ...filters, indoor: checked }));
+                updateFilters(_filters => ({ ..._filters, indoor: checked }));
               }}
             />
             <div className="filterLabel">
@@ -82,8 +82,8 @@ const FiltersOverlay = ({ filters, updateFilters, onClose }) => {
               checked={filters.outdoor}
               onChange={e => {
                 const checked = e.target.checked;
-                updateFilters(filters => ({
-                  ...filters,
+                updateFilters(_filters => ({
+                  ..._filters,
                   outdoor: checked
                 }));
               }}
@@ -103,8 +103,8 @@ const FiltersOverlay = ({ filters, updateFilters, onClose }) => {
               checked={filters.changeTable}
               onChange={e => {
                 const checked = e.target.checked;
-                updateFilters(filters => ({
-                  ...filters,
+                updateFilters(_filters => ({
+                  ..._filters,
                   changeTable: checked
                 }));
               }}
@@ -135,8 +135,8 @@ const FiltersOverlay = ({ filters, updateFilters, onClose }) => {
                   checked={filters.stroller1}
                   onChange={e => {
                     const checked = e.target.checked;
-                    updateFilters(filters => ({
-                      ...filters,
+                    updateFilters(_filters => ({
+                      ..._filters,
                       stroller1: checked
                     }));
                   }}
@@ -156,8 +156,8 @@ const FiltersOverlay = ({ filters, updateFilters, onClose }) => {
                   checked={filters.stroller2}
                   onChange={e => {
                     const checked = e.target.checked;
-                    updateFilters(filters => ({
-                      ...filters,
+                    updateFilters(_filters => ({
+                      ..._filters,
                       stroller2: checked
                     }));
                   }}
@@ -175,8 +175,8 @@ const FiltersOverlay = ({ filters, updateFilters, onClose }) => {
                   checked={filters.stroller3}
                   onChange={e => {
                     const checked = e.target.checked;
-                    updateFilters(filters => ({
-                      ...filters,
+                    updateFilters(_filters => ({
+                      ..._filters,
                       stroller3: checked
                     }));
                   }}
@@ -212,8 +212,8 @@ const FiltersOverlay = ({ filters, updateFilters, onClose }) => {
                   checked={filters.nursing1}
                   onChange={e => {
                     const checked = e.target.checked;
-                    updateFilters(filters => ({
-                      ...filters,
+                    updateFilters(_filters => ({
+                      ..._filters,
                       nursing1: checked
                     }));
                   }}
@@ -234,8 +234,8 @@ const FiltersOverlay = ({ filters, updateFilters, onClose }) => {
                   checked={filters.nursing2}
                   onChange={e => {
                     const checked = e.target.checked;
-                    updateFilters(filters => ({
-                      ...filters,
+                    updateFilters(_filters => ({
+                      ..._filters,
                       nursing2: checked
                     }));
                   }}
@@ -256,8 +256,8 @@ const FiltersOverlay = ({ filters, updateFilters, onClose }) => {
                   checked={filters.nursing3}
                   onChange={e => {
                     const checked = e.target.checked;
-                    updateFilters(filters => ({
-                      ...filters,
+                    updateFilters(_filters => ({
+                      ..._filters,
                       nursing3: checked
                     }));
                   }}
