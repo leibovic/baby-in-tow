@@ -19,10 +19,6 @@ button {
   left: 0;
 }
 
-.selectedPin {
-  z-index: 10;
-}
-
 .overlay {
   position: fixed;
   top: 0;
