@@ -1,3 +1,8 @@
 {
-  "extends": ["@goproperly/eslint-config-properly-react"]
+  "extends": [
+    "@goproperly/eslint-config-properly-react"
+  ],
+  "rules": {
+    "react/prop-types": "off"
+  }
 }
