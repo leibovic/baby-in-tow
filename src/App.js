@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import { render } from "react-dom";
 import { Router, navigate } from "@reach/router";
 import FiltersOverlay from "./FiltersOverlay.js";
-import ReactMapGL, { Marker } from "react-map-gl";
+import ReactMapGL from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import Pin from "./Pin";
+import { Marker } from './Marker';
 import Detail from "./Detail";
 import WelcomeOverlay from "./WelcomeOverlay.js";
 import logoCircle from "./branding/logo-circle-beta.png";
+import { categoryColors } from './constants';
 
 const ACCESS_TOKEN =
   "pk.eyJ1IjoibWxlaWJvdmljIiwiYSI6ImNqeWhhdDd2bDA5d2IzZ211NTdsZmNuNDkifQ.EeYaupgKuUPtyZpplZVf6A";
@@ -20,15 +21,10 @@ const config = {
     process.env.SPREADSHEET_ID || "1GxL136Eh5fK_6cTZQ1cW2Dmnq8Pn6hlFyWg9z7mgKek"
 };
 
-const categoryColors = {
-  "Self Care": { backgroundColor: "#F7A79A", color: "#374B5B" },
-  Community: { backgroundColor: "#548231", color: "white" },
-  Culture: { backgroundColor: "#007EA3", color: "white" },
-  Eats: { backgroundColor: "#D9B302", color: "#374B5B" }
-};
-
 // Loaded from synchronous script tag in index.html
 const gapi = window.gapi;
+
+const booleanFromYesNo = value => value === 'Y';
 
 const App = ({ locationId }) => {
   const [locations, updateLocations] = useState([]);
@@ -71,26 +67,45 @@ const App = ({ locationId }) => {
       });
 
       const responseLocations = response.result.values
-        .map(location => ({
-          id: location[0],
-          name: location[1],
-          address: location[2],
-          latitude: location[3] ? parseFloat(location[3]) : 0,
-          longitude: location[4] ? parseFloat(location[4]) : 0,
-          category: location[5],
+        .map(([
+          id,
+          name,
+          address,
+          latitude,
+          longitude,
+          category,
+          nursing,
+          stroller,
+          changeTable,
+          indoor,
+          outdoor,
+          description,
+          strollerTips,
+          nursingTips,
+          website,
+          instagram,
+          facebook,
+        ]) => ({
+          id,
+          name,
+          address,
+          category,
+          description,
+          strollerTips,
+          nursingTips,
+          website,
+          instagram,
+          facebook,
+          latitude: latitude ? parseFloat(latitude) : 0,
+          longitude: longitude ? parseFloat(longitude) : 0,
           nursing:
-            location[6] && location[6] !== "?" ? parseInt(location[6]) : 0,
+            nursing && nursing !== "?" ? parseInt(nursing) : 0,
           stroller:
-            location[7] && location[7] !== "?" ? parseInt(location[7]) : 0,
-          changeTable: location[8] === "Y",
-          indoor: location[9] === "Y",
-          outdoor: location[10] === "Y",
-          description: location[11],
-          strollerTips: location[12],
-          nursingTips: location[13],
-          website: location[14],
-          instagram: location[15],
-          facebook: location[16]
+            stroller && stroller !== "?" ? parseInt(stroller) : 0,
+          changeTable: booleanFromYesNo(changeTable),
+          indoor: booleanFromYesNo(indoor),
+          outdoor: booleanFromYesNo(outdoor),
+          
         }))
         .filter(l => l.name && l.latitude !== 0 && l.longitude !== 0);
 
@@ -171,31 +186,27 @@ const App = ({ locationId }) => {
           }
         }}
       >
-        {displayLocations.map(location => {
+        { displayLocations.map(location =>  {
+          const selected = selectedLocation === location;
           const pinColor = location.category
             ? categoryColors[location.category].backgroundColor
-            : "white";
-          const selected = selectedLocation == location;
-          return (
+            : 'white';
+          return ( 
             <Marker
+              {...location}
               key={`marker-${location.name}`}
-              latitude={location.latitude}
-              longitude={location.longitude}
-              className={selected ? "selectedPin" : ""}
+              selected={selected}
+              pinColor={pinColor}
+              onMarkerClick={() => {
+                if (selected && location.id) {
+                  navigate("/");
+                } else {
+                  navigate(`/locations/${location.id}`);
+                }
+              }}
             >
-              <Pin
-                selected={selected}
-                onClick={() => {
-                  if (selected && location.id) {
-                    navigate("/");
-                  } else {
-                    navigate(`/locations/${location.id}`);
-                  }
-                }}
-                color={pinColor}
-              />
             </Marker>
-          );
+          )
         })}
       </ReactMapGL>
 
