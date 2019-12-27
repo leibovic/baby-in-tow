@@ -31,6 +31,7 @@ const geocoder = NodeGeocoder({
 
 const getAuth = async () => {
   const credentials = await readFile("credentials.json");
+  // eslint-disable-next-line camelcase
   const { client_id, client_secret, redirect_uris } = JSON.parse(
     credentials
   ).installed;
