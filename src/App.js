@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { render } from "react-dom";
 import { Router, navigate } from "@reach/router";
 import FiltersOverlay from "./FiltersOverlay.js";
-import ReactMapGL, { Marker } from "react-map-gl";
+import ReactMapGL, { Marker, FlyToInterpolator } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Pin from "./Pin";
 import Detail from "./Detail";
@@ -30,6 +30,8 @@ const categoryColors = {
 // Loaded from synchronous script tag in index.html
 const gapi = window.gapi;
 
+const animationMS = 300;
+
 const App = ({ locationId }) => {
   const [locations, updateLocations] = useState([]);
   const [viewport, setViewport] = useState({
@@ -53,6 +55,7 @@ const App = ({ locationId }) => {
   });
   const [filtersVisible, updateFiltersVisible] = useState(false);
   const [welcomeVisible, updateWelcomeVisible] = useState(!locationId);
+  const [transitionDuration, setTransitionDuration] = useState(0);
 
   let selectedLocation = locations
     ? locations.find(l => l.id === locationId)
@@ -164,6 +167,9 @@ const App = ({ locationId }) => {
         mapStyle="mapbox://styles/mapbox/streets-v10"
         {...viewport}
         onViewportChange={viewport => setViewport(viewport)}
+        transitionInterpolator={new FlyToInterpolator()}
+        transitionDuration={transitionDuration}
+        onTransitionEnd={() => transitionDuration > 0 && setTransitionDuration(0)}
         onClick={e => {
           // Hack workaround for click listener firing when pin is clicked
           if (e.target.className === "overlays") {
@@ -190,6 +196,12 @@ const App = ({ locationId }) => {
                     navigate("/");
                   } else {
                     navigate(`/locations/${location.id}`);
+                    setTransitionDuration(animationMS);
+                    setViewport({
+                      ...viewport,
+                      latitude: location.latitude,
+                      longitude: location.longitude,
+                    });
                   }
                 }}
                 color={pinColor}
