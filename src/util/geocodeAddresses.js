@@ -8,7 +8,9 @@ const NodeGeocoder = require("node-geocoder");
 const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);
 
-readline.Interface.prototype.question[promisify.custom] = function(prompt) {
+readline.Interface.prototype.question[promisify.custom] = function custom(
+  prompt
+) {
   return new Promise(resolve =>
     readline.Interface.prototype.question.call(this, prompt, resolve)
   );
@@ -31,6 +33,7 @@ const geocoder = NodeGeocoder({
 
 const getAuth = async () => {
   const credentials = await readFile("credentials.json");
+  // eslint-disable-next-line camelcase
   const { client_id, client_secret, redirect_uris } = JSON.parse(
     credentials
   ).installed;
@@ -75,7 +78,7 @@ const geocodeRow = async row => {
 
   // To save on API calls, only geocode addresses without lay/long
   if (address && !lat) {
-    console.log("geocoding address: " + address);
+    console.log(`geocoding address: ${address}`);
 
     const result = await geocoder.geocode(address);
     updatedRow[3] = result[0].latitude;
@@ -89,7 +92,7 @@ const updateData = async () => {
   const auth = await getAuth();
   const sheets = google.sheets({
     version: "v4",
-    auth: auth
+    auth
   });
 
   const spreadsheetId = "1FQJHr9FR8Qgprzh8ggxQs4_InP4bZIJhEwDgAlbcOAQ";

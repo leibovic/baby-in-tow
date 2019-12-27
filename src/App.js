@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { render } from "react-dom";
 import { Router, navigate } from "@reach/router";
-import FiltersOverlay from "./FiltersOverlay.js";
 import ReactMapGL from "react-map-gl";
+
 import "mapbox-gl/dist/mapbox-gl.css";
-import { Marker } from './Marker';
+
+import Marker from "./Marker";
 import Detail from "./Detail";
-import WelcomeOverlay from "./WelcomeOverlay.js";
+import FiltersOverlay from "./FiltersOverlay";
+import WelcomeOverlay from "./WelcomeOverlay";
+import { categoryColors } from "./constants";
+
 import logoCircle from "./branding/logo-circle-beta.png";
-import { categoryColors } from './constants';
 
 const ACCESS_TOKEN =
   "pk.eyJ1IjoibWxlaWJvdmljIiwiYSI6ImNqeWhhdDd2bDA5d2IzZ211NTdsZmNuNDkifQ.EeYaupgKuUPtyZpplZVf6A";
@@ -24,7 +27,7 @@ const config = {
 // Loaded from synchronous script tag in index.html
 const gapi = window.gapi;
 
-const booleanFromYesNo = value => value === 'Y';
+const booleanFromYesNo = value => value === "Y";
 
 const App = ({ locationId }) => {
   const [locations, updateLocations] = useState([]);
@@ -50,76 +53,73 @@ const App = ({ locationId }) => {
   const [filtersVisible, updateFiltersVisible] = useState(false);
   const [welcomeVisible, updateWelcomeVisible] = useState(!locationId);
 
-  let selectedLocation = locations
+  const selectedLocation = locations
     ? locations.find(l => l.id === locationId)
     : null;
 
-  async function requestLocations() {
-    try {
-      await gapi.client.init({
-        apiKey: config.apiKey,
-        discoveryDocs: config.discoveryDocs
-      });
-
-      const response = await gapi.client.sheets.spreadsheets.values.get({
-        spreadsheetId: config.spreadsheetId,
-        range: "MVP Data!A2:Q100"
-      });
-
-      const responseLocations = response.result.values
-        .map(([
-          id,
-          name,
-          address,
-          latitude,
-          longitude,
-          category,
-          nursing,
-          stroller,
-          changeTable,
-          indoor,
-          outdoor,
-          description,
-          strollerTips,
-          nursingTips,
-          website,
-          instagram,
-          facebook,
-        ]) => ({
-          id,
-          name,
-          address,
-          category,
-          description,
-          strollerTips,
-          nursingTips,
-          website,
-          instagram,
-          facebook,
-          latitude: latitude ? parseFloat(latitude) : 0,
-          longitude: longitude ? parseFloat(longitude) : 0,
-          nursing:
-            nursing && nursing !== "?" ? parseInt(nursing) : 0,
-          stroller:
-            stroller && stroller !== "?" ? parseInt(stroller) : 0,
-          changeTable: booleanFromYesNo(changeTable),
-          indoor: booleanFromYesNo(indoor),
-          outdoor: booleanFromYesNo(outdoor),
-          
-        }))
-        .filter(l => l.name && l.latitude !== 0 && l.longitude !== 0);
-
-      updateLocations(responseLocations);
-
-      // Set selected location from the route, if it's present
-      selectedLocation = responseLocations.find(l => l.id === locationId);
-    } catch (e) {
-      console.error(e);
-    }
-  }
-
   // Called once to load locations state
   useEffect(() => {
+    async function requestLocations() {
+      try {
+        await gapi.client.init({
+          apiKey: config.apiKey,
+          discoveryDocs: config.discoveryDocs
+        });
+
+        const response = await gapi.client.sheets.spreadsheets.values.get({
+          spreadsheetId: config.spreadsheetId,
+          range: "MVP Data!A2:Q100"
+        });
+
+        const responseLocations = response.result.values
+          .map(
+            ([
+              id,
+              name,
+              address,
+              latitude,
+              longitude,
+              cat,
+              nursing,
+              stroller,
+              changeTable,
+              indoor,
+              outdoor,
+              description,
+              strollerTips,
+              nursingTips,
+              website,
+              instagram,
+              facebook
+            ]) => ({
+              id,
+              name,
+              address,
+              category: cat,
+              description,
+              strollerTips,
+              nursingTips,
+              website,
+              instagram,
+              facebook,
+              latitude: latitude ? parseFloat(latitude) : 0,
+              longitude: longitude ? parseFloat(longitude) : 0,
+              nursing: nursing && nursing !== "?" ? parseInt(nursing, 10) : 0,
+              stroller:
+                stroller && stroller !== "?" ? parseInt(stroller, 10) : 0,
+              changeTable: booleanFromYesNo(changeTable),
+              indoor: booleanFromYesNo(indoor),
+              outdoor: booleanFromYesNo(outdoor)
+            })
+          )
+          .filter(l => l.name && l.latitude !== 0 && l.longitude !== 0);
+
+        updateLocations(responseLocations);
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
     gapi.load("client", requestLocations);
   }, []);
 
@@ -162,6 +162,7 @@ const App = ({ locationId }) => {
     if (!filters.stroller3 && location.stroller === 3) {
       return false;
     }
+
     return true;
   });
 
@@ -177,8 +178,12 @@ const App = ({ locationId }) => {
       <ReactMapGL
         mapboxApiAccessToken={ACCESS_TOKEN}
         mapStyle="mapbox://styles/mapbox/streets-v10"
-        {...viewport}
-        onViewportChange={viewport => setViewport(viewport)}
+        width={viewport.width}
+        height={viewport.height}
+        latitude={viewport.latitude}
+        longitude={viewport.longitude}
+        zoom={viewport.zoom}
+        onViewportChange={_viewport => setViewport(_viewport)}
         onClick={e => {
           // Hack workaround for click listener firing when pin is clicked
           if (e.target.className === "overlays") {
@@ -186,14 +191,16 @@ const App = ({ locationId }) => {
           }
         }}
       >
-        { displayLocations.map(location =>  {
+        {displayLocations.map(location => {
           const selected = selectedLocation === location;
           const pinColor = location.category
             ? categoryColors[location.category].backgroundColor
-            : 'white';
-          return ( 
+            : "white";
+
+          return (
             <Marker
-              {...location}
+              latitude={location.latitude}
+              longitude={location.longitude}
               key={`marker-${location.name}`}
               selected={selected}
               pinColor={pinColor}
@@ -204,9 +211,8 @@ const App = ({ locationId }) => {
                   navigate(`/locations/${location.id}`);
                 }
               }}
-            >
-            </Marker>
-          )
+            />
+          );
         })}
       </ReactMapGL>
 
@@ -244,6 +250,7 @@ const App = ({ locationId }) => {
         </select>
 
         <button
+          type="button"
           className="filterButton"
           onClick={() => updateFiltersVisible(true)}
         >

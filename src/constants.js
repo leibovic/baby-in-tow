@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 export const categoryColors = {
   "Self Care": { backgroundColor: "#F7A79A", color: "#374B5B" },
   Community: { backgroundColor: "#548231", color: "white" },

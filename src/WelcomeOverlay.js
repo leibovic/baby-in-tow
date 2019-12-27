@@ -11,6 +11,7 @@ import iconInsta from "./icons/icon-insta-white.svg";
 
 const WelcomeOverlay = ({ onClose }) => {
   localStorage.setItem("welcomeShown", "true");
+
   return (
     <div
       className="overlay"
@@ -32,7 +33,7 @@ const WelcomeOverlay = ({ onClose }) => {
           <div className="welcomeSubtitle">
             Curated by parents in your community
           </div>
-          <button className="welcomePageButton" onClick={onClose}>
+          <button type="button" className="welcomePageButton" onClick={onClose}>
             Get Started
           </button>
         </div>
@@ -117,6 +118,7 @@ const WelcomeOverlay = ({ onClose }) => {
             the site so that other parents can benefit.
           </div>
           <button
+            type="button"
             className="welcomePageButton"
             style={{
               color: "#374b5b",

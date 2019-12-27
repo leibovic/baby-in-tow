@@ -1,7 +1,8 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { useState } from "react";
-import Stars from "./Stars";
 import { useSwipeable } from "react-swipeable";
 import { navigate } from "@reach/router";
+import Stars from "./Stars";
 import featureYes from "./icons/feature-yes.svg";
 import featureNo from "./icons/feature-no.svg";
 import plus from "./icons/plus.svg";
@@ -106,7 +107,7 @@ const Detail = ({ location, categoryColor }) => {
           <div className="detailDescription">{location.nursingTips}</div>
         )}
         {detailsExpanded && (
-          <React.Fragment>
+          <>
             <hr />
             <div className="detailLabel">Baby tips</div>
             <div className="detailDescription">{location.description}</div>
@@ -205,10 +206,11 @@ const Detail = ({ location, categoryColor }) => {
                 </a>
               )}
             </div>
-          </React.Fragment>
+          </>
         )}
       </div>
       <button
+        type="button"
         style={{
           backgroundColor: detailsExpanded ? "white" : "#374B5B",
           textAlign: "center",
