@@ -1,5 +1,5 @@
 {
-  "name": "baby-spots",
+  "name": "baby-in-tow",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -56,5 +56,9 @@
     "last 2 Edge versions",
     "last 2 Opera versions",
     "last 2 OperaMobile versions"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leibovic/baby-in-tow.git"
+  }
 }
