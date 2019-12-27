@@ -188,11 +188,15 @@ const App = ({ locationId }) => {
       >
         { displayLocations.map(location =>  {
           const selected = selectedLocation === location;
+          const pinColor = location.category
+            ? categoryColors[location.category].backgroundColor
+            : 'white';
           return ( 
             <Marker
               {...location}
               key={`marker-${location.name}`}
               selected={selected}
+              pinColor={pinColor}
               onMarkerClick={() => {
                 if (selected && location.id) {
                   navigate("/");

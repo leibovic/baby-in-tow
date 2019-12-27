@@ -2,7 +2,6 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { Marker as ReactMapGLMarker } from "react-map-gl";
 import { Pin } from './Pin';
-import { categoryColors } from './constants';
 
 const StyledMarker = styled(ReactMapGLMarker)`
   ${props => props.selected ? 
@@ -13,21 +12,17 @@ const StyledMarker = styled(ReactMapGLMarker)`
       transform: translate(-15px,-36px);
     `
   };
+  svg {
+    cursor: pointer;
+  }
 `;
 
-export const Marker = ({ selected, latitude, longitude, category, onMarkerClick }) => {
-  const pinColor = category
-    ? categoryColors[category].backgroundColor
-    : 'white';
-  
-  return (
-    <StyledMarker
-      latitude={latitude}
-      longitude={longitude}
-      selected={selected}
-    >
-      <Pin selected={selected} color={pinColor} onClick={onMarkerClick} />
-    </StyledMarker>
-    )
-  ;
-}
+export const Marker = ({ selected, latitude, longitude, pinColor, onMarkerClick }) => (
+  <StyledMarker
+    latitude={latitude}
+    longitude={longitude}
+    selected={selected}
+  >
+    <Pin selected={selected} color={pinColor} onClick={onMarkerClick} />
+  </StyledMarker>
+);
