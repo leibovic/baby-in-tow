@@ -25,6 +25,7 @@ const FiltersOverlay = ({ filters, updateFilters, onClose }) => {
         }}
       >
         <button
+          type="button"
           style={{
             width: "100%",
             padding: "10px",
@@ -119,6 +120,7 @@ const FiltersOverlay = ({ filters, updateFilters, onClose }) => {
           <div className="filterSectionTitle">
             Stroller space
             <button
+              type="button"
               className="filterExpandButton"
               onClick={() => updateStrollerExpanded(!strollerExpanded)}
             >
@@ -197,6 +199,7 @@ const FiltersOverlay = ({ filters, updateFilters, onClose }) => {
           <div className="filterSectionTitle">
             Ease of nursing
             <button
+              type="button"
               className="filterExpandButton"
               onClick={() => updateNursingExpanded(!nursingExpanded)}
             >

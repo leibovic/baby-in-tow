@@ -242,6 +242,7 @@ const App = ({ locationId }) => {
         </select>
 
         <button
+          type="button"
           className="filterButton"
           onClick={() => updateFiltersVisible(true)}
         >
