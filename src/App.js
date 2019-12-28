@@ -28,9 +28,12 @@ const gapi = window.gapi;
 
 const animationMS = 300;
 
-const booleanFromYesNo = value => value === 'Y';
+const booleanFromYesNo = value => value === "Y";
 
 const App = ({ locationId }) => {
+  const [isInitialLocationCentred, setIsInitialLocationCentered] = useState(
+    false
+  );
   const [locations, updateLocations] = useState([]);
   const [viewport, setViewport] = useState({
     width: "100%",
@@ -58,6 +61,26 @@ const App = ({ locationId }) => {
   const selectedLocation = locations
     ? locations.find(l => l.id === locationId)
     : null;
+
+  const animateToCoordinates = ({ latitude, longitude }) => {
+    setTransitionDuration(animationMS);
+    setViewport({
+      ...viewport,
+      latitude,
+      longitude
+    });
+  };
+
+  // If we have loaded a location directly via URL, we want to pan the map to its coordinates
+  if (
+    selectedLocation &&
+    selectedLocation.latitude !== viewport.latitude &&
+    selectedLocation.longitude !== viewport.longitude &&
+    !isInitialLocationCentred
+  ) {
+    setIsInitialLocationCentered(true);
+    animateToCoordinates(selectedLocation);
+  }
 
   // Called once to load locations state
   useEffect(() => {
@@ -178,13 +201,19 @@ const App = ({ locationId }) => {
   return (
     <div id="container">
       <ReactMapGL
-        {...viewport}
+        width={viewport.width}
+        height={viewport.height}
+        zoom={viewport.zoom}
+        latitude={viewport.latitude}
+        longitude={viewport.longitude}
         mapboxApiAccessToken={ACCESS_TOKEN}
         mapStyle="mapbox://styles/mapbox/streets-v10"
         transitionInterpolator={new FlyToInterpolator()}
         transitionDuration={transitionDuration}
         onViewportChange={_viewport => setViewport(_viewport)}
-        onTransitionEnd={() => transitionDuration > 0 && setTransitionDuration(0)}
+        onTransitionEnd={() =>
+          transitionDuration > 0 && setTransitionDuration(0)
+        }
         onClick={e => {
           // Hack workaround for click listener firing when pin is clicked
           if (e.target.className === "overlays") {
@@ -210,12 +239,7 @@ const App = ({ locationId }) => {
                   navigate("/");
                 } else {
                   navigate(`/locations/${location.id}`);
-                  setTransitionDuration(animationMS);
-                  setViewport({
-                    ...viewport,
-                    latitude: location.latitude,
-                    longitude: location.longitude,
-                  });
+                  animateToCoordinates(location);
                 }
               }}
             />
