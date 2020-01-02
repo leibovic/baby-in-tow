@@ -11,70 +11,73 @@ const config = {
 // Loaded from synchronous script tag in index.html
 const gapi = window.gapi;
 
+async function requestLocations() {
+  await gapi.client.init({
+    apiKey: config.apiKey,
+    discoveryDocs: config.discoveryDocs
+  });
+
+  const response = await gapi.client.sheets.spreadsheets.values.get({
+    spreadsheetId: config.spreadsheetId,
+    range: "MVP Data!A2:Q100"
+  });
+
+  const booleanFromYesNo = value => value === "Y";
+
+  const responseLocations = response.result.values
+    .map(
+      ([
+        id,
+        name,
+        address,
+        latitude,
+        longitude,
+        cat,
+        nursing,
+        stroller,
+        changeTable,
+        indoor,
+        outdoor,
+        description,
+        strollerTips,
+        nursingTips,
+        website,
+        instagram,
+        facebook
+      ]) => ({
+        id,
+        name,
+        address,
+        category: cat,
+        description,
+        strollerTips,
+        nursingTips,
+        website,
+        instagram,
+        facebook,
+        latitude: latitude ? parseFloat(latitude) : 0,
+        longitude: longitude ? parseFloat(longitude) : 0,
+        nursing: nursing && nursing !== "?" ? parseInt(nursing, 10) : 0,
+        stroller: stroller && stroller !== "?" ? parseInt(stroller, 10) : 0,
+        changeTable: booleanFromYesNo(changeTable),
+        indoor: booleanFromYesNo(indoor),
+        outdoor: booleanFromYesNo(outdoor)
+      })
+    )
+    .filter(l => l.name && l.latitude !== 0 && l.longitude !== 0);
+
+  return responseLocations;
+}
+
 const useGetLocations = () => {
   const [locations, setLocations] = useState([]);
 
   // Called once to load locations state
   useEffect(() => {
-    async function requestLocations() {
-      await gapi.client.init({
-        apiKey: config.apiKey,
-        discoveryDocs: config.discoveryDocs
-      });
-
-      const response = await gapi.client.sheets.spreadsheets.values.get({
-        spreadsheetId: config.spreadsheetId,
-        range: "MVP Data!A2:Q100"
-      });
-
-      const booleanFromYesNo = value => value === "Y";
-
-      const responseLocations = response.result.values
-        .map(
-          ([
-            id,
-            name,
-            address,
-            latitude,
-            longitude,
-            cat,
-            nursing,
-            stroller,
-            changeTable,
-            indoor,
-            outdoor,
-            description,
-            strollerTips,
-            nursingTips,
-            website,
-            instagram,
-            facebook
-          ]) => ({
-            id,
-            name,
-            address,
-            category: cat,
-            description,
-            strollerTips,
-            nursingTips,
-            website,
-            instagram,
-            facebook,
-            latitude: latitude ? parseFloat(latitude) : 0,
-            longitude: longitude ? parseFloat(longitude) : 0,
-            nursing: nursing && nursing !== "?" ? parseInt(nursing, 10) : 0,
-            stroller: stroller && stroller !== "?" ? parseInt(stroller, 10) : 0,
-            changeTable: booleanFromYesNo(changeTable),
-            indoor: booleanFromYesNo(indoor),
-            outdoor: booleanFromYesNo(outdoor)
-          })
-        )
-        .filter(l => l.name && l.latitude !== 0 && l.longitude !== 0);
-
+    gapi.load("client", async () => {
+      const responseLocations = await requestLocations();
       setLocations(responseLocations);
-    }
-
-    gapi.load("client", requestLocations);
+    });
   }, []);
 
   return { locations };
