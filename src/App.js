@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { render } from "react-dom";
 import { Router, navigate } from "@reach/router";
 import ReactMapGL from "react-map-gl";
@@ -10,27 +10,14 @@ import Detail from "./Detail";
 import FiltersOverlay from "./FiltersOverlay";
 import WelcomeOverlay from "./WelcomeOverlay";
 import { categoryColors } from "./constants";
+import useGetLocations from "./hooks/useGetLocations";
 
 import logoCircle from "./branding/logo-circle-beta.png";
 
 const ACCESS_TOKEN =
   "pk.eyJ1IjoibWxlaWJvdmljIiwiYSI6ImNqeWhhdDd2bDA5d2IzZ211NTdsZmNuNDkifQ.EeYaupgKuUPtyZpplZVf6A";
 
-const config = {
-  apiKey: "AIzaSyAwjO8DjRaUChRw6nx4OarscD6QGlMspqs",
-  discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
-  // Default to production spreadsheet if no environment variable is set
-  spreadsheetId:
-    process.env.SPREADSHEET_ID || "1GxL136Eh5fK_6cTZQ1cW2Dmnq8Pn6hlFyWg9z7mgKek"
-};
-
-// Loaded from synchronous script tag in index.html
-const gapi = window.gapi;
-
-const booleanFromYesNo = value => value === "Y";
-
 const App = ({ locationId }) => {
-  const [locations, updateLocations] = useState([]);
   const [viewport, setViewport] = useState({
     width: "100%",
     height: "100%",
@@ -53,75 +40,10 @@ const App = ({ locationId }) => {
   const [filtersVisible, updateFiltersVisible] = useState(false);
   const [welcomeVisible, updateWelcomeVisible] = useState(!locationId);
 
+  const { locations } = useGetLocations();
   const selectedLocation = locations
     ? locations.find(l => l.id === locationId)
     : null;
-
-  // Called once to load locations state
-  useEffect(() => {
-    async function requestLocations() {
-      try {
-        await gapi.client.init({
-          apiKey: config.apiKey,
-          discoveryDocs: config.discoveryDocs
-        });
-
-        const response = await gapi.client.sheets.spreadsheets.values.get({
-          spreadsheetId: config.spreadsheetId,
-          range: "MVP Data!A2:Q100"
-        });
-
-        const responseLocations = response.result.values
-          .map(
-            ([
-              id,
-              name,
-              address,
-              latitude,
-              longitude,
-              cat,
-              nursing,
-              stroller,
-              changeTable,
-              indoor,
-              outdoor,
-              description,
-              strollerTips,
-              nursingTips,
-              website,
-              instagram,
-              facebook
-            ]) => ({
-              id,
-              name,
-              address,
-              category: cat,
-              description,
-              strollerTips,
-              nursingTips,
-              website,
-              instagram,
-              facebook,
-              latitude: latitude ? parseFloat(latitude) : 0,
-              longitude: longitude ? parseFloat(longitude) : 0,
-              nursing: nursing && nursing !== "?" ? parseInt(nursing, 10) : 0,
-              stroller:
-                stroller && stroller !== "?" ? parseInt(stroller, 10) : 0,
-              changeTable: booleanFromYesNo(changeTable),
-              indoor: booleanFromYesNo(indoor),
-              outdoor: booleanFromYesNo(outdoor)
-            })
-          )
-          .filter(l => l.name && l.latitude !== 0 && l.longitude !== 0);
-
-        updateLocations(responseLocations);
-      } catch (e) {
-        console.error(e);
-      }
-    }
-
-    gapi.load("client", requestLocations);
-  }, []);
 
   // Go through filters, looking for a reason to exclude location if it doesn't match requirements
   const displayLocations = locations.filter(location => {
