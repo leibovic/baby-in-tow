@@ -19,7 +19,7 @@ async function requestLocations() {
 
   const response = await gapi.client.sheets.spreadsheets.values.get({
     spreadsheetId: config.spreadsheetId,
-    range: "MVP Data!A2:Q100"
+    range: "MVP Data!A2:Q300"
   });
 
   const booleanFromYesNo = value => value === "Y";
