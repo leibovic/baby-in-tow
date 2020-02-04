@@ -96,7 +96,7 @@ const updateData = async () => {
   });
 
   const spreadsheetId = "1FQJHr9FR8Qgprzh8ggxQs4_InP4bZIJhEwDgAlbcOAQ";
-  const range = "STAGE Data!A2:T100";
+  const range = "MVP Data!A2:T300";
 
   const response = await sheets.spreadsheets.values.get({
     spreadsheetId,
