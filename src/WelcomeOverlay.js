@@ -109,13 +109,11 @@ const WelcomeOverlay = ({ onClose }) => {
       >
         <div className="welcomeFooterContent">
           <div className="welcomeSectionParagraph">
-            We&apos;re just getting started. Our BETA release includes the
-            Toronto East End: Riverside, Leslieville, Danforth Village and the
-            Beaches.
+            We&apos;re a community of parents helping out other parents and
+            always on the hunt for more baby-friendly places to add to our map.
           </div>
           <div className="welcomeSectionParagraph">
-            Help spread the love and share a baby tip. We&apos;ll get it up on
-            the site so that other parents can benefit.
+            Got a good tip to share? Let us know so we can share it with others.
           </div>
           <button
             type="button"
