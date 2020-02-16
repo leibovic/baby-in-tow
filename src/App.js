@@ -9,6 +9,7 @@ import Marker from "./Marker";
 import Detail from "./Detail";
 import FiltersOverlay from "./FiltersOverlay";
 import WelcomeOverlay from "./WelcomeOverlay";
+import AboutPage from "./AboutPage";
 import { categoryColors } from "./constants";
 import useGetLocations from "./hooks/useGetLocations";
 
@@ -225,6 +226,7 @@ render(
   <Router>
     <App default />
     <App path="locations/:locationId" />
+    <AboutPage path="about" />
   </Router>,
   document.getElementById("root")
 );
