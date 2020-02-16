@@ -23,7 +23,7 @@ const App = ({ locationId }) => {
     height: "100%",
     latitude: 43.675309,
     longitude: -79.323953,
-    zoom: 12
+    zoom: 12,
   });
   const [category, setCategory] = useState("");
   const [filters, updateFilters] = useState({
@@ -35,7 +35,7 @@ const App = ({ locationId }) => {
     stroller3: true,
     nursing1: true,
     nursing2: true,
-    nursing3: true
+    nursing3: true,
   });
   const [filtersVisible, updateFiltersVisible] = useState(false);
   const [welcomeVisible, updateWelcomeVisible] = useState(!locationId);
@@ -144,7 +144,7 @@ const App = ({ locationId }) => {
           top: "10px",
           left: "10px",
           height: "50px",
-          cursor: "pointer"
+          cursor: "pointer",
         }}
         type="image"
         src={logoCircle}
@@ -155,7 +155,7 @@ const App = ({ locationId }) => {
         style={{
           position: "absolute",
           top: "10px",
-          right: "10px"
+          right: "10px",
         }}
       >
         <select
@@ -204,7 +204,7 @@ const App = ({ locationId }) => {
           fontSize: "12px",
           padding: "10px",
           backgroundColor: "#374B5B",
-          color: "white"
+          color: "white",
         }}
       >
         Baby in Tow is currently in BETA.{" "}

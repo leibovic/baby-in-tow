@@ -10,13 +10,13 @@ const RatingTooltip = ({ type }) => {
     nursing: [
       "The venue is open and public but still has a chill vibe so no creepy glares.",
       "While there isn’t a dedicated room you can find some privacy on a corner seat or a quiet seat in the back.",
-      "There is a dedicated mother’s room for nursing."
+      "There is a dedicated mother’s room for nursing.",
     ],
     stroller: [
       "Doable with a bit of effort. You’ll need to maneuver yourself around tight spots.",
       "Moderate space available but there may not be an accessible door or ramp access.",
-      "Accessible door or ramp access and a lot of indoor space to move around."
-    ]
+      "Accessible door or ramp access and a lot of indoor space to move around.",
+    ],
   };
 
   return (
@@ -30,7 +30,7 @@ const RatingTooltip = ({ type }) => {
             right: 0,
             left: 0,
             backgroundColor: "rgba(55, 75, 91, 0.8)",
-            zIndex: 30
+            zIndex: 30,
           }}
         >
           <div
@@ -43,7 +43,7 @@ const RatingTooltip = ({ type }) => {
               transform: "translateY(-50%)",
               width: "calc(100% - 80px)",
               margin: "0 16px",
-              padding: "24px"
+              padding: "24px",
             }}
           >
             <button
@@ -55,7 +55,7 @@ const RatingTooltip = ({ type }) => {
                 position: "absolute",
                 top: "16px",
                 right: "16px",
-                padding: "5px"
+                padding: "5px",
               }}
               onClick={() => updateModalShowing(false)}
             >
@@ -65,7 +65,7 @@ const RatingTooltip = ({ type }) => {
               style={{
                 fontSize: "18px",
                 color: "#374B5B",
-                marginBottom: "6px"
+                marginBottom: "6px",
               }}
             >
               {type === "nursing" ? "Ease of nursing" : "Stroller space"}
@@ -73,7 +73,7 @@ const RatingTooltip = ({ type }) => {
             <div
               style={{
                 fontSize: "14px",
-                color: "#5A7A94"
+                color: "#5A7A94",
               }}
             >
               {descriptions[type].map((value, index) => {
@@ -97,7 +97,7 @@ const RatingTooltip = ({ type }) => {
                 padding: "8px 0",
                 cursor: "pointer",
                 borderRadius: "4px",
-                fontWeight: 600
+                fontWeight: 600,
               }}
               onClick={() => updateModalShowing(false)}
             >
@@ -113,7 +113,7 @@ const RatingTooltip = ({ type }) => {
           border: "none",
           cursor: "pointer",
           verticalAlign: "bottom",
-          margin: "-4px 0"
+          margin: "-4px 0",
         }}
         onClick={() => updateModalShowing(true)}
       >

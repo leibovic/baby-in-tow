@@ -28,7 +28,7 @@ const TOKENS_PATH = "tokens.json";
 
 const geocoder = NodeGeocoder({
   provider: "google",
-  apiKey: process.env.GEO_API_KEY
+  apiKey: process.env.GEO_API_KEY,
 });
 
 const getAuth = async () => {
@@ -51,13 +51,13 @@ const getAuth = async () => {
   } catch (e) {
     const authUrl = oAuth2Client.generateAuthUrl({
       access_type: "offline",
-      scope: SCOPES
+      scope: SCOPES,
     });
     console.log("Authorize this app by visiting this url:", authUrl);
 
     const rl = readline.createInterface({
       input: process.stdin,
-      output: process.stdout
+      output: process.stdout,
     });
 
     const code = await rl.questionAsync("Enter the code from that page here: ");
@@ -92,7 +92,7 @@ const updateData = async () => {
   const auth = await getAuth();
   const sheets = google.sheets({
     version: "v4",
-    auth
+    auth,
   });
 
   const spreadsheetId = "1FQJHr9FR8Qgprzh8ggxQs4_InP4bZIJhEwDgAlbcOAQ";
@@ -100,7 +100,7 @@ const updateData = async () => {
 
   const response = await sheets.spreadsheets.values.get({
     spreadsheetId,
-    range
+    range,
   });
   const rows = response.data.values;
   const updatedRows = await Promise.all(rows.map(row => geocodeRow(row)));
@@ -110,8 +110,8 @@ const updateData = async () => {
     range,
     valueInputOption: "RAW",
     requestBody: {
-      values: updatedRows
-    }
+      values: updatedRows,
+    },
   });
   console.log("%d rows updated.", result.data.updatedRows);
 };

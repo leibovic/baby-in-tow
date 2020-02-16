@@ -16,7 +16,7 @@ const WelcomeOverlay = ({ onClose }) => {
     <div
       className="overlay"
       style={{
-        overflowY: "scroll"
+        overflowY: "scroll",
       }}
     >
       <div className="welcomeSection">
@@ -43,7 +43,7 @@ const WelcomeOverlay = ({ onClose }) => {
         className="welcomeSection"
         style={{
           background: `url(${confetti})`,
-          color: "white"
+          color: "white",
         }}
       >
         <div className="welcomeSectionHeader">
@@ -59,7 +59,7 @@ const WelcomeOverlay = ({ onClose }) => {
       <div
         className="welcomeSection"
         style={{
-          backgroundColor: "#ECE5DE"
+          backgroundColor: "#ECE5DE",
         }}
       >
         <div className="welcomeSectionHeader">Get out there.</div>
@@ -104,7 +104,7 @@ const WelcomeOverlay = ({ onClose }) => {
         className="welcomeSection welcomeFooter"
         style={{
           backgroundColor: "#374B5B",
-          color: "white"
+          color: "white",
         }}
       >
         <div className="welcomeFooterContent">
@@ -121,7 +121,7 @@ const WelcomeOverlay = ({ onClose }) => {
             style={{
               color: "#374b5b",
               backgroundColor: "white",
-              margin: "4px 0 20px 0"
+              margin: "4px 0 20px 0",
             }}
             onClick={() => window.open("https://forms.gle/yt38Z27Y3SE81q447")}
           >
@@ -143,7 +143,7 @@ const WelcomeOverlay = ({ onClose }) => {
           style={{
             color: "white",
             textDecoration: "none",
-            lineHeight: "20px"
+            lineHeight: "20px",
           }}
         >
           Follow us on Instagram
@@ -153,7 +153,7 @@ const WelcomeOverlay = ({ onClose }) => {
               height: "20px",
               marginLeft: "6px",
               paddingBottom: "4px",
-              verticalAlign: "middle"
+              verticalAlign: "middle",
             }}
             alt="Instagram"
           />
