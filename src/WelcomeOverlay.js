@@ -156,7 +156,7 @@ const WelcomeOverlay = ({ onClose }) => {
               paddingBottom: "4px",
               verticalAlign: "middle"
             }}
-            alt="Instagram"
+            alt=""
           />
         </a>
       </footer>
