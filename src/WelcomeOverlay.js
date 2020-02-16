@@ -135,6 +135,14 @@ const WelcomeOverlay = ({ onClose }) => {
 
       <footer>
         <a
+          href="https://forms.gle/yt38Z27Y3SE81q447"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Submit a baby tip
+        </a>
+        &nbsp;|&nbsp;
+        <a
           href="https://instagram.com/babyintow/"
           target="_blank"
           rel="noopener noreferrer"
