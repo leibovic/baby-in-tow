@@ -129,10 +129,20 @@ hr {
   height: 250px;
 }
 
-.socialFooter {
+footer {
+  color: white;
   background-color: black;
   padding: 20px 24px;
   text-align: center;
+  line-height: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+footer > a {
+  margin: 4px 0;
+  color: white; /* override default link style */
+  text-decoration: none;
 }
 
 @media (min-width: 1000px) {
@@ -215,10 +225,6 @@ hr {
   .torontoIllustration {
     height: 380px;
     margin-left: 50px;
-  }
-
-  .socialFooter {
-    padding: 20px 50px;
   }
 }
 
