@@ -133,16 +133,11 @@ const WelcomeOverlay = ({ onClose }) => {
         />
       </div>
 
-      <div className="socialFooter">
+      <footer>
         <a
           href="https://instagram.com/babyintow/"
           target="_blank"
           rel="noopener noreferrer"
-          style={{
-            color: "white",
-            textDecoration: "none",
-            lineHeight: "20px"
-          }}
         >
           Follow us on Instagram
           <img
@@ -156,7 +151,7 @@ const WelcomeOverlay = ({ onClose }) => {
             alt="Instagram"
           />
         </a>
-      </div>
+      </footer>
     </div>
   );
 };

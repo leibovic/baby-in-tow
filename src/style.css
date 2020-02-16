@@ -129,10 +129,17 @@ hr {
   height: 250px;
 }
 
-.socialFooter {
+footer {
+  color: white;
   background-color: black;
   padding: 20px 24px;
   text-align: center;
+  line-height: 20px;
+}
+
+footer > a {
+  color: white; /* override default link style */
+  text-decoration: none;
 }
 
 @media (min-width: 1000px) {
@@ -217,7 +224,7 @@ hr {
     margin-left: 50px;
   }
 
-  .socialFooter {
+  footer {
     padding: 20px 50px;
   }
 }
