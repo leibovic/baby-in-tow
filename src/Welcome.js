@@ -1,4 +1,6 @@
 import React from "react";
+import { navigate } from "@reach/router";
+
 import logo from "./branding/logo-beta.svg";
 import headerIllustration from "./illustrations/welcome-header.jpg";
 import community from "./illustrations/community.png";
@@ -9,16 +11,15 @@ import toronto from "./illustrations/toronto.png";
 import confetti from "./illustrations/confetti.png";
 import iconInsta from "./icons/icon-insta-white.svg";
 
-const WelcomeOverlay = ({ onClose }) => {
+function goToMap() {
+  navigate("/map");
+}
+
+function Welcome() {
   localStorage.setItem("welcomeShown", "true");
 
   return (
-    <div
-      className="overlay"
-      style={{
-        overflowY: "scroll",
-      }}
-    >
+    <>
       <div className="welcomeSection">
         <img
           className="welcomeHeaderIllustration"
@@ -33,7 +34,7 @@ const WelcomeOverlay = ({ onClose }) => {
           <div className="welcomeSubtitle">
             Curated by parents in your community
           </div>
-          <button type="button" className="welcomePageButton" onClick={onClose}>
+          <button type="button" className="welcomePageButton" onClick={goToMap}>
             View Map
           </button>
         </div>
@@ -121,7 +122,7 @@ const WelcomeOverlay = ({ onClose }) => {
               backgroundColor: "white",
               margin: "4px 0 20px 0",
             }}
-            onClick={onClose}
+            onClick={goToMap}
           >
             View Map
           </button>
@@ -159,8 +160,8 @@ const WelcomeOverlay = ({ onClose }) => {
           />
         </a>
       </footer>
-    </div>
+    </>
   );
-};
+}
 
-export default WelcomeOverlay;
+export default Welcome;

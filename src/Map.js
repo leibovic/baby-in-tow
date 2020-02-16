@@ -8,11 +8,36 @@ import Marker from "./Marker";
 import "mapbox-gl/dist/mapbox-gl.css";
 import useGetLocations from "./hooks/useGetLocations";
 import Detail from "./Detail";
+import LogoButton from "./LogoButton";
+import CategoryPicker from "./CategoryPicker";
+import FilterButton from "./FilterButton";
+import BetaNotice from "./BetaNotice";
 
 const ACCESS_TOKEN =
   "pk.eyJ1IjoibWxlaWJvdmljIiwiYSI6ImNqeWhhdDd2bDA5d2IzZ211NTdsZmNuNDkifQ.EeYaupgKuUPtyZpplZVf6A";
 
-function Map({ filters, category, locationId }) {
+function goHome() {
+  navigate("/");
+}
+
+function goToMap() {
+  navigate("/map");
+}
+
+function Map({ locationId }) {
+  const [category, setCategory] = useState("");
+  const [filters, updateFilters] = useState({
+    indoor: true,
+    outdoor: true,
+    changeTable: false,
+    stroller1: true,
+    stroller2: true,
+    stroller3: true,
+    nursing1: true,
+    nursing2: true,
+    nursing3: true,
+  });
+
   const [viewport, setViewport] = useState({
     width: "100%",
     height: "100%",
@@ -73,11 +98,11 @@ function Map({ filters, category, locationId }) {
     selectedLocation != null &&
     !displayLocations.includes(selectedLocation)
   ) {
-    navigate("/");
+    goToMap();
   }
 
   return (
-    <>
+    <div id="container">
       <ReactMapGL
         mapboxApiAccessToken={ACCESS_TOKEN}
         mapStyle="mapbox://styles/mapbox/streets-v10"
@@ -90,7 +115,7 @@ function Map({ filters, category, locationId }) {
         onClick={e => {
           // Hack workaround for click listener firing when pin is clicked
           if (e.target.className === "overlays") {
-            navigate("/");
+            goToMap();
           }
         }}
       >
@@ -109,7 +134,7 @@ function Map({ filters, category, locationId }) {
               pinColor={pinColor}
               onMarkerClick={() => {
                 if (selected && location.id) {
-                  navigate("/");
+                  goToMap();
                 } else {
                   navigate(`/locations/${location.id}`);
                 }
@@ -118,13 +143,28 @@ function Map({ filters, category, locationId }) {
           );
         })}
       </ReactMapGL>
+      <LogoButton onClick={goHome} />
+      <div
+        style={{
+          position: "absolute",
+          top: "10px",
+          right: "10px",
+        }}
+      >
+        <CategoryPicker
+          category={category}
+          handleCategoryChange={setCategory}
+        />
+        <FilterButton filters={filters} updateFilters={updateFilters} />
+      </div>
+      <BetaNotice />
       {selectedLocation && (
         <Detail
           location={selectedLocation}
           categoryColor={categoryColors[selectedLocation.category]}
         />
       )}
-    </>
+    </div>
   );
 }
 
