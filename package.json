@@ -17,6 +17,7 @@
     "@babel/preset-env": "^7.7.7",
     "@babel/preset-react": "^7.7.4",
     "@testing-library/react": "^9.4.0",
+    "autoprefixer": "^9.7.4",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
     "eslint": "^6.8.0",
@@ -33,7 +34,8 @@
     "lint-staged": "^9.5.0",
     "parcel-bundler": "^1.12.3",
     "prettier": "^1.19.1",
-    "react-test-renderer": "^16.12.0"
+    "react-test-renderer": "^16.12.0",
+    "sass": "^1.25.0"
   },
   "dependencies": {
     "@reach/router": "^1.2.1",
