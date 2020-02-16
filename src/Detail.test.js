@@ -23,7 +23,7 @@ const testLocation = {
   nursingTips: "All seating is exposed but vibe of the cafe is very relaxed.",
   website: "https://www.pilotcoffeeroasters.com/queen-st-e/",
   instagram: "http://instagram.com/pilotcoffee",
-  facebook: "http://facebook.com/pilotcoffee"
+  facebook: "http://facebook.com/pilotcoffee",
 };
 
 const testCategoryColor = { backgroundColor: "#F7A79A", color: "#374B5B" };

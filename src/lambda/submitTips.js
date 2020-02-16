@@ -20,7 +20,7 @@ module.exports.handler = async event => {
 
   const sheets = google.sheets({
     version: "v4",
-    auth: jwtClient
+    auth: jwtClient,
   });
 
   const params = JSON.parse(event.body);
@@ -29,13 +29,13 @@ module.exports.handler = async event => {
     range: "Submitted Tips!A1:C100",
     valueInputOption: "USER_ENTERED",
     requestBody: {
-      values: [[params.name, params.tip]]
-    }
+      values: [[params.name, params.tip]],
+    },
   });
 
   const response = {
     statusCode: 200,
-    body: JSON.stringify(res.data)
+    body: JSON.stringify(res.data),
   };
 
   return response;

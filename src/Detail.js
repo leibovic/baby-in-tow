@@ -20,7 +20,7 @@ const Detail = ({ location, categoryColor }) => {
     onSwipedUp: () => updateDetailsExpanded(true),
     onSwipedDown: () =>
       detailsExpanded ? updateDetailsExpanded(false) : navigate("/"),
-    trackMouse: true
+    trackMouse: true,
   });
 
   let indoorOutdoorMessage;
@@ -47,7 +47,7 @@ const Detail = ({ location, categoryColor }) => {
         margin: "0 10px",
         borderRadius: "4px 4px 0 0",
         zIndex: 11 /* above selected pin */,
-        color: "#374B5B"
+        color: "#374B5B",
       }}
     >
       <div
@@ -59,7 +59,7 @@ const Detail = ({ location, categoryColor }) => {
           fontWeight: 900,
           fontSize: "14px",
           lineHeight: "24px",
-          color: categoryColor.color
+          color: categoryColor.color,
         }}
       >
         {location.category}
@@ -67,7 +67,7 @@ const Detail = ({ location, categoryColor }) => {
       <div
         style={{
           padding: "16px 24px",
-          fontSize: "14px"
+          fontSize: "14px",
         }}
       >
         <div
@@ -82,7 +82,7 @@ const Detail = ({ location, categoryColor }) => {
           Change table
           <img
             style={{
-              float: "right"
+              float: "right",
             }}
             src={location.changeTable ? featureYes : featureNo}
             alt={location.changeTable ? "Yes" : "No"}
@@ -117,7 +117,7 @@ const Detail = ({ location, categoryColor }) => {
                 borderRadius: "4px",
                 padding: "12px",
                 marginTop: "8px",
-                textAlign: "center"
+                textAlign: "center",
               }}
             >
               Know this place?{" "}
@@ -134,7 +134,7 @@ const Detail = ({ location, categoryColor }) => {
               <div
                 style={{
                   paddingTop: "5px",
-                  paddingBottom: "10px"
+                  paddingBottom: "10px",
                 }}
               >
                 <a
@@ -222,7 +222,7 @@ const Detail = ({ location, categoryColor }) => {
           margin: "0 24px 24px 24px",
           cursor: "pointer",
           borderRadius: "4px",
-          fontWeight: 800
+          fontWeight: 800,
         }}
         onClick={() => updateDetailsExpanded(!detailsExpanded)}
       >
