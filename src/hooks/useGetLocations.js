@@ -5,7 +5,8 @@ const config = {
   discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
   // Default to production spreadsheet if no environment variable is set
   spreadsheetId:
-    process.env.SPREADSHEET_ID || "1GxL136Eh5fK_6cTZQ1cW2Dmnq8Pn6hlFyWg9z7mgKek"
+    process.env.SPREADSHEET_ID ||
+    "1GxL136Eh5fK_6cTZQ1cW2Dmnq8Pn6hlFyWg9z7mgKek",
 };
 
 // Loaded from synchronous script tag in index.html
@@ -14,12 +15,12 @@ const gapi = window.gapi;
 async function requestLocations() {
   await gapi.client.init({
     apiKey: config.apiKey,
-    discoveryDocs: config.discoveryDocs
+    discoveryDocs: config.discoveryDocs,
   });
 
   const response = await gapi.client.sheets.spreadsheets.values.get({
     spreadsheetId: config.spreadsheetId,
-    range: "MVP Data!A2:Q300"
+    range: "MVP Data!A2:Q300",
   });
 
   const booleanFromYesNo = value => value === "Y";
@@ -43,7 +44,7 @@ async function requestLocations() {
         nursingTips,
         website,
         instagram,
-        facebook
+        facebook,
       ]) => ({
         id,
         name,
@@ -61,7 +62,7 @@ async function requestLocations() {
         stroller: stroller && stroller !== "?" ? parseInt(stroller, 10) : 0,
         changeTable: booleanFromYesNo(changeTable),
         indoor: booleanFromYesNo(indoor),
-        outdoor: booleanFromYesNo(outdoor)
+        outdoor: booleanFromYesNo(outdoor),
       })
     )
     .filter(l => l.name && l.latitude !== 0 && l.longitude !== 0);

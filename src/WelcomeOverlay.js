@@ -16,7 +16,7 @@ const WelcomeOverlay = ({ onClose }) => {
     <div
       className="overlay"
       style={{
-        overflowY: "scroll"
+        overflowY: "scroll",
       }}
     >
       <div className="welcomeSection">
@@ -34,7 +34,7 @@ const WelcomeOverlay = ({ onClose }) => {
             Curated by parents in your community
           </div>
           <button type="button" className="welcomePageButton" onClick={onClose}>
-            Get Started
+            View Map
           </button>
         </div>
       </div>
@@ -43,7 +43,7 @@ const WelcomeOverlay = ({ onClose }) => {
         className="welcomeSection"
         style={{
           background: `url(${confetti})`,
-          color: "white"
+          color: "white",
         }}
       >
         <div className="welcomeSectionHeader">
@@ -59,7 +59,7 @@ const WelcomeOverlay = ({ onClose }) => {
       <div
         className="welcomeSection"
         style={{
-          backgroundColor: "#ECE5DE"
+          backgroundColor: "#ECE5DE",
         }}
       >
         <div className="welcomeSectionHeader">Get out there.</div>
@@ -104,16 +104,14 @@ const WelcomeOverlay = ({ onClose }) => {
         className="welcomeSection welcomeFooter"
         style={{
           backgroundColor: "#374B5B",
-          color: "white"
+          color: "white",
         }}
       >
         <div className="welcomeFooterContent">
           <div className="welcomeSectionParagraph">
-            We&apos;re a community of parents helping out other parents and
-            always on the hunt for more baby-friendly places to add to our map.
-          </div>
-          <div className="welcomeSectionParagraph">
-            Got a good tip to share? Let us know so we can share it with others.
+            We&apos;re a community of parents helping out other parents by
+            sharing tips on baby-friendly things to do in your community. Find
+            something new to explore today.
           </div>
           <button
             type="button"
@@ -121,11 +119,11 @@ const WelcomeOverlay = ({ onClose }) => {
             style={{
               color: "#374b5b",
               backgroundColor: "white",
-              margin: "4px 0 20px 0"
+              margin: "4px 0 20px 0",
             }}
-            onClick={() => window.open("https://forms.gle/yt38Z27Y3SE81q447")}
+            onClick={onClose}
           >
-            Submit Baby Tip
+            View Map
           </button>
         </div>
         <img
@@ -135,16 +133,18 @@ const WelcomeOverlay = ({ onClose }) => {
         />
       </div>
 
-      <div className="socialFooter">
+      <footer>
+        <a
+          href="https://forms.gle/yt38Z27Y3SE81q447"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Submit a baby tip
+        </a>
         <a
           href="https://instagram.com/babyintow/"
           target="_blank"
           rel="noopener noreferrer"
-          style={{
-            color: "white",
-            textDecoration: "none",
-            lineHeight: "20px"
-          }}
         >
           Follow us on Instagram
           <img
@@ -153,12 +153,12 @@ const WelcomeOverlay = ({ onClose }) => {
               height: "20px",
               marginLeft: "6px",
               paddingBottom: "4px",
-              verticalAlign: "middle"
+              verticalAlign: "middle",
             }}
-            alt="Instagram"
+            alt=""
           />
         </a>
-      </div>
+      </footer>
     </div>
   );
 };
