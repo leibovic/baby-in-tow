@@ -135,9 +135,12 @@ footer {
   padding: 20px 24px;
   text-align: center;
   line-height: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 footer > a {
+  margin: 4px 0;
   color: white; /* override default link style */
   text-decoration: none;
 }

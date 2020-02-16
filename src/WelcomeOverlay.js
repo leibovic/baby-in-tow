@@ -141,7 +141,6 @@ const WelcomeOverlay = ({ onClose }) => {
         >
           Submit a baby tip
         </a>
-        &nbsp;|&nbsp;
         <a
           href="https://instagram.com/babyintow/"
           target="_blank"
