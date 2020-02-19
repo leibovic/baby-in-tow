@@ -205,16 +205,16 @@ const App = ({ locationId }) => {
           padding: "10px",
           backgroundColor: "#374B5B",
           color: "white",
+          textAlign: "center",
         }}
       >
-        Baby in Tow is currently in BETA.{" "}
         <a
           style={{ fontWeight: 600, color: "white" }}
-          href="https://forms.gle/X6Tswurfg5VP49Zs7"
+          href="https://forms.gle/yt38Z27Y3SE81q447"
           target="_blank"
           rel="noopener noreferrer"
         >
-          We&apos;d love your feedback!
+          Submit a baby tip
         </a>
       </div>
     </div>
