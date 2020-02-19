@@ -11,7 +11,7 @@ import Detail from "./Detail";
 import LogoButton from "./LogoButton";
 import CategoryPicker from "./CategoryPicker";
 import FilterButton from "./FilterButton";
-import BetaNotice from "./BetaNotice";
+import SubmitTipFooter from "./SubmitTipFooter";
 
 const ACCESS_TOKEN =
   "pk.eyJ1IjoibWxlaWJvdmljIiwiYSI6ImNqeWhhdDd2bDA5d2IzZ211NTdsZmNuNDkifQ.EeYaupgKuUPtyZpplZVf6A";
@@ -157,7 +157,7 @@ function Map({ locationId }) {
         />
         <FilterButton filters={filters} updateFilters={updateFilters} />
       </div>
-      <BetaNotice />
+      <SubmitTipFooter />
       {selectedLocation && (
         <Detail
           location={selectedLocation}
