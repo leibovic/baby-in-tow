@@ -28,5 +28,5 @@ hr {
 }
 
 /* Page-specific styling */
-@import './style/map';
-@import './style/welcome';
+@import 'pages/map/Map';
+@import 'pages/Welcome';
