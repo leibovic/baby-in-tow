@@ -1,14 +1,14 @@
 import React from "react";
 import { navigate } from "@reach/router";
 
-import logo from "./branding/logo-beta.svg";
-import headerIllustration from "./illustrations/welcome-header.jpg";
-import community from "./illustrations/community.png";
-import culture from "./illustrations/culture.png";
-import eats from "./illustrations/eats.png";
-import selfCare from "./illustrations/self-care.png";
-import toronto from "./illustrations/toronto.png";
-import iconInsta from "./icons/icon-insta-white.svg";
+import logo from "../branding/logo-beta.svg";
+import headerIllustration from "../illustrations/welcome-header.jpg";
+import community from "../illustrations/community.png";
+import culture from "../illustrations/culture.png";
+import eats from "../illustrations/eats.png";
+import selfCare from "../illustrations/self-care.png";
+import toronto from "../illustrations/toronto.png";
+import iconInsta from "../icons/icon-insta-white.svg";
 
 function goToMap() {
   navigate("/map");
