@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Stars from "./Stars";
-import close from "./icons/close.svg";
-import helpCircle from "./icons/help-circle.svg";
+import close from "../../icons/close.svg";
+import helpCircle from "../../icons/help-circle.svg";
 
 const RatingTooltip = ({ type }) => {
   const [modalShowing, updateModalShowing] = useState(false);

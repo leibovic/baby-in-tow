@@ -1,6 +1,6 @@
 import React from "react";
-import starEmpty from "./icons/star-empty.svg";
-import starFilled from "./icons/star-filled.svg";
+import starEmpty from "../../icons/star-empty.svg";
+import starFilled from "../../icons/star-filled.svg";
 
 const Stars = ({ rating }) => (
   <div className="stars">

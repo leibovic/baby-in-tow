@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import ReactMapGL from "react-map-gl";
 import { navigate } from "@reach/router";
 
-import { categoryColors } from "./constants";
+import { categoryColors } from "../../constants";
 import Marker from "./Marker";
 
 import "mapbox-gl/dist/mapbox-gl.css";
-import useGetLocations from "./hooks/useGetLocations";
+import useGetLocations from "../../hooks/useGetLocations";
 import Detail from "./Detail";
 import LogoButton from "./LogoButton";
 import CategoryPicker from "./CategoryPicker";

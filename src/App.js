@@ -3,7 +3,7 @@ import { render } from "react-dom";
 import { Router } from "@reach/router";
 
 import Welcome from "./Welcome";
-import Map from "./Map";
+import Map from "./pages/map/Map";
 
 render(
   <Router>
