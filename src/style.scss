@@ -13,25 +13,6 @@ button {
   font-family: inherit;
 }
 
-#container {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-}
-
-.overlay {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 20;
-  background-color: white;
-  -webkit-overflow-scrolling: touch;
-}
-
 button:focus {
   outline: none;
 }
@@ -44,6 +25,124 @@ hr {
   border: 0;
   height: 1px;
   background: rgba(90, 122, 148, 0.2);
+}
+
+/* Map */
+.map-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+
+  /* Filter controls */
+  .categorySelect {
+    margin-right: 10px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url(icons/chevron-down.svg);
+    background-repeat: no-repeat;
+    background-position: right 12px top 50%;
+    border: none;
+    border-radius: 4px;
+    background-color: white;
+    color: #374b5b;
+    padding: 6px 36px 6px 16px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .filterButton {
+    background: #374b5b;
+    color: white;
+    font-weight: 800;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 20px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  /* Filter overlay */
+  .overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 20;
+    background-color: white;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .filterSection {
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(90, 122, 148, 0.2);
+  }
+
+  .filterSectionTitle {
+    font-size: 18px;
+    line-height: 23px;
+    font-weight: 600;
+  }
+
+  .filterExpandButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    float: right;
+    margin-top: 6px;
+  }
+
+  .filterRow {
+    display: flex;
+    padding-top: 18px;
+  }
+
+  .filterRow > input {
+    align-self: flex-start;
+  }
+
+  .filterLabel {
+    padding-left: 12px;
+  }
+
+  .filterLabel > label {
+    font-size: 16px;
+  }
+
+  .filterLabel > div {
+    color: #5a7a94;
+    padding-top: 4px;
+    font-size: 14px;
+  }
+
+  /* Detail view */
+
+  .detailLabel > .stars {
+    float: right;
+  }
+
+  .stars > img:not(:first-of-type) {
+    margin-left: 8px;
+  }
+
+  .ratingLegendItem {
+    padding: 16px 0;
+  }
+
+  .ratingLegendItem:not(:last-of-type) {
+    border-bottom: 1px solid rgba(90, 122, 148, 0.2);
+  }
+
+  .detailLabel {
+    padding: 5px 0;
+  }
+
+  .detailDescription {
+    color: #5a7a94;
+  }
 }
 
 /* Welcome page */
@@ -212,141 +311,42 @@ hr {
     color: white; /* override default link style */
     text-decoration: none;
   }
-}
 
-.categorySection {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px 16px 0 16px;
-}
-
-.categorySection > img {
-  height: 100px;
-}
-
-.categoryTitle {
-  font-size: 18px;
-  font-weight: 600;
-  margin: 10px 0;
-}
-
-@media (min-width: 1000px) {
   .categorySections {
-    display: flex;
-    margin-top: 16px;
+    @media (min-width: $breakpointSmallMin) {
+      display: flex;
+      margin-top: 16px;
+    }
   }
 
   .categorySection {
-    width: 178px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 16px 0 16px;
+    @media (min-width: $breakpointSmallMin) {
+      width: 178px;
+    }
+  }
+
+  .categorySection > img {
+    height: 100px;
   }
 
   .categoryTitle {
-    font-size: 22px;
-    margin: 16px 0;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 10px 0;
+
+    @media (min-width: $breakpointSmallMin) {
+      font-size: 22px;
+      margin: 16px 0;
+    }
   }
 
   .categoryDescription {
-    font-size: 16px;
+    @media (min-width: $breakpointSmallMin) {
+      font-size: 16px;
+    }
   }
-}
-
-/* Filter controls */
-
-.categorySelect {
-  margin-right: 10px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-image: url(icons/chevron-down.svg);
-  background-repeat: no-repeat;
-  background-position: right 12px top 50%;
-  border: none;
-  border-radius: 4px;
-  background-color: white;
-  color: #374b5b;
-  padding: 6px 36px 6px 16px;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-.filterButton {
-  background: #374b5b;
-  color: white;
-  font-weight: 800;
-  border: none;
-  border-radius: 4px;
-  padding: 6px 20px;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-/* Filter overlay */
-
-.filterSection {
-  padding: 16px 0;
-  border-bottom: 1px solid rgba(90, 122, 148, 0.2);
-}
-
-.filterSectionTitle {
-  font-size: 18px;
-  line-height: 23px;
-  font-weight: 600;
-}
-
-.filterExpandButton {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  float: right;
-  margin-top: 6px;
-}
-
-.filterRow {
-  display: flex;
-  padding-top: 18px;
-}
-
-.filterRow > input {
-  align-self: flex-start;
-}
-
-.filterLabel {
-  padding-left: 12px;
-}
-
-.filterLabel > label {
-  font-size: 16px;
-}
-
-.filterLabel > div {
-  color: #5a7a94;
-  padding-top: 4px;
-  font-size: 14px;
-}
-
-/* Detail view */
-
-.detailLabel > .stars {
-  float: right;
-}
-
-.stars > img:not(:first-of-type) {
-  margin-left: 8px;
-}
-
-.ratingLegendItem {
-  padding: 16px 0;
-}
-
-.ratingLegendItem:not(:last-of-type) {
-  border-bottom: 1px solid rgba(90, 122, 148, 0.2);
-}
-
-.detailLabel {
-  padding: 5px 0;
-}
-
-.detailDescription {
-  color: #5a7a94;
 }

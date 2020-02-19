@@ -102,7 +102,7 @@ function Map({ locationId }) {
   }
 
   return (
-    <div id="container">
+    <div className="map-container">
       <ReactMapGL
         mapboxApiAccessToken={ACCESS_TOKEN}
         mapStyle="mapbox://styles/mapbox/streets-v10"
