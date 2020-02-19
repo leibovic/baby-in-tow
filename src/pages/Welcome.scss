@@ -2,7 +2,9 @@
 .welcomePage {
   .better {
     color: white;
-    background-image: url('../illustrations/confetti.png');
+    /* HACK: due to https://github.com/parcel-bundler/parcel/issues/540, this URL must be relative
+     to the file that imports it (style.scss) */
+    background-image: url('./illustrations/confetti.png');
   }
 
   .out-there {
