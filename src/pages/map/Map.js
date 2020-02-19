@@ -3,15 +3,15 @@ import ReactMapGL from "react-map-gl";
 import { navigate } from "@reach/router";
 
 import { categoryColors } from "../../constants";
-import Marker from "./Marker";
+import Marker from "./components/Marker";
 
 import "mapbox-gl/dist/mapbox-gl.css";
 import useGetLocations from "../../hooks/useGetLocations";
-import Detail from "./Detail";
-import LogoButton from "./LogoButton";
-import CategoryPicker from "./CategoryPicker";
-import FilterButton from "./FilterButton";
-import SubmitTipFooter from "./SubmitTipFooter";
+import Detail from "./components/Detail";
+import LogoButton from "./components/LogoButton";
+import CategoryPicker from "./components/CategoryPicker";
+import FilterButton from "./components/FilterButton";
+import SubmitTipFooter from "./components/SubmitTipFooter";
 
 const ACCESS_TOKEN =
   "pk.eyJ1IjoibWxlaWJvdmljIiwiYSI6ImNqeWhhdDd2bDA5d2IzZ211NTdsZmNuNDkifQ.EeYaupgKuUPtyZpplZVf6A";

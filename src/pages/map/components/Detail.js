@@ -3,15 +3,15 @@ import React, { useState } from "react";
 import { useSwipeable } from "react-swipeable";
 import { navigate } from "@reach/router";
 import Stars from "./Stars";
-import featureYes from "../../icons/feature-yes.svg";
-import featureNo from "../../icons/feature-no.svg";
-import plus from "../../icons/plus.svg";
-import minus from "../../icons/minus.svg";
-import chevronRight from "../../icons/chevron-right.svg";
-import iconInsta from "../../icons/icon-insta.svg";
-import iconFacebook from "../../icons/icon-facebook.svg";
-import iconTwitter from "../../icons/icon-twitter.svg";
-import iconWebsite from "../../icons/icon-website.svg";
+import featureYes from "../../../icons/feature-yes.svg";
+import featureNo from "../../../icons/feature-no.svg";
+import plus from "../../../icons/plus.svg";
+import minus from "../../../icons/minus.svg";
+import chevronRight from "../../../icons/chevron-right.svg";
+import iconInsta from "../../../icons/icon-insta.svg";
+import iconFacebook from "../../../icons/icon-facebook.svg";
+import iconTwitter from "../../../icons/icon-twitter.svg";
+import iconWebsite from "../../../icons/icon-website.svg";
 import RatingTooltip from "./RatingTooltip";
 
 const Detail = ({ location, categoryColor }) => {

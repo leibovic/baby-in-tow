@@ -1,6 +1,6 @@
 import React from "react";
 
-import logoCircle from "../../branding/logo-circle-beta.png";
+import logoCircle from "../../../branding/logo-circle-beta.png";
 
 function LogoButton({ onClick }) {
   return (
