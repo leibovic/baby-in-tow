@@ -1,0 +1,207 @@
+/* Welcome page */
+.welcomePage {
+  .better {
+    color: white;
+    /* HACK: due to https://github.com/parcel-bundler/parcel/issues/540, this URL must be relative
+     to the file that imports it (style.scss) */
+    background-image: url('./illustrations/confetti.png');
+  }
+
+  .out-there {
+    background-color: #ECE5DE;
+  }
+
+  .bottom-cta {
+    background-color: #374B5B;
+    color: white;
+
+    @media (min-width: $breakpointSmallMin) {
+      flex-direction: row;
+      font-size: 24px;
+      justify-content: center;
+    }
+
+    .welcomePageButton {
+      color: #374b5b;
+      background-color: white;
+      margin: 4px 0 20px 0;
+    }
+  }
+
+  .top-cta {
+    @media (min-width: $breakpointSmallMin) {
+      flex-direction: row-reverse;
+      text-align: left;
+      justify-content: center;
+    }
+  }
+
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 50px 24px;
+
+    @media (min-width: $breakpointSmallMin) {
+      padding: 128px 50px;
+      &.top-cta, &.bottom-cta {
+        padding: 50px;
+      }
+    }
+  }
+
+  .icon {
+    height: 20px;
+    margin-left: 6px;
+    padding-bottom: 4px;
+    vertical-align: middle;
+  }
+
+  .torontoIllustration {
+    height: 250px;
+
+    @media (min-width: $breakpointSmallMin) {
+      height: 380px;
+      margin-left: 50px;
+    }
+  }
+
+  .welcomeSectionHeader {
+    font-weight: 600;
+    font-size: 24px;
+    margin-bottom: 16px;
+    @media (min-width: $breakpointSmallMin) {
+      font-size: 32px;
+      margin-bottom: 32px;
+    }
+  }
+
+  .welcomeSectionParagraph {
+    max-width: 600px;
+    font-size: 18px;
+    @media (min-width: $breakpointSmallMin) {
+      font-size: 22px;
+      max-width: 700px;
+    }
+  }
+
+  .welcomePageButton {
+    background-color: #374b5b;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 12px 24px;
+    font-size: 18px;
+    cursor: pointer;
+    font-weight: 800;
+  }
+
+  .welcomeFooterContent {
+    @media (min-width: $breakpointSmallMin) {
+      max-width: 500px;
+      text-align: left;
+    }
+
+    & > .welcomeSectionParagraph {
+      margin-bottom: 24px;
+    }
+  }
+
+  .logo {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    height: 50px;
+    @media (min-width: $breakpointSmallMin) {
+      position: static;
+      margin-bottom: 16px;
+    }
+  }
+
+  .welcomeHeaderIllustration {
+    height: 200px;
+    margin-top: 40px;
+    @media (min-width: $breakpointSmallMin) {
+      height: 500px;
+      margin-left: 30px;
+    }
+  }
+
+  .welcomeHeaderContent {
+    @media (min-width: $breakpointSmallMin) {
+      max-width: 500px;
+    }
+  }
+
+  .welcomeTitle {
+    font-size: 32px;
+    font-weight: 600;
+    margin: 24px 0;
+    @media (min-width: $breakpointSmallMin) {
+      font-size: 48px;
+    }
+  }
+
+  .welcomeSubtitle {
+    margin-bottom: 24px;
+    font-size: 18px;
+    @media (min-width: $breakpointSmallMin) {
+      font-size: 22px;
+    }
+  }
+
+  footer {
+    color: white;
+    background-color: black;
+    padding: 20px 24px;
+    text-align: center;
+    line-height: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  footer > a {
+    margin: 4px 0;
+    color: white; /* override default link style */
+    text-decoration: none;
+  }
+
+  .categorySections {
+    @media (min-width: $breakpointSmallMin) {
+      display: flex;
+      margin-top: 16px;
+    }
+  }
+
+  .categorySection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 16px 0 16px;
+    @media (min-width: $breakpointSmallMin) {
+      width: 178px;
+    }
+  }
+
+  .categorySection > img {
+    height: 100px;
+  }
+
+  .categoryTitle {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 10px 0;
+
+    @media (min-width: $breakpointSmallMin) {
+      font-size: 22px;
+      margin: 16px 0;
+    }
+  }
+
+  .categoryDescription {
+    @media (min-width: $breakpointSmallMin) {
+      font-size: 16px;
+    }
+  }
+}
