@@ -18,7 +18,7 @@
     @media (min-width: $breakpointSmallMin) {
       flex-direction: row;
       font-size: 24px;
-      justify-content: center;
+      justify-content: space-between;
     }
 
     .welcomePageButton {
@@ -32,7 +32,7 @@
     @media (min-width: $breakpointSmallMin) {
       flex-direction: row-reverse;
       text-align: left;
-      justify-content: center;
+      justify-content: space-between;
     }
   }
 

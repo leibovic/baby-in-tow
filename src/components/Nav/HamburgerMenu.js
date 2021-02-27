@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import hamburger from "../../icons/hamburger.svg";
+import useComponentClicked from "../../hooks/useComponentClicked";
 
 const HamburgerPopup = styled.div`
   display: ${props => (props.open ? "flex" : "none")};
@@ -17,7 +18,7 @@ const HamburgerPopup = styled.div`
   right: 0;
   z-index: 10 !important;
 
-  padding: 100px 10px 10px;
+  padding: 64px 10px 10px;
   margin: 0;
 
   background-color: white;
@@ -26,12 +27,39 @@ const HamburgerPopup = styled.div`
 
 function HamburgerMenu({ children }) {
   const [isOpen, setIsOpen] = useState(false);
-  const toggle = useCallback(() => setIsOpen(!isOpen), [setIsOpen, isOpen]);
+  const togglePopup = useCallback(
+    event => {
+      console.log("togglePopup");
+      event.stopPropagation();
+      setIsOpen(!isOpen);
+    },
+    [isOpen]
+  );
+  const closePopup = useCallback(
+    event => {
+      if (isOpen) {
+        console.log("closing popup");
+        event.preventDefault();
+        setIsOpen(false);
+      }
+    },
+    [isOpen]
+  );
+
+  const popupRef = useRef(null);
+  useComponentClicked(popupRef, null, closePopup);
 
   return (
     <>
-      <input type="image" alt="Toggle menu" src={hamburger} onClick={toggle} />
-      <HamburgerPopup open={isOpen}>{children}</HamburgerPopup>
+      <input
+        type="image"
+        alt="Toggle menu"
+        src={hamburger}
+        onClick={togglePopup}
+      />
+      <HamburgerPopup open={isOpen} ref={popupRef} onClick={closePopup}>
+        {children}
+      </HamburgerPopup>
     </>
   );
 }

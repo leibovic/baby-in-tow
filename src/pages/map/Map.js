@@ -8,17 +8,13 @@ import Marker from "./components/Marker";
 import "mapbox-gl/dist/mapbox-gl.css";
 import useGetLocations from "../../hooks/useGetLocations";
 import Detail from "./components/Detail";
-import LogoButton from "./components/LogoButton";
 import CategoryPicker from "./components/CategoryPicker";
 import FilterButton from "./components/FilterButton";
 import SubmitTipFooter from "./components/SubmitTipFooter";
+import Nav from "../../components/Nav/Nav";
 
 const ACCESS_TOKEN =
   "pk.eyJ1IjoibWxlaWJvdmljIiwiYSI6ImNqeWhhdDd2bDA5d2IzZ211NTdsZmNuNDkifQ.EeYaupgKuUPtyZpplZVf6A";
-
-function goHome() {
-  navigate("/");
-}
 
 function goToMap() {
   navigate("/map");
@@ -102,69 +98,71 @@ function Map({ locationId }) {
   }
 
   return (
-    <div className="map-container">
-      <ReactMapGL
-        mapboxApiAccessToken={ACCESS_TOKEN}
-        mapStyle="mapbox://styles/mapbox/streets-v10"
-        width={viewport.width}
-        height={viewport.height}
-        latitude={viewport.latitude}
-        longitude={viewport.longitude}
-        zoom={viewport.zoom}
-        onViewportChange={_viewport => setViewport(_viewport)}
-        onClick={e => {
-          // Hack workaround for click listener firing when pin is clicked
-          if (e.target.className === "overlays") {
-            goToMap();
-          }
-        }}
-      >
-        {displayLocations.map(location => {
-          const selected = selectedLocation === location;
-          const pinColor = location.category
-            ? categoryColors[location.category].backgroundColor
-            : "white";
+    <>
+      <Nav />
+      <div className="map-container">
+        <ReactMapGL
+          mapboxApiAccessToken={ACCESS_TOKEN}
+          mapStyle="mapbox://styles/mapbox/streets-v10"
+          width={viewport.width}
+          height={viewport.height}
+          latitude={viewport.latitude}
+          longitude={viewport.longitude}
+          zoom={viewport.zoom}
+          onViewportChange={_viewport => setViewport(_viewport)}
+          onClick={e => {
+            // Hack workaround for click listener firing when pin is clicked
+            if (e.target.className === "overlays") {
+              goToMap();
+            }
+          }}
+        >
+          {displayLocations.map(location => {
+            const selected = selectedLocation === location;
+            const pinColor = location.category
+              ? categoryColors[location.category].backgroundColor
+              : "white";
 
-          return (
-            <Marker
-              latitude={location.latitude}
-              longitude={location.longitude}
-              key={`marker-${location.name}`}
-              selected={selected}
-              pinColor={pinColor}
-              onMarkerClick={() => {
-                if (selected && location.id) {
-                  goToMap();
-                } else {
-                  navigate(`/locations/${location.id}`);
-                }
-              }}
-            />
-          );
-        })}
-      </ReactMapGL>
-      <LogoButton onClick={goHome} />
-      <div
-        style={{
-          position: "absolute",
-          top: "10px",
-          right: "10px",
-        }}
-      >
-        <CategoryPicker
-          category={category}
-          handleCategoryChange={setCategory}
-        />
-        <FilterButton filters={filters} updateFilters={updateFilters} />
+            return (
+              <Marker
+                latitude={location.latitude}
+                longitude={location.longitude}
+                key={`marker-${location.name}`}
+                selected={selected}
+                pinColor={pinColor}
+                onMarkerClick={() => {
+                  if (selected && location.id) {
+                    goToMap();
+                  } else {
+                    navigate(`/locations/${location.id}`);
+                  }
+                }}
+              />
+            );
+          })}
+        </ReactMapGL>
+        <div
+          style={{
+            position: "absolute",
+            top: "10px",
+            right: "10px",
+          }}
+        >
+          <CategoryPicker
+            category={category}
+            handleCategoryChange={setCategory}
+          />
+          <FilterButton filters={filters} updateFilters={updateFilters} />
+        </div>
+        <SubmitTipFooter />
+        {selectedLocation && (
+          <Detail
+            location={selectedLocation}
+            categoryColor={categoryColors[selectedLocation.category]}
+          />
+        )}
       </div>
-      <SubmitTipFooter />
-      {selectedLocation && (
-        <Detail
-          location={selectedLocation}
-          categoryColor={categoryColors[selectedLocation.category]}
-        />
-      )}
-    </div>
+    </>
   );
 }
 
