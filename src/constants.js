@@ -6,3 +6,4 @@ export const categoryColors = {
 };
 
 export const breakpointSmallMin = `${576}px`;
+export const breakpointLargeMin = `${992}px`;
